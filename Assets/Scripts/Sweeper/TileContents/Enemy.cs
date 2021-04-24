@@ -10,6 +10,8 @@ namespace Sweeper.TileContents
 
         public Sprite Image{ get { return _image; } }
 
+        public Enemy(){}
+
         public Enemy(EnemyData data)
         {
             _image = data.Image;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,12 @@ namespace Sweeper
     public class Tile : MonoBehaviour 
     {
         private List<Tile> _aroundTiles = new List<Tile>();
-        private Dictionary<ITileContent, int> _contentsMap = new Dictionary<ITileContent, int>();
+        private Dictionary<Type, int> _contentsMap = new Dictionary<Type, int>();
 
         public ITileContent Contents { get; set; } = new None();
         public IEnumerable<Tile> AroundTiles { get { return _aroundTiles; }}
         public Vector2 Pos { get; set; }
-        public IDictionary<ITileContent, int> ContentsMap { get { return _contentsMap; } }
+        public IDictionary<Type, int> ContentsMap { get { return _contentsMap; } }
         public bool CanOpen { get; set; } = true;
 
         public void AddAroundTile(Tile tile)
@@ -23,13 +24,14 @@ namespace Sweeper
 
         public void CountUpAroundTiles(ITileContent target)
         {
+            var type = target.GetType();
             foreach (var tile in _aroundTiles)
             {
-                if(!tile.ContentsMap.ContainsKey(target))
+                if(!tile.ContentsMap.ContainsKey(type))
                 {
-                    tile.ContentsMap.Add(target, 0);
+                    tile.ContentsMap.Add(type, 0);
                 }
-                tile.ContentsMap[target]++;
+                tile.ContentsMap[type]++;
             }
         }
 

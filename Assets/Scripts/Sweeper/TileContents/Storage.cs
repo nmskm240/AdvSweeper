@@ -10,6 +10,8 @@ namespace Sweeper.TileContents
 
         public Sprite Image{ get { return _image; } }
 
+        public Storage(){}
+
         public Storage(ItemData data)
         {
             _image = Resources.Load("Textures/Tile/Contents/Storage", typeof(Sprite)) as Sprite;

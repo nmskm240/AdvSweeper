@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 using Sweeper.TileContents;
@@ -29,18 +31,20 @@ namespace Sweeper
 
         public void Open()
         {
-            _tileImage.color = _openColor;//new Color(0.25f, 0.25f, 0.25f);
+            _tileImage.color = _openColor;
         }
 
         public void Close()
         {
-            _tileImage.color = _closeColor;//new Color(0.75f, 0.75f, 0.75f);
+            _tileImage.color = _closeColor;
             _contents.SetActive(false);
         }
 
-        public void ShowHint(KeyValuePair<ITileContent, int> contentsMap)
+        public void ShowHint(KeyValuePair<Type, int> contentsMap)
         {
-            switch(contentsMap.Key)
+            var constructor = contentsMap.Key.GetConstructor(Type.EmptyTypes);
+            var contents = constructor.Invoke(null);
+            switch(contents)
             {
                 case None non:
                     break;

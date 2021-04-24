@@ -60,24 +60,32 @@ package Sweeper
             +Open():void
         }
         class None
+        {
+            +None()
+        }
         class Enemy
         {
             -_enemyData:EnemyData
+            +Enemy()
             +Enemy(data:EnemyData)
         }
         class Stair
+        {
+            +Stair()
+        }
         class Storage
         {
             -_itemData:ItemData
+            +Srotage()
             +Storage(data:ItemData)
         }
     }
     class Tile
     {
         -_aroundTiles:List<Tile>
-        -_contentsMap::Dictionary<TileContents,int>
+        -_contentsMap::Dictionary<Type,int>
         +<<property>>Contents:TileContents
-        +<<property>>ContentsMap:IDictionary<TileContents,int>{ get only }
+        +<<property>>ContentsMap:IDictionary<Type,int>{ get only }
         +<<property>>AroundTiles:IEnumerable<TIle>{ get only }
         +<<property>>Pos:Vector2
         +<<property>>CanOpen:bool
@@ -93,7 +101,7 @@ package Sweeper
         -_bad:GameObject
         +Open():void
         +Close():void
-        +ShowHint(contentsMap:KeyValuePair<TileContents,int>):void
+        +ShowHint(contentsMap:KeyValuePair<Type,int>):void
         +ShowContens(contents:TileContents):void
         +ChangeBad():void
     }
