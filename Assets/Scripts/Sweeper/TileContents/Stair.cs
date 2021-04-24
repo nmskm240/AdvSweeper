@@ -1,5 +1,6 @@
 using UnityEngine;
 using Sweeper;
+using UI;
 
 namespace Sweeper.TileContents
 {
@@ -16,7 +17,15 @@ namespace Sweeper.TileContents
 
         public void Open()
         {
-            var stage = GameObject.Find("Stage").GetComponent<Stage>();
+            var factory = new DialogFactory();
+            var dialog = factory.Create().GetComponent<Dialog>();
+            dialog.Show("次の階へ移動しますか？", x => 
+            {
+                Debug.Log("agree");
+            }, y =>
+            {
+                Debug.Log("disagree");
+            });
             UnityEngine.Debug.Log("stair");
         }
     }

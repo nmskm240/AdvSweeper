@@ -42,7 +42,7 @@ namespace Sweeper
         {
             if(width <= 0 || height <= 0)
             {
-                Debug.LogError("width,　height は0以上にする必要があります。");
+                Debug.LogError("width,　height は1以上にする必要があります。");
                 width = (width <= 0) ? 4 : width; 
                 height = (height <= 0) ? 4 : height; 
             }

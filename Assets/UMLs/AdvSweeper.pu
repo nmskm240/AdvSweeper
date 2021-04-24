@@ -130,6 +130,18 @@ package Sweeper
     }
 }
 
+package UI
+{
+    class Dialog
+    {
+        -_body:Text
+        -_onAgree:Button
+        -_onDisAgree:Button
+        +Show(text:string,onAgree:Action<string>,onDisAgree:Action<string>)
+    }
+    class DialogFactory
+}
+
 interface IFactory<T>
 {
     +Create():T
@@ -139,11 +151,12 @@ class RandomWithWeight <<static>>
     +<<static>>Lotto<T>(item:IEnumerable<T>):IEnumerable<T>
 }
 
-Enemy --> TileContents
-None --> TileContents
-Stair --> TileContents
-Storage --> TileContents
+Enemy --> ITileContents
+None --> ITileContents
+Stair --> ITileContents
+Storage --> ITileContents
 TileFactory --> IFactory
+DialogFactory --> IFactory
 
 TileController --> IPointerClickHandler
 
