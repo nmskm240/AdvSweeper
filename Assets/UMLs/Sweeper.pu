@@ -1,0 +1,145 @@
+@startuml
+
+package Adv
+{
+    package Effects
+    {
+        interface Effect
+        {
+            +Activate():void
+        }
+    }
+    interface IHaveRariry
+    {
+        +<<property>>Rarity:int{get only}
+    }
+    class ItemData
+    {
+        -_image:Sprite
+        -_id:string
+        -_name:string
+        -_info:string
+        -effect:List<Effect>
+        +<<property>>Imgae:Sprite{get only}
+        +<<property>>ID:string{get only}
+        +<<property>>Name:string{get only}
+        +<<property>>Info:string{get only}
+        +<<property>>Effect:IEnumerable<Effect>{get only}
+    }
+    class EnemyData
+    {
+        -_image:Sprite
+        -_id:string
+        -_name:string
+        -_dropTable:List<ItemData>
+        +<<property>>Image:Sprite{get only}
+        +<<property>>ID:string{get only}
+        +<<property>>Name:string{get only}
+        +<<property>>DropTable:IEnumerable<ItemData>{get only}
+    }
+    class StageData
+    {
+        -_floor:int
+        -_spawnTable:List<EnemyData>
+        -_itemTable:List<ItemData>
+        +<<property>>Floor:int{get only}
+        +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
+        +<<property>>ItemTable:IEnumerable<ItemData>{get only}
+        +LottoSpawnTable(count:int):IEnumerable<EnemyData>
+        +LottoItemTable(count:int):IEnumerable<ItemData>
+    }
+}
+
+package Sweeper
+{
+    package TileContents
+    {
+        interface ITileContents
+        {
+            +<<property>>Image:Sprite
+            +Open():void
+        }
+        class None
+        class Enemy
+        {
+            -_enemyData:EnemyData
+            +Enemy(data:EnemyData)
+        }
+        class Stair
+        class Storage
+        {
+            -_itemData:ItemData
+            +Storage(data:ItemData)
+        }
+    }
+    class Tile
+    {
+        -_aroundTiles:List<Tile>
+        -_contentsMap::Dictionary<TileContents,int>
+        +<<property>>Contents:TileContents
+        +<<property>>ContentsMap:IDictionary<TileContents,int>{ get only }
+        +<<property>>AroundTiles:IEnumerable<TIle>{ get only }
+        +<<property>>Pos:Vector2
+        +<<property>>CanOpen:bool
+        +AddAroundTile(tile:Tile)
+        +CountUpAround(target:TileContents):void
+        +Open():void
+    }
+    class TileView
+    {
+        -_tileImage:Image
+        -_hints:GameObject
+        -_contents:GameObject
+        -_bad:GameObject
+        +Open():void
+        +Close():void
+        +ShowHint(contentsMap:KeyValuePair<TileContents,int>):void
+        +ShowContens(contents:TileContents):void
+        +ChangeBad():void
+    }
+    class TileController
+    class TileFactory
+    class Stage
+    {
+        -_gridLayoutGroup:GridlayoutGroup
+        -viewSize:int
+        -_stageData:StageData
+        +<<property>>Map:Tile[][]{ private set }
+        +<<property>>Width:int{ private set }
+        +<<property>>Height:int{ private set }
+        +<<property>>NowFloor:int{ private set }
+        -Reset(width:int,height:int):void
+        +Create(width:int, height:int, stageOption:StageOption):void
+        +SetContents(contents:TileContents, index:int):void
+    }
+    class StageOption
+    {
+        +Enemy:int
+        +Storage:int
+        +Stair:int
+        +SpawnTable:List<EnemyData>
+        +ItemTable:List<ItemData>
+    }
+}
+
+interface IFactory<T>
+{
+    +Create():T
+}
+class RandomWithWeight <<static>>
+{
+    +<<static>>Lotto<T>(item:IEnumerable<T>):IEnumerable<T>
+}
+
+Enemy --> TileContents
+None --> TileContents
+Stair --> TileContents
+Storage --> TileContents
+TileFactory --> IFactory
+
+TileController --> IPointerClickHandler
+
+EnemyData --> IHaveRariry
+ItemData --> IHaveRariry
+
+@enduml

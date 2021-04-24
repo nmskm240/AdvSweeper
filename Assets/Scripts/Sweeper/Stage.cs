@@ -1,0 +1,120 @@
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using Sweeper.TileContents;
+using Adv;
+
+namespace Sweeper
+{    
+    public class Stage : MonoBehaviour 
+    {
+        [SerializeField]
+        private int _viewSize = 600;
+        [SerializeField]
+        private GridLayoutGroup _gridLayputGroup;
+
+        private StageData _stageData;
+
+        public Tile[,] Map { get; private set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        public int NowFloor{ get; private set; } = 1;
+
+        private void Awake() 
+        {
+            _stageData = Instantiate(Resources.Load("Datas/Stage/Test") as StageData);
+            var size = UnityEngine.Random.Range(4,7);
+            var enemy = UnityEngine.Random.Range(1,4);
+            var storage = UnityEngine.Random.Range(1,3);
+            var option = new StageOption()
+            {
+                Enemy = enemy,
+                Storage = storage,
+                SpawnTable = _stageData.LottoSpawnTable(enemy),
+                ItemTable = _stageData.LottoItemTable(storage),
+            };
+            Create(size, size, option);
+        }
+        
+        public void Create(int width, int height, StageOption stageOption)
+        {
+            if(width <= 0 || height <= 0)
+            {
+                Debug.LogError("width,　height は0以上にする必要があります。");
+                width = (width <= 0) ? 4 : width; 
+                height = (height <= 0) ? 4 : height; 
+            }
+            Reset(width, height);
+            foreach (var tile in Map)
+            {
+                var pos = tile.Pos;
+                for(int i = -1; i < 2; i++)
+                {
+                    for(int j = -1; j < 2; j++)
+                    {
+                        var x = (int)pos.x + j;
+                        var y = (int)pos.y + i;
+                        if((i == 0 && j == 0) || !(0 <= x && x < Width) || !(0 <= y && y < Height))
+                        {
+                            continue;
+                        }
+                        tile.AddAroundTile(Map[y, x]);
+                    }
+                }
+            }
+            foreach(var enemy in stageOption.SpawnTable)
+            {
+                SetContents(new Enemy(enemy));
+            }
+            foreach(var item in stageOption.ItemTable)
+            {
+                SetContents(new Storage(item));
+            }
+            SetContents(new Stair());
+        }
+
+        private void Reset(int width, int height)
+        {
+            foreach(Transform tf in transform)
+            {
+                Destroy(tf.gameObject);
+            }
+            var factory = new TileFactory();
+            Map = new Tile[height, width];
+            Width = width;
+            Height = height;
+            _gridLayputGroup.cellSize = new Vector2(600 / Width, 600 / Width);
+            _gridLayputGroup.constraintCount = Width;
+            for(int i = 0; i < height; i++)
+            {
+                for(int j = 0; j < width; j++)
+                {
+                    var obj = factory.Create();
+                    var tile = obj.GetComponent<Tile>();
+                    tile.Pos = new Vector2(j, i);
+                    Map[i, j] = tile;
+                    obj.transform.SetParent(transform);
+                }
+            }
+        }
+
+        public void SetContents(ITileContent contents, int index = 1)
+        {
+            for(int i = 0; i < index; i++)
+            {
+                var x = UnityEngine.Random.Range(0, Width);
+                var y = UnityEngine.Random.Range(0, Height);
+                var tile = Map[y, x];
+                if(tile.Contents.GetType() != typeof(None))
+                {
+                    i--;
+                    continue;
+                }
+                tile.Contents = contents;
+                tile.CountUpAroundTiles(contents);
+            }
+        }
+    }
+}
