@@ -39,9 +39,11 @@ package Adv
     }
     class StageData
     {
+        -_name:string
         -_floor:int
         -_spawnTable:List<EnemyData>
         -_itemTable:List<ItemData>
+        +<<property>>Name:string{get only}
         +<<property>>Floor:int{get only}
         +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
         +<<property>>ItemTable:IEnumerable<ItemData>{get only}
@@ -116,6 +118,7 @@ package Sweeper
         -_gridLayoutGroup:GridlayoutGroup
         -viewSize:int
         -_stageData:StageData
+        -_info
         +<<property>>Map:Tile[][]{ private set }
         +<<property>>Width:int{ private set }
         +<<property>>Height:int{ private set }
@@ -138,6 +141,13 @@ package Sweeper
 
 package UI
 {
+    class ContentsCounter
+    {
+        -_image:Sprite
+        -_count:Text
+        +Init(image:Sprite,count:int)
+    }
+    class ContentsCounterFactory
     class Dialog
     {
         -_body:Text
@@ -146,6 +156,15 @@ package UI
         +Show(text:string,onAgree:Action<string>,onDisAgree:Action<string>)
     }
     class DialogFactory
+    class StageInfo
+    {
+        -_contents:Transform
+        -_floor:Text
+        -factory:IFactory<GameObject
+        +SetFloor(floorInfo:string)
+        +ShowContents(option:StageOption)
+        -CountContents<T>(list:IEnumerable<T>)
+    }
 }
 
 interface IFactory<T>
@@ -164,6 +183,7 @@ Storage --> ITileContents
 Exit --> ITileContents
 TileFactory --> IFactory
 DialogFactory --> IFactory
+ContentsCounterFactory --> IFactory
 
 TileController --> IPointerClickHandler
 

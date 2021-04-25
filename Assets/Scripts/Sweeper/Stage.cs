@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Sweeper.TileContents;
 using Adv;
+using UI;
 
 namespace Sweeper
 {    
@@ -14,6 +15,8 @@ namespace Sweeper
         private int _viewSize = 600;
         [SerializeField]
         private GridLayoutGroup _gridLayputGroup;
+        [SerializeField]
+        private StageInfo _info; 
 
         private StageData _stageData;
 
@@ -70,6 +73,8 @@ namespace Sweeper
             {
                 SetContents(new Exit());
             }
+            _info.ShowContents(stageOption);
+            _info.SetFloor(_stageData.Name + NowFloor + "F");
         }
 
         private void Clear()

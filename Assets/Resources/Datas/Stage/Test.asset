@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950886f5b078a01459ad7eb76c1a2a2f, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  _floor: 1
+  _name: "\u30C6\u30B9\u30C8\u30B9\u30C6\u30FC\u30B8"
+  _floor: 2
   _spawnTable:
   - {fileID: 11400000, guid: 723c7208b29017343b5468825c702dd3, type: 2}
   - {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
