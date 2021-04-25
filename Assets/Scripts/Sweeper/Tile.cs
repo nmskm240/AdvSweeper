@@ -37,7 +37,7 @@ namespace Sweeper
 
         public void Open()
         {
-            CanOpen = false;
+            CanOpen = (Contents.GetType() == typeof(Stair));
             Contents.Open();
         }
     }

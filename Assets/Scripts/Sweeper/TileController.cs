@@ -30,6 +30,7 @@ namespace Sweeper
                         case Enemy ene:
                         case Storage sto:
                         case Stair sta:
+                        case Exit exit:
                             _tileView.ShowContents(_tile.Contents);
                             break;
                     }

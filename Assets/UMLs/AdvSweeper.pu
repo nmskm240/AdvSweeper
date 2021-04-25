@@ -79,6 +79,10 @@ package Sweeper
             +Srotage()
             +Storage(data:ItemData)
         }
+        class Exit
+        {
+            +Exit()
+        }
     }
     class Tile
     {
@@ -117,8 +121,10 @@ package Sweeper
         +<<property>>Height:int{ private set }
         +<<property>>NowFloor:int{ private set }
         -Reset(width:int,height:int):void
+        -Clear():void
         +Create(width:int, height:int, stageOption:StageOption):void
         +SetContents(contents:TileContents, index:int):void
+        +Next():void
     }
     class StageOption
     {
@@ -155,6 +161,7 @@ Enemy --> ITileContents
 None --> ITileContents
 Stair --> ITileContents
 Storage --> ITileContents
+Exit --> ITileContents
 TileFactory --> IFactory
 DialogFactory --> IFactory
 

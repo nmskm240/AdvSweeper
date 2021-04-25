@@ -20,22 +20,12 @@ namespace Sweeper
         public Tile[,] Map { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public int NowFloor{ get; private set; } = 1;
+        public int NowFloor{ get; private set; } = 0;
 
         private void Awake() 
         {
             _stageData = Instantiate(Resources.Load("Datas/Stage/Test") as StageData);
-            var size = UnityEngine.Random.Range(4,7);
-            var enemy = UnityEngine.Random.Range(1,4);
-            var storage = UnityEngine.Random.Range(1,3);
-            var option = new StageOption()
-            {
-                Enemy = enemy,
-                Storage = storage,
-                SpawnTable = _stageData.LottoSpawnTable(enemy),
-                ItemTable = _stageData.LottoItemTable(storage),
-            };
-            Create(size, size, option);
+            Next();
         }
         
         public void Create(int width, int height, StageOption stageOption)
@@ -72,7 +62,19 @@ namespace Sweeper
             {
                 SetContents(new Storage(item));
             }
-            SetContents(new Stair());
+            if(NowFloor < _stageData.Floor)
+            {
+                SetContents(new Stair());
+            }
+            else
+            {
+                SetContents(new Exit());
+            }
+        }
+
+        private void Clear()
+        {
+
         }
 
         private void Reset(int width, int height)
@@ -96,6 +98,7 @@ namespace Sweeper
                     tile.Pos = new Vector2(j, i);
                     Map[i, j] = tile;
                     obj.transform.SetParent(transform);
+                    obj.transform.localScale = Vector3.one;
                 }
             }
         }
@@ -115,6 +118,22 @@ namespace Sweeper
                 tile.Contents = contents;
                 tile.CountUpAroundTiles(contents);
             }
+        }
+
+        public void Next()
+        {
+            var size = UnityEngine.Random.Range(4,7);
+            var enemy = UnityEngine.Random.Range(1,4);
+            var storage = UnityEngine.Random.Range(1,3);
+            var option = new StageOption()
+            {
+                Enemy = enemy,
+                Storage = storage,
+                SpawnTable = _stageData.LottoSpawnTable(enemy),
+                ItemTable = _stageData.LottoItemTable(storage),
+            };
+            NowFloor++;
+            Create(size, size, option);
         }
     }
 }

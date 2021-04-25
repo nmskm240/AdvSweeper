@@ -59,6 +59,7 @@ namespace Sweeper
                     storage.SetActive(true);
                     break;
                 case Stair sta:
+                case Exit exit:
                     var stair = _hints.transform.Find("Stair").gameObject;
                     stair.transform.Find("Text").GetComponent<Text>().text = "x" + contentsMap.Value.ToString();
                     stair.SetActive(true);
