@@ -31,10 +31,12 @@ package Adv
         -_image:Sprite
         -_id:string
         -_name:string
+        -_attack:int
         -_dropTable:List<ItemData>
         +<<property>>Image:Sprite{get only}
         +<<property>>ID:string{get only}
         +<<property>>Name:string{get only}
+        +<<property>>Attack:int{get only}
         +<<property>>DropTable:IEnumerable<ItemData>{get only}
     }
     class StageData
@@ -49,6 +51,15 @@ package Adv
         +<<property>>ItemTable:IEnumerable<ItemData>{get only}
         +LottoSpawnTable(count:int):IEnumerable<EnemyData>
         +LottoItemTable(count:int):IEnumerable<ItemData>
+    }
+    class Player
+    {
+        -_hp:SliderParameter
+        -_mp:SliderParameter
+        +<<property>>HP:int{private set}
+        +<<property>>MP:int{private set}
+        +Damage(quantity:int):void
+        -Death():void
     }
 }
 
@@ -164,6 +175,18 @@ package UI
         +SetFloor(floorInfo:string)
         +ShowContents(option:StageOption)
         -CountContents<T>(list:IEnumerable<T>)
+    }
+    class SliderParameter
+    {
+        -_text:Text
+        -_slider:Slider
+        +<<property>>Name:string{get only}
+        +<<property>>Min:float{get only}
+        +<<property>>Max:float{get only}
+        +<<property>>Value:float
+        +Init(name:string,min:float,max:float):void
+        +SetName(name:string):void
+        +Range(min:float,max:float):void
     }
 }
 
