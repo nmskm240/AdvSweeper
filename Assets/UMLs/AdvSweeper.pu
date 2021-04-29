@@ -13,6 +13,10 @@ package Adv
     {
         +<<property>>Rarity:int{get only}
     }
+    class RandomWithWeight <<static>>
+    {
+        +<<static>>Lotto<T>(item:IEnumerable<T>):IEnumerable<T>
+    }
     class ItemData
     {
         -_image:Sprite
@@ -200,20 +204,21 @@ package UI
     class StageNode
     {
         -_text:Text
-        -_stageData:StageData
-        +Load():void
+        -_base:StageData
+        -_loadStageData:StageData
     }
-    class StageNodeFactory
+    class TitleOptionsManager
+    {
+        -_tapZone:EventTrigger
+    }
 }
 
+class GameManager
 interface IFactory<T>
 {
     +Create():T
 }
-class RandomWithWeight <<static>>
-{
-    +<<static>>Lotto<T>(item:IEnumerable<T>):IEnumerable<T>
-}
+
 
 Enemy --> ITileContents
 None --> ITileContents
@@ -223,9 +228,9 @@ Exit --> ITileContents
 TileFactory --> IFactory
 DialogFactory --> IFactory
 ContentsCounterFactory --> IFactory
-StageNodeFactory --> IFactory
 
 TileController --> IPointerClickHandler
+StageNode --> IPointerClickHandler
 
 EnemyData --> IHaveRariry
 ItemData --> IHaveRariry

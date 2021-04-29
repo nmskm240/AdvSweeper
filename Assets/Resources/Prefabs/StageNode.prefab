@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 4918911559915878456}
+  _base: {fileID: 0}
+  _loadStageData: {fileID: 11400000, guid: 309fc77ec1abebf4c819ce77da480c74, type: 2}
 --- !u!1 &3850193509488709005
 GameObject:
   m_ObjectHideFlags: 0
