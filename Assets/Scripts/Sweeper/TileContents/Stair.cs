@@ -22,10 +22,7 @@ namespace Sweeper.TileContents
             {
                 var stage = GameObject.Find("Stage").GetComponent<Stage>();
                 stage.Next();
-            }, y =>
-            {
-                Debug.Log("disagree");
-            });
+            }, y =>{ });
         }
     }
 }
