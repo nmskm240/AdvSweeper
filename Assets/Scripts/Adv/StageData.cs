@@ -19,8 +19,13 @@ namespace Adv
 
         public string Name{ get { return _name;} }
         public int Floor{ get { return _floor; } }
-        public IEnumerable<EnemyData> SpawnTable{ get; private set; }
-        public IEnumerable<ItemData> ItemTable{ get; private set; }
+        public IEnumerable<EnemyData> SpawnTable{ get { return _spawnTable; } }
+        public IEnumerable<ItemData> ItemTable{ get { return _itemTable; } }
+
+        public void SetName(string name){ _name = name; }
+        public void SetFloor(int floor){ _floor = floor; }
+        public void SetSpawnTable(List<EnemyData> spawnTable){ _spawnTable = spawnTable; }
+        public void SetItemTable(List<ItemData> itemTable){ _itemTable = itemTable; }
 
         public IEnumerable<EnemyData> LottoSpawnTable(int count)
         {
@@ -29,7 +34,6 @@ namespace Adv
             {
                 spawnTable.Add(RandomWithWeight.Lotto<EnemyData>(_spawnTable));
             }
-            SpawnTable = spawnTable;
             return SpawnTable;
         }
 
@@ -40,7 +44,6 @@ namespace Adv
             {
                 itemTable.Add(RandomWithWeight.Lotto<ItemData>(_itemTable));
             }
-            ItemTable = itemTable;
             return ItemTable;
         }
     }

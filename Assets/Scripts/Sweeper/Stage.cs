@@ -17,7 +17,7 @@ namespace Sweeper
         private GridLayoutGroup _gridLayputGroup;
         [SerializeField]
         private StageInfo _info; 
-
+        [SerializeField]
         private StageData _stageData;
 
         public Tile[,] Map { get; private set; }
@@ -27,7 +27,6 @@ namespace Sweeper
 
         private void Awake() 
         {
-            _stageData = Instantiate(Resources.Load("Datas/Stage/Test") as StageData);
             Next();
         }
         
