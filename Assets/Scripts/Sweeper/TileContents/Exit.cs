@@ -18,7 +18,7 @@ namespace Sweeper.TileContents
         {
             var factroy = new DialogFactory();
             var dialog = factroy.Create().GetComponent<Dialog>();
-            dialog.Show("クリア", x => 
+            dialog.Show(DialogType.Switch, "クリア", x => 
             {
                 Debug.Log("クリア");
             }, y => 

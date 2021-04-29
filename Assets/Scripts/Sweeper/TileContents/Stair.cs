@@ -18,7 +18,7 @@ namespace Sweeper.TileContents
         {
             var factory = new DialogFactory();
             var dialog = factory.Create().GetComponent<Dialog>();
-            dialog.Show("次の階へ移動しますか？", x => 
+            dialog.Show(DialogType.Switch, "次の階へ移動しますか？", x => 
             {
                 var stage = GameObject.Find("Stage").GetComponent<Stage>();
                 stage.Next();

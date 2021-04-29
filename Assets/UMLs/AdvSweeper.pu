@@ -49,6 +49,10 @@ package Adv
         +<<property>>Floor:int{get only}
         +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
         +<<property>>ItemTable:IEnumerable<ItemData>{get only}
+        +SetName(name:string):void
+        +SetFloor(int:floor):void
+        +SetSpawnTable(spawnTable:List<EnemyData>):void
+        +SetItemTable(itemTable:List<ItemData>):void
         +LottoSpawnTable(count:int):IEnumerable<EnemyData>
         +LottoItemTable(count:int):IEnumerable<ItemData>
     }
@@ -162,9 +166,14 @@ package UI
     class Dialog
     {
         -_body:Text
-        -_onAgree:Button
-        -_onDisAgree:Button
-        +Show(text:string,onAgree:Action<string>,onDisAgree:Action<string>)
+        -_onAgree:GameObject
+        -_onDisAgree:GameObject
+        +Show(type:DialogType,text:string,onAgree:Action<string>,onDisAgree:Action<string>)
+    }
+    enum DialogType
+    {
+        AgreeOnly,
+        Switch,
     }
     class DialogFactory
     class StageInfo
@@ -188,6 +197,13 @@ package UI
         +SetName(name:string):void
         +Range(min:float,max:float):void
     }
+    class StageNode
+    {
+        -_text:Text
+        -_stageData:StageData
+        +Load():void
+    }
+    class StageNodeFactory
 }
 
 interface IFactory<T>
@@ -207,6 +223,7 @@ Exit --> ITileContents
 TileFactory --> IFactory
 DialogFactory --> IFactory
 ContentsCounterFactory --> IFactory
+StageNodeFactory --> IFactory
 
 TileController --> IPointerClickHandler
 

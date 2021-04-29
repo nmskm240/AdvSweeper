@@ -35,7 +35,7 @@ namespace Adv
         {
             var factory = new DialogFactory();
             var dialog = factory.Create().GetComponent<Dialog>();
-            dialog.Show("死亡", x => {}, y => {});
+            dialog.Show(DialogType.AgreeOnly, "力尽きてしまった。\nタイトル画面に戻ります。", x => {});
         }
     }
 }
