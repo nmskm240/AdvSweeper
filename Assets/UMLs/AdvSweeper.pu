@@ -67,6 +67,8 @@ package Adv
         +<<property>>HP:int{private set}
         +<<property>>MP:int{private set}
         +Damage(quantity:int):void
+        +GetItem(item:ItemData):void
+        +UseItem(item:ItemData):void
         -Death():void
     }
 }
@@ -211,6 +213,24 @@ package UI
     {
         -_tapZone:EventTrigger
     }
+    class ItemNode
+    {
+        -_image:Image
+        -_text:Text
+        -_item:ItemData
+        -_holding:int
+        +<<property>>Item:ItemData{get only}
+        +<<property>>Holding:int
+        +Init(item:ItemData):void
+    }
+    class ItemNodeFactroy
+    class ItemViewer
+    {
+        -_contents:Transform
+        -_factory:IFactory<GameObject>
+        -_nodes:Dictionary<ItemData,GameObject>
+        +AddItem(item:ItemData):void
+    }
 }
 
 class GameManager
@@ -220,19 +240,27 @@ interface IFactory<T>
 }
 
 
-Enemy --> ITileContents
-None --> ITileContents
-Stair --> ITileContents
-Storage --> ITileContents
-Exit --> ITileContents
-TileFactory --> IFactory
-DialogFactory --> IFactory
-ContentsCounterFactory --> IFactory
+Enemy ..|> ITileContents
+None ..|> ITileContents
+Stair ..|> ITileContents
+Storage ..|> ITileContents
+Exit ..|> ITileContents
 
-TileController --> IPointerClickHandler
-StageNode --> IPointerClickHandler
+TileFactory ..|> IFactory
+DialogFactory ..|> IFactory
+ContentsCounterFactory ..|> IFactory
+ItemNodeFactroy ..|> IFactory
 
-EnemyData --> IHaveRariry
-ItemData --> IHaveRariry
+TileFactory ..> Tile : Create
+DialogFactory ..> Dialog : Create
+ContentsCounterFactory ..> ContentsCounter : Create
+ItemNodeFactroy ..> ItemNode : Create 
+
+TileController ..|> IPointerClickHandler
+StageNode ..|> IPointerClickHandler
+ItemNode ..|> IPointerClickHandler
+
+EnemyData ..|> IHaveRariry
+ItemData ..|> IHaveRariry
 
 @enduml

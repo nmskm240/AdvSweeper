@@ -20,7 +20,8 @@ namespace Sweeper.TileContents
 
         public void Open()
         {
-            UnityEngine.Debug.Log(_data.Name + "を獲得");
+            var player = GameObject.Find("Player").GetComponent<Player>();
+            player.GetItem(_data);
         }
     }
 }

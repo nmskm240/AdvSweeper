@@ -1,3 +1,4 @@
+using UnityEngine;
 using MultiSceneManagement;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
@@ -6,6 +7,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         base.Awake();
         MultiSceneManager.Init();
-        if(!UnityEditor.EditorApplication.isPlaying) MultiSceneManager.LoadScene("Title");
+        if(Application.platform == RuntimePlatform.Android) MultiSceneManager.LoadScene("Title");
     }
 }
