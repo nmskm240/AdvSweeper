@@ -127,7 +127,7 @@ namespace Sweeper
         public void Next()
         {
             var size = UnityEngine.Random.Range(4,7);
-            var enemy = UnityEngine.Random.Range(1,4);
+            var enemy = (int)(Mathf.Pow(size, 2) * _stageData.SpawnRate);
             var storage = UnityEngine.Random.Range(1,3);
             var option = new StageOption()
             {

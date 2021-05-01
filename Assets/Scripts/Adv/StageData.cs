@@ -12,6 +12,8 @@ namespace Adv
         private string _name;
         [SerializeField]
         private int _floor = 1;
+        [SerializeField, Range(0f,0.3f)]
+        private float _spawnRate = 0.15f;
         [SerializeField]
         private List<EnemyData> _spawnTable = new List<EnemyData>();
         [SerializeField]
@@ -19,13 +21,18 @@ namespace Adv
 
         public string Name{ get { return _name;} }
         public int Floor{ get { return _floor; } }
+        public float SpawnRate{ get { return _spawnRate; } }
         public IEnumerable<EnemyData> SpawnTable{ get { return _spawnTable; } }
         public IEnumerable<ItemData> ItemTable{ get { return _itemTable; } }
 
-        public void SetName(string name){ _name = name; }
-        public void SetFloor(int floor){ _floor = floor; }
-        public void SetSpawnTable(List<EnemyData> spawnTable){ _spawnTable = spawnTable; }
-        public void SetItemTable(List<ItemData> itemTable){ _itemTable = itemTable; }
+        public void Copy(StageData data)
+        {
+            _name = data.Name;
+            _floor = data.Floor;
+            _spawnRate = data.SpawnRate;
+            _spawnTable = data.SpawnTable as List<EnemyData>;
+            _itemTable = data.ItemTable as List<ItemData>;
+        }
 
         public IEnumerable<EnemyData> LottoSpawnTable(int count)
         {
@@ -34,7 +41,7 @@ namespace Adv
             {
                 spawnTable.Add(RandomWithWeight.Lotto<EnemyData>(_spawnTable));
             }
-            return SpawnTable;
+            return spawnTable;
         }
 
         public IEnumerable<ItemData> LottoItemTable(int count)
@@ -44,7 +51,7 @@ namespace Adv
             {
                 itemTable.Add(RandomWithWeight.Lotto<ItemData>(_itemTable));
             }
-            return ItemTable;
+            return itemTable;
         }
     }
 }

@@ -24,10 +24,7 @@ namespace UI
 
         public void OnPointerClick(PointerEventData e)
         {
-            _loadStageData.SetName(_base.Name);
-            _loadStageData.SetFloor(_base.Floor);
-            _loadStageData.SetSpawnTable(new List<EnemyData>(_base.SpawnTable));
-            _loadStageData.SetItemTable(new List<ItemData>(_base.ItemTable));
+            _loadStageData.Copy(_base);
             MultiSceneManager.LoadScene("Game");
         }
     }
