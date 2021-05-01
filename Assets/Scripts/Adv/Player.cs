@@ -55,6 +55,7 @@ namespace Adv
                 return;
             }
             _items[item]--;
+            _itemViewer.GetNode(item).GetComponent<ItemNode>().Holding--;
         }
 
         private void Death()

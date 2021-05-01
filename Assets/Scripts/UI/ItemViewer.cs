@@ -29,5 +29,10 @@ namespace UI
                 obj.transform.localScale = Vector3.one;
             }
         }
+
+        public GameObject GetNode(ItemData item)
+        {
+            return _nodes[item] ?? null;
+        }
     }
 }

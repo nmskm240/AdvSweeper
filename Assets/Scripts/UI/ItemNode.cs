@@ -22,10 +22,7 @@ namespace UI
             set 
             {
                 _holding = value;
-                if(_holding <= 0)
-                {
-                    Destroy(gameObject);
-                } 
+                gameObject.SetActive(!(_holding <= 0));
                 _text.text = "×" + _holding;
             }
         }
@@ -45,7 +42,6 @@ namespace UI
             {
                 var player = GameObject.Find("Player").GetComponent<Player>();
                 player.UseItem(_item);
-                Holding--;
             });
         }
     }

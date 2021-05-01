@@ -47,16 +47,15 @@ package Adv
     {
         -_name:string
         -_floor:int
+        -_spawnRate:float
         -_spawnTable:List<EnemyData>
         -_itemTable:List<ItemData>
         +<<property>>Name:string{get only}
         +<<property>>Floor:int{get only}
+        +<<property>>SpawnRate:float{get only}
         +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
         +<<property>>ItemTable:IEnumerable<ItemData>{get only}
-        +SetName(name:string):void
-        +SetFloor(int:floor):void
-        +SetSpawnTable(spawnTable:List<EnemyData>):void
-        +SetItemTable(itemTable:List<ItemData>):void
+        +Copy(data:StageData):void
         +LottoSpawnTable(count:int):IEnumerable<EnemyData>
         +LottoItemTable(count:int):IEnumerable<ItemData>
     }
@@ -133,6 +132,10 @@ package Sweeper
         +ChangeBad():void
     }
     class TileController
+    {
+        -_tile:Tile
+        -_tileView:TileView
+    }
     class TileFactory
     class Stage
     {
@@ -230,6 +233,7 @@ package UI
         -_factory:IFactory<GameObject>
         -_nodes:Dictionary<ItemData,GameObject>
         +AddItem(item:ItemData):void
+        +GetNode(item:ItemData):GameObject
     }
 }
 
@@ -262,5 +266,13 @@ ItemNode ..|> IPointerClickHandler
 
 EnemyData ..|> IHaveRariry
 ItemData ..|> IHaveRariry
+
+Player -- ItemViewer
+ItemViewer -- ItemNode
+Tile -- TileView
+
+TileController *--> Tile
+TileController *--> TileView
+Stage *--> StageOption
 
 @enduml
