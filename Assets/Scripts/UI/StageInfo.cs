@@ -25,11 +25,10 @@ namespace UI
 
         public void ShowContents(StageOption option)
         {
-            foreach(Transform tf in _contents)
+            foreach (Transform tf in _contents)
             {
                 Destroy(tf.gameObject);
             }
-
             foreach (var contents in CountContents<EnemyData>(option.SpawnTable))
             {
                 var node = factory.Create();
@@ -38,20 +37,21 @@ namespace UI
                 node.transform.localScale = Vector3.one;
                 counter.Init(contents.Key, contents.Value);
             }
-            for (int i = 0; i < 2; i++)
+            if(0 < option.ItemTable.Count())
             {
                 var node = factory.Create();
                 var counter = node.GetComponent<ContentsCounter>();
                 node.transform.SetParent(_contents);
                 node.transform.localScale = Vector3.one;
-                if(i == 0)
-                {
-                    counter.Init(Resources.Load("textures/Tile/Contents/Storage", typeof(Sprite)) as Sprite, option.ItemTable.Count());
-                }
-                else
-                {
-                    counter.Init(new Stair().Image, option.Stair);
-                }
+                counter.Init(Resources.Load("Textures/Tile/Contents/Storage", typeof(Sprite)) as Sprite, option.ItemTable.Count());
+            }
+            if(0 < option.Stair)
+            {
+                var node = factory.Create();
+                var counter = node.GetComponent<ContentsCounter>();
+                node.transform.SetParent(_contents);
+                node.transform.localScale = Vector3.one;
+                counter.Init(new Stair().Image, option.Stair);
             }
         }
 
