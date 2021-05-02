@@ -1,6 +1,6 @@
 namespace Adv.Effects
 {
-    public interface Effect
+    public interface IEffect
     {
         void Activate();
     }

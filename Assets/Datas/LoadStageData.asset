@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 
   _floor: 1
-  _spawnTable: []
-  _itemTable: []
+  _spawnRate: 0.15
+  _spawnTable:
+  - {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
+  _itemTable:
+  - {fileID: 11400000, guid: bfec9db2989421c42ba434436c7fabff, type: 2}

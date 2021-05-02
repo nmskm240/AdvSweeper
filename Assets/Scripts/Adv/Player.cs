@@ -16,8 +16,16 @@ namespace Adv
 
         private Dictionary<ItemData, int> _items = new Dictionary<ItemData, int>();
 
-        public int HP{ get; private set; } = 4;
-        public int MP{ get; private set; } = 4;
+        public int HP
+        {
+            get { return (int)_hp.Value; } 
+            set { _hp.Value = value; } 
+        }
+        public int MP
+        {
+            get { return (int)_mp.Value; } 
+            set { _mp.Value = value; } 
+        }
         public IDictionary<ItemData, int> Items { get { return _items; } }
 
         private void Awake()
@@ -31,7 +39,6 @@ namespace Adv
         public void Damage(int quantity)
         {
             HP -= quantity;
-            _hp.Value = HP;
             if(HP <= 0)
             {
                 Death();
@@ -56,6 +63,10 @@ namespace Adv
             }
             _items[item]--;
             _itemViewer.GetNode(item).GetComponent<ItemNode>().Holding--;
+            foreach(var effect in item.Effect)
+            {
+                effect.Activate();
+            }
         }
 
         private void Death()

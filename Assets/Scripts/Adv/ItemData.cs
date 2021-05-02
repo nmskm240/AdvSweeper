@@ -16,15 +16,15 @@ namespace Adv
         private string _name;
         [SerializeField]
         private string _info;
-        [SerializeField]
-        private List<Effect> _effect;
+        [SerializeReference, SubclassSelector]
+        private List<IEffect> _effect;
         [SerializeField]
         private float _rarity;
         public Sprite Image{ get { return _image; } }
         public string ID{ get { return _id; } }
         public string Name{ get { return _name; } }
         public string Info{ get { return _info; } }
-        public IEnumerable<Effect> Effect{ get { return _effect; } }
+        public IEnumerable<IEffect> Effect{ get { return _effect; } }
         public float Rarity{ get { return _rarity; } }
     }
 }

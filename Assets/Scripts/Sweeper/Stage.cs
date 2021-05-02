@@ -20,7 +20,7 @@ namespace Sweeper
         [SerializeField]
         private StageData _stageData;
 
-        public Tile[,] Map { get; private set; }
+        public GameObject[,] Map { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
         public int NowFloor{ get; private set; } = 0;
@@ -39,8 +39,9 @@ namespace Sweeper
                 height = (height <= 0) ? 4 : height; 
             }
             Reset(width, height);
-            foreach (var tile in Map)
+            foreach (var obj in Map)
             {
+                var tile = obj.GetComponent<Tile>();
                 var pos = tile.Pos;
                 for(int i = -1; i < 2; i++)
                 {
@@ -52,7 +53,7 @@ namespace Sweeper
                         {
                             continue;
                         }
-                        tile.AddAroundTile(Map[y, x]);
+                        tile.AddAroundTile(Map[y, x].GetComponent<Tile>());
                     }
                 }
             }
@@ -88,7 +89,7 @@ namespace Sweeper
                 Destroy(tf.gameObject);
             }
             var factory = new TileFactory();
-            Map = new Tile[height, width];
+            Map = new GameObject[height, width];
             Width = width;
             Height = height;
             _gridLayputGroup.cellSize = new Vector2(600 / Width, 600 / Width);
@@ -100,7 +101,7 @@ namespace Sweeper
                     var obj = factory.Create();
                     var tile = obj.GetComponent<Tile>();
                     tile.Pos = new Vector2(j, i);
-                    Map[i, j] = tile;
+                    Map[i, j] = obj;
                     obj.transform.SetParent(transform);
                     obj.transform.localScale = Vector3.one;
                 }
@@ -113,7 +114,7 @@ namespace Sweeper
             {
                 var x = UnityEngine.Random.Range(0, Width);
                 var y = UnityEngine.Random.Range(0, Height);
-                var tile = Map[y, x];
+                var tile = Map[y, x].GetComponent<Tile>();
                 if(tile.Contents.GetType() != typeof(None))
                 {
                     i--;

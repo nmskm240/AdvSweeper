@@ -4,10 +4,11 @@ package Adv
 {
     package Effects
     {
-        interface Effect
+        interface IEffect
         {
             +Activate():void
         }
+        class 各種効果
     }
     interface IHaveRariry
     {
@@ -23,12 +24,12 @@ package Adv
         -_id:string
         -_name:string
         -_info:string
-        -effect:List<Effect>
+        -effect:List<IEffect>
         +<<property>>Imgae:Sprite{get only}
         +<<property>>ID:string{get only}
         +<<property>>Name:string{get only}
         +<<property>>Info:string{get only}
-        +<<property>>Effect:IEnumerable<Effect>{get only}
+        +<<property>>Effect:IEnumerable<IEffect>{get only}
     }
     class EnemyData
     {
@@ -63,8 +64,8 @@ package Adv
     {
         -_hp:SliderParameter
         -_mp:SliderParameter
-        +<<property>>HP:int{private set}
-        +<<property>>MP:int{private set}
+        +<<property>>HP:int
+        +<<property>>MP:int
         +Damage(quantity:int):void
         +GetItem(item:ItemData):void
         +UseItem(item:ItemData):void
@@ -143,7 +144,7 @@ package Sweeper
         -viewSize:int
         -_stageData:StageData
         -_info
-        +<<property>>Map:Tile[][]{ private set }
+        +<<property>>Map:GameObject[][]{ private set }
         +<<property>>Width:int{ private set }
         +<<property>>Height:int{ private set }
         +<<property>>NowFloor:int{ private set }
@@ -267,9 +268,10 @@ ItemNode ..|> IPointerClickHandler
 EnemyData ..|> IHaveRariry
 ItemData ..|> IHaveRariry
 
+IEffect ..|> 各種効果
+
 Player -- ItemViewer
 ItemViewer -- ItemNode
-Tile -- TileView
 
 TileController *--> Tile
 TileController *--> TileView
