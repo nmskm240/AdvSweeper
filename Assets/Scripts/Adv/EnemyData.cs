@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Adv
 {    
-    [CreateAssetMenu(fileName = "EnemyData", menuName = "SweepAdvencher/EnemyData", order = 0)]
+    [CreateAssetMenu(fileName = "EnemyData", menuName = "AdvSweeper/EnemyData", order = 0)]
     public class EnemyData : ScriptableObject, IHaveRarity
     {
         [SerializeField]
@@ -19,6 +19,7 @@ namespace Adv
         private List<ItemData> _dropTable;
         [SerializeField]
         private float _rarity;
+        
         public Sprite Image{ get { return _image;} }
         public string ID { get { return _id; } }
         public string Name{ get { return _name; } }

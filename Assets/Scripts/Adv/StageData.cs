@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Adv
 {    
-    [CreateAssetMenu(fileName = "StageData", menuName = "SweepAdvencher/StageData", order = 0)]
+    [CreateAssetMenu(fileName = "StageData", menuName = "AdvSweeper/StageData", order = 0)]
     public class StageData : ScriptableObject 
     {
         [SerializeField]

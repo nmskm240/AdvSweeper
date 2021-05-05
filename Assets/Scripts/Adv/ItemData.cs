@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Adv.Effects;
+using Alchemy;
 
 namespace Adv
 {    
-    [CreateAssetMenu(fileName = "ItemData", menuName = "SweepAdvencher/ItemData", order = 0)]
+    [CreateAssetMenu(fileName = "ItemData", menuName = "AdvSweeper/ItemData", order = 0)]
     public class ItemData : ScriptableObject, IHaveRarity
     {
         [SerializeField]
@@ -17,14 +18,19 @@ namespace Adv
         [SerializeField]
         private string _info;
         [SerializeReference, SubclassSelector]
-        private List<IEffect> _effect;
+        private List<IEffect> _effects;
+        [SerializeField]
+        private List<CategoryData> _categories;
         [SerializeField]
         private float _rarity;
+        
         public Sprite Image{ get { return _image; } }
         public string ID{ get { return _id; } }
         public string Name{ get { return _name; } }
         public string Info{ get { return _info; } }
-        public IEnumerable<IEffect> Effect{ get { return _effect; } }
+        public int Quality{ get; set; }
+        public IEnumerable<IEffect> Effects{ get { return _effects; } }
+        public IEnumerable<CategoryData> Categories{ get { return _categories; } }
         public float Rarity{ get { return _rarity; } }
     }
 }

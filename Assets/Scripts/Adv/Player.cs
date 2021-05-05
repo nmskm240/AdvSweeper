@@ -63,7 +63,7 @@ namespace Adv
             }
             _items[item]--;
             _itemViewer.GetNode(item).GetComponent<ItemNode>().Holding--;
-            foreach(var effect in item.Effect)
+            foreach(var effect in item.Effects)
             {
                 effect.Activate();
             }

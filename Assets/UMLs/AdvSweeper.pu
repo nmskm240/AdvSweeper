@@ -24,12 +24,15 @@ package Adv
         -_id:string
         -_name:string
         -_info:string
-        -effect:List<IEffect>
+        -_effects:List<IEffect>
+        -_categories:List<CategoryData>
         +<<property>>Imgae:Sprite{get only}
         +<<property>>ID:string{get only}
         +<<property>>Name:string{get only}
         +<<property>>Info:string{get only}
-        +<<property>>Effect:IEnumerable<IEffect>{get only}
+        +<<property>>Quality:int
+        +<<property>>Effects:IEnumerable<IEffect>{get only}
+        +<<property>>Categories:IEnumerable<CategoryData>{get only}
     }
     class EnemyData
     {
@@ -70,6 +73,31 @@ package Adv
         +GetItem(item:ItemData):void
         +UseItem(item:ItemData):void
         -Death():void
+    }
+}
+
+package Alchemy
+{
+    class CategoryData
+    {
+        -_id:string
+        -_name:string
+        +<<property>>ID:string{get only}
+        +<<property>>Name:string{get only}
+    }
+    class RecipeData
+    {
+        -_needMaterials:List<MaterialAndQuantity>
+        -_product:ItemData
+        +<<property>>NeedMaterials:List<MaterialAndQuantity>
+        +<<property>>Product:ItemData
+    }
+    class MaterialAndQuantity
+    {
+        -_material:ScriptableObject
+        -_quantity:int
+        +<<property>>Material:ScriptableObject
+        +<<property>>Quantity:int
     }
 }
 
@@ -270,11 +298,19 @@ ItemData ..|> IHaveRariry
 
 IEffect ..|> 各種効果
 
+RecipeData --|> ScriptableObject
+CategoryData --|> ScriptableObject
+ItemData --|> ScriptableObject
+EnemyData --|> ScriptableObject
+StageData --|> ScriptableObject
+
 Player -- ItemViewer
 ItemViewer -- ItemNode
 
 TileController *--> Tile
 TileController *--> TileView
 Stage *--> StageOption
+
+MaterialAndQuantity --* RecipeData
 
 @enduml
