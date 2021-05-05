@@ -21,7 +21,16 @@ MonoBehaviour:
     _parentName: 
   - _name: Menu
     _category: Main
-    _parentName: Title
+    _parentName: 
   - _name: Game
     _category: Main
+    _parentName: 
+  - _name: Alchemy
+    _category: Main
+    _parentName: 
+  - _name: Credit
+    _category: Credit
     _parentName: Menu
+  - _name: Container
+    _category: Main
+    _parentName: 

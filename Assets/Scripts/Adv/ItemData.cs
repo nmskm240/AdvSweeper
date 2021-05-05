@@ -21,9 +21,9 @@ namespace Adv
         private List<IEffect> _effects;
         [SerializeField]
         private List<CategoryData> _categories;
-        [SerializeField]
+        [SerializeField, Range(0.1f,100)]
         private float _rarity;
-        
+
         public Sprite Image{ get { return _image; } }
         public string ID{ get { return _id; } }
         public string Name{ get { return _name; } }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73ccf5d2d0cae445bf0cd6e96623f73, type: 3}
+  m_Name: HealingDrug
+  m_EditorClassIdentifier: 
+  _image: {fileID: 21300000, guid: 17dbfd00050ed32429d0c0c9333fd721, type: 3}
+  _id: HealDrug
+  _name: "\u30D2\u30FC\u30EA\u30F3\u30B0\u30C9\u30E9\u30C3\u30B0"
+  _info: "\u4F7F\u3046\u3068HP\u30922\u56DE\u5FA9\u3059\u308B\u3002"
+  _effects:
+  - id: 0
+  _categories:
+  - {fileID: 11400000, guid: f8dd734d95271ad4495f69674f2d44f5, type: 2}
+  _rarity: 100
+  references:
+    version: 1
+    00000000:
+      type: {class: Heal, ns: Adv.Effects, asm: Assembly-CSharp}
+      data:
+        _quantity: 2

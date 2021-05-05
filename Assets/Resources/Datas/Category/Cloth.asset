@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603cb3720b2794d488ddaadd016fb260, type: 3}
   m_Name: Cloth
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: Cloth
+  _name: "\u5E03"

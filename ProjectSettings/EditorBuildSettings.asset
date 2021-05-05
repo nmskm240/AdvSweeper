@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Alchmy.unity
+    guid: 152c7f1b508197e47ab09c36f1af9e60
+  - enabled: 1
+    path: Assets/Scenes/Credit.unity
+    guid: 549b0bfda91f0444ba607766206da8c2
+  - enabled: 1
+    path: Assets/Scenes/Container.unity
+    guid: 87cb9de33eda31946882384c37b17160
   m_configObjects: {}

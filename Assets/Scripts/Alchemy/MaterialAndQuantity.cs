@@ -8,7 +8,7 @@ namespace Alchemy
         [SerializeField]
         private ScriptableObject _material;
         [SerializeField]
-        private int _quantity;
+        private int _quantity = 1;
 
         public ScriptableObject Material{ get { return _material; } }
         public int Quantity{ get { return _quantity; } }

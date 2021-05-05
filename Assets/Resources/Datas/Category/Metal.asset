@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 603cb3720b2794d488ddaadd016fb260, type: 3}
-  m_Name: Ingot
+  m_Name: Metal
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: Metal
+  _name: "\u91D1\u5C5E"

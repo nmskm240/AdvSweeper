@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2debad004b34dec4499a84b7d833aabd, type: 3}
+  m_Name: Neutralizer-red
+  m_EditorClassIdentifier: 
+  _needMaterials:
+  - _material: {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
+    _quantity: 2
+  - _material: {fileID: 11400000, guid: 02d919676e05c4449ac2aa98d8310c14, type: 2}
+    _quantity: 2
+  _product: {fileID: 11400000, guid: 2496e54918b518a4ab428eec6c76d15f, type: 2}

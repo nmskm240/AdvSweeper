@@ -16,5 +16,6 @@ MonoBehaviour:
   _id: Rat
   _name: "\u30CD\u30BA\u30DF"
   _attack: 1
-  _dropTable: []
+  _dropTable:
+  - {fileID: 11400000, guid: 51701c8524b37e14e9169b4f75be30f3, type: 2}
   _rarity: 100

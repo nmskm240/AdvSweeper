@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603cb3720b2794d488ddaadd016fb260, type: 3}
   m_Name: Plants
   m_EditorClassIdentifier: 
-  _id: 
-  _name: 
+  _id: Plants
+  _name: "\u690D\u7269\u985E"
