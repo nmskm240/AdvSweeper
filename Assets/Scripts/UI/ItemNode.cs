@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 using Adv;
 
@@ -10,7 +11,7 @@ namespace UI
         [SerializeField]
         private Image _image;
         [SerializeField]
-        private Text _text;
+        private TextMeshProUGUI _text;
         
         private int _holding = 1;
         private ItemData _item;

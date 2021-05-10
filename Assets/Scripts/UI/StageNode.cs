@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 using MultiSceneManagement;
 using Adv;
@@ -11,7 +11,7 @@ namespace UI
     public class StageNode : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
-        private Text _text;
+        private TextMeshProUGUI _text;
         [SerializeField]
         private StageData _base;
         [SerializeField]

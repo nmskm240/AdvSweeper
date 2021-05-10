@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 using Sweeper;
 using Sweeper.TileContents;
 using Adv;
@@ -14,7 +14,7 @@ namespace UI
         [SerializeField]
         private Transform _contents;
         [SerializeField]
-        private Text _floor;
+        private TextMeshProUGUI _floor;
 
         private IFactory<GameObject> factory = new ContentsCounterFactory();
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace UI
 {    
@@ -8,12 +9,12 @@ namespace UI
         [SerializeField]
         private Image _image;
         [SerializeField]
-        private Text _count;
+        private TextMeshProUGUI _count;
 
         public void Init(Sprite image, int count)
         {
             _image.sprite = image;
-            _count.text = count.ToString();
+            _count.text = "x" + count.ToString();
         }
     }
 }

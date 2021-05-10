@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Sweeper.TileContents;
 
 namespace Sweeper
@@ -50,18 +51,18 @@ namespace Sweeper
                     break;
                 case Enemy ene:
                     var enemy = _hints.transform.Find("Enemy").gameObject;
-                    enemy.transform.Find("Text").GetComponent<Text>().text = "x" + contentsMap.Value.ToString();
+                    enemy.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "x" + contentsMap.Value.ToString();
                     enemy.SetActive(true);
                     break;
                 case Storage sto:
                     var storage = _hints.transform.Find("Storage").gameObject;
-                    storage.transform.Find("Text").GetComponent<Text>().text = "x" + contentsMap.Value.ToString();
+                    storage.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "x" + contentsMap.Value.ToString();
                     storage.SetActive(true);
                     break;
                 case Stair sta:
                 case Exit exit:
                     var stair = _hints.transform.Find("Stair").gameObject;
-                    stair.transform.Find("Text").GetComponent<Text>().text = "x" + contentsMap.Value.ToString();
+                    stair.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "x" + contentsMap.Value.ToString();
                     stair.SetActive(true);
                     break;
             }

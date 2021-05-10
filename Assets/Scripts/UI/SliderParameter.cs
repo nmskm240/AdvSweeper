@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace UI
 {
     public class SliderParameter : MonoBehaviour
     {
         [SerializeField]
-        private Text _text;
+        private TextMeshProUGUI _text;
         [SerializeField]
         private Slider _slider;
 
