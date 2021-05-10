@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileImage: {fileID: 1428731654052704180}
-  _hints: {fileID: 2935306420271110023}
+  _hints: {fileID: 4232488900419526119}
   _contents: {fileID: 6443017686514493929}
   _bad: {fileID: 6447926356603258661}
   _openColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}

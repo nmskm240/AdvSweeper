@@ -43,7 +43,7 @@ namespace UI
                 var counter = node.GetComponent<ContentsCounter>();
                 node.transform.SetParent(_contents);
                 node.transform.localScale = Vector3.one;
-                counter.Init(Resources.Load("Textures/Tile/Contents/Storage", typeof(Sprite)) as Sprite, option.ItemTable.Count());
+                counter.Init(new Storage().Image, option.ItemTable.Count());
             }
             if(0 < option.Stair)
             {

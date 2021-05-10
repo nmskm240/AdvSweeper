@@ -10,7 +10,10 @@ namespace Sweeper.TileContents
 
         public Sprite Image{ get { return _image; } }
 
-        public Enemy(){}
+        public Enemy()
+        {
+            _image = Resources.Load("Textures/Tile/Contents/Enemy", typeof(Sprite)) as Sprite;
+        }
 
         public Enemy(EnemyData data)
         {

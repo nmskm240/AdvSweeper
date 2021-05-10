@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Sweeper.TileContents;
@@ -19,20 +17,13 @@ namespace Sweeper
             {
                 if (_tile.ContentsMap != null)
                 {
-                    switch (_tile.Contents)
+                    if (_tile.Contents.GetType() == typeof(None)) 
                     {
-                        case None non:
-                            foreach (var keyValuePair in _tile.ContentsMap)
-                            {
-                                _tileView.ShowHint(keyValuePair);
-                            }
-                            break;
-                        case Enemy ene:
-                        case Storage sto:
-                        case Stair sta:
-                        case Exit exit:
-                            _tileView.ShowContents(_tile.Contents);
-                            break;
+                        _tileView.ShowHints(_tile.ContentsMap); 
+                    }
+                    else 
+                    { 
+                        _tileView.ShowContents(_tile.Contents); 
                     }
                 }
                 _tile.Open();

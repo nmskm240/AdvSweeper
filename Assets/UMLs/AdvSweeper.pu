@@ -151,12 +151,12 @@ package Sweeper
     class TileView
     {
         -_tileImage:Image
-        -_hints:GameObject
+        -_hints:Transform
         -_contents:GameObject
         -_bad:GameObject
         +Open():void
         +Close():void
-        +ShowHint(contentsMap:KeyValuePair<Type,int>):void
+        +ShowHints(contentsMap:IDictionary<Type,int>):void
         +ShowContens(contents:TileContents):void
         +ChangeBad():void
     }
@@ -197,13 +197,13 @@ package UI
     class ContentsCounter
     {
         -_image:Sprite
-        -_count:Text
+        -_count:TextMeshProUGUI
         +Init(image:Sprite,count:int)
     }
     class ContentsCounterFactory
     class Dialog
     {
-        -_body:Text
+        -_body:TextMeshProUGUI
         -_onAgree:GameObject
         -_onDisAgree:GameObject
         +Show(type:DialogType,text:string,onAgree:Action<string>,onDisAgree:Action<string>)
@@ -217,7 +217,7 @@ package UI
     class StageInfo
     {
         -_contents:Transform
-        -_floor:Text
+        -_floor:TextMeshProUGUI
         -factory:IFactory<GameObject
         +SetFloor(floorInfo:string)
         +ShowContents(option:StageOption)
@@ -225,7 +225,7 @@ package UI
     }
     class SliderParameter
     {
-        -_text:Text
+        -_text:TextMeshProUGUI
         -_slider:Slider
         +<<property>>Name:string{get only}
         +<<property>>Min:float{get only}
@@ -237,7 +237,7 @@ package UI
     }
     class StageNode
     {
-        -_text:Text
+        -_text:TextMeshProUGUI
         -_base:StageData
         -_loadStageData:StageData
     }
@@ -248,7 +248,7 @@ package UI
     class ItemNode
     {
         -_image:Image
-        -_text:Text
+        -_text:TextMeshProUGUI
         -_item:ItemData
         -_holding:int
         +<<property>>Item:ItemData{get only}
