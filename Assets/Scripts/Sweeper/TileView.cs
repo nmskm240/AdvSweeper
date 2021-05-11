@@ -20,25 +20,16 @@ namespace Sweeper
         [SerializeField]
         private GameObject _bad;
         [SerializeField]
-        private Color _openColor;
-        [SerializeField]
-        private Color _closeColor;
+        private Animator _animator;
 
         private void Awake() 
         {
             _tileImage.sprite = Resources.Load("Textures/Tile/Face", typeof(Sprite)) as Sprite;
-            Close();
         }
 
         public void Open()
         {
-            _tileImage.color = _openColor;
-        }
-
-        public void Close()
-        {
-            _tileImage.color = _closeColor;
-            _contents.SetActive(false);
+            _animator.SetTrigger("Open");
         }
 
         public void ShowHints(IDictionary<Type, int> contentsMap)
@@ -59,7 +50,6 @@ namespace Sweeper
         public void ShowContents(ITileContent contents)
         {
             _contents.GetComponent<Image>().sprite = contents.Image;
-            _contents.SetActive(true);
         }
 
         public void ChangeBad()
