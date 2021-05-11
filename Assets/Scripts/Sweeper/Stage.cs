@@ -61,9 +61,12 @@ namespace Sweeper
             {
                 SetContents(new Enemy(enemy));
             }
-            foreach(var item in stageOption.ItemTable)
+            for(int i= 0; i < stageOption.PickPoint; i++)
             {
-                SetContents(new Storage(item));
+                var items = new List<ItemData>();
+                var value = UnityEngine.Random.Range(1, 5);
+                items.AddRange(RandomWithWeight.Lottos<ItemData>(stageOption.ItemTable, value));
+                SetContents(new Pick(items));
             }
             if(NowFloor < _stageData.Floor)
             {
@@ -129,13 +132,13 @@ namespace Sweeper
         {
             var size = UnityEngine.Random.Range(4,7);
             var enemy = (int)(Mathf.Pow(size, 2) * _stageData.SpawnRate);
-            var storage = UnityEngine.Random.Range(1,3);
+            var pickPoint = UnityEngine.Random.Range(1,3);
             var option = new StageOption()
             {
                 Enemy = enemy,
-                Storage = storage,
-                SpawnTable = _stageData.LottoSpawnTable(enemy),
-                ItemTable = _stageData.LottoItemTable(storage),
+                PickPoint = pickPoint,
+                SpawnTable = RandomWithWeight.Lottos<EnemyData>(_stageData.SpawnTable, enemy),
+                ItemTable = _stageData.ItemTable,
             };
             NowFloor++;
             Create(size, size, option);

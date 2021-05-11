@@ -33,27 +33,5 @@ namespace Adv
             _spawnTable = data.SpawnTable as List<EnemyData>;
             _itemTable = data.ItemTable as List<ItemData>;
         }
-
-        public IEnumerable<EnemyData> LottoSpawnTable(int count)
-        {
-            var spawnTable = new List<EnemyData>();
-            if(_spawnTable.Count <= 0) return spawnTable;
-            for(int i = 0; i < count; i++)
-            {
-                spawnTable.Add(RandomWithWeight.Lotto<EnemyData>(_spawnTable));
-            }
-            return spawnTable;
-        }
-
-        public IEnumerable<ItemData> LottoItemTable(int count)
-        {
-            var itemTable = new List<ItemData>();
-            if(_itemTable.Count <= 0) return itemTable;
-            for(int i = 0; i < count; i ++)
-            {
-                itemTable.Add(RandomWithWeight.Lotto<ItemData>(_itemTable));
-            }
-            return itemTable;
-        }
     }
 }

@@ -22,5 +22,15 @@ namespace Adv
             }
             return sortedPairs[sortedPairs.Length - 1];
         }
+
+        public static List<T> Lottos<T>(IEnumerable<T> itemWeightPairs, int count) where T : IHaveRarity
+        {
+            var results = new List<T>();
+            for(int i = 0; i < count; i++)
+            {
+                results.Add(Lotto<T>(itemWeightPairs));
+            }
+            return results;
+        }
     }
 }

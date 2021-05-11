@@ -37,13 +37,13 @@ namespace UI
                 node.transform.localScale = Vector3.one;
                 counter.Init(contents.Key, contents.Value);
             }
-            if(0 < option.ItemTable.Count())
+            if(0 < option.PickPoint)
             {
                 var node = factory.Create();
                 var counter = node.GetComponent<ContentsCounter>();
                 node.transform.SetParent(_contents);
                 node.transform.localScale = Vector3.one;
-                counter.Init(new Storage().Image, option.ItemTable.Count());
+                counter.Init(new Pick().Image, option.PickPoint);
             }
             if(0 < option.Stair)
             {

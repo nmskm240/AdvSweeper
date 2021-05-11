@@ -55,6 +55,14 @@ namespace Adv
             _itemViewer.AddItem(item);
         }
 
+        public void GetItems(IEnumerable<ItemData> items)
+        {
+            foreach(var item in items)
+            {
+                GetItem(item);
+            }
+        }
+
         public void UseItem(ItemData item)
         {
             if(!_items.ContainsKey(item))
