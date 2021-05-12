@@ -154,8 +154,8 @@ package Sweeper
         -_hints:Transform
         -_contents:GameObject
         -_bad:GameObject
+        -_animator:Animator
         +Open():void
-        +Close():void
         +ShowHints(contentsMap:IDictionary<Type,int>):void
         +ShowContens(contents:TileContents):void
         +ChangeBad():void
