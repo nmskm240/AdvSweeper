@@ -264,6 +264,14 @@ package UI
         +AddItem(item:ItemData):void
         +GetNode(item:ItemData):GameObject
     }
+    class PickItemFactory
+    class PickItem
+    {
+        -_image:Image
+        -_rectTransform:RectTransform
+        +Init(sprite:Sprite):void
+        +Move(tf:Transform):void
+    }
 }
 
 class GameManager
@@ -283,11 +291,13 @@ TileFactory ..|> IFactory
 DialogFactory ..|> IFactory
 ContentsCounterFactory ..|> IFactory
 ItemNodeFactroy ..|> IFactory
+PickItemFactory ..|> IFactory
 
 TileFactory ..> Tile : Create
 DialogFactory ..> Dialog : Create
 ContentsCounterFactory ..> ContentsCounter : Create
 ItemNodeFactroy ..> ItemNode : Create 
+PickItemFactory ..> PickItem : Create
 
 TileController ..|> IPointerClickHandler
 StageNode ..|> IPointerClickHandler

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 namespace UI
 {
@@ -14,7 +15,7 @@ namespace UI
         public string Name{ get { return _text.text; } }
         public float Min{ get { return _slider.minValue; } }
         public float Max{ get { return _slider.maxValue; } }
-        public float Value{ get { return _slider.value; } set { _slider.value = value; } }
+        public float Value{ get { return _slider.value; } set{ _slider.DOValue(value, 1f); } }
 
         public void Init(string name, int min, int max)
         {

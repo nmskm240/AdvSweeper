@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Adv;
+using UI;
 
 namespace Sweeper.TileContents
 {
@@ -25,8 +27,21 @@ namespace Sweeper.TileContents
 
         public void Open()
         {
+            var factory = new PickItemFactory();
+            var pickItems = GameObject.Find("PickItems");
+            var basketRect = GameObject.Find("Basket").GetComponent<RectTransform>();
             var player = GameObject.Find("Player").GetComponent<Player>();
             player.GetItems(_datas);
+            foreach(var item in _datas)
+            {
+                var obj = factory.Create();
+                var pickItem = obj.GetComponent<PickItem>();
+                obj.transform.SetParent(pickItems.transform);
+                obj.transform.localScale = Vector3.one;
+                obj.transform.localPosition = Vector3.zero;
+                pickItem.Init(item.Image);
+                pickItem.Move(basketRect);
+            }
         }
     }
 }
