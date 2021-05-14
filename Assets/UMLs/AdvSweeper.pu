@@ -124,11 +124,12 @@ package Sweeper
         {
             +Stair()
         }
-        class Storage
+        class Pick
         {
-            -_itemData:ItemData
-            +Srotage()
-            +Storage(data:ItemData)
+            -datas:List<ItemData>
+            -OpenProcess():IEnumerator
+            +Pick()
+            +Pick(datas:List<ItemData>)
         }
         class Exit
         {
@@ -284,7 +285,7 @@ interface IFactory<T>
 Enemy ..|> ITileContents
 None ..|> ITileContents
 Stair ..|> ITileContents
-Storage ..|> ITileContents
+Pick ..|> ITileContents
 Exit ..|> ITileContents
 
 TileFactory ..|> IFactory

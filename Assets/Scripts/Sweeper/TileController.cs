@@ -23,6 +23,9 @@ namespace Sweeper
                     }
                     else 
                     { 
+                        var pickItems = GameObject.Find("PickItems");
+                        var tilePos = transform.localPosition;
+                        pickItems.transform.localPosition = new Vector3(tilePos.x, tilePos.y + 20f, tilePos.z);
                         _tileView.ShowContents(_tile.Contents); 
                     }
                 }

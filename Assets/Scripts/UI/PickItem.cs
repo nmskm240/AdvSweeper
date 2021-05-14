@@ -19,12 +19,7 @@ namespace UI
 
         public void Move(Transform tf)
         {
-            var path = new Vector3[]
-            {
-                new Vector3(UnityEngine.Random.Range(-50,50) + _rectTransform.position.x, 25f + _rectTransform.position.y, 0f),
-                new Vector3(tf.position.x, tf.position.y, tf.position.z),
-            };
-            _rectTransform.DOPath(path, 1.75f, PathType.CatmullRom).SetEase(Ease.InOutCubic).OnComplete(() =>
+            _rectTransform.DOMove(tf.position, 1.75f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 Destroy(gameObject);
             });
