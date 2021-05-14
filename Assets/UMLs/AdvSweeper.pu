@@ -188,6 +188,7 @@ package Sweeper
         +Enemy:int
         +Storage:int
         +Stair:int
+        +Openable:int
         +SpawnTable:List<EnemyData>
         +ItemTable:List<ItemData>
     }
@@ -198,8 +199,9 @@ package UI
     class ContentsCounter
     {
         -_image:Sprite
-        -_count:TextMeshProUGUI
-        +Init(image:Sprite,count:int)
+        -_value:TextMeshProUGUI
+        +<<property>>Value:int
+        +Init(image:Sprite,value:int,operand:bool,color:Color)
     }
     class ContentsCounterFactory
     class Dialog
@@ -219,7 +221,9 @@ package UI
     {
         -_contents:Transform
         -_floor:TextMeshProUGUI
+        -_timer:ContentsCounter
         -factory:IFactory<GameObject
+        +SetTimer(timeLimit:int):void
         +SetFloor(floorInfo:string)
         +ShowContents(option:StageOption)
         -CountContents<T>(list:IEnumerable<T>)

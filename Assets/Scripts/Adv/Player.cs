@@ -38,11 +38,11 @@ namespace Adv
 
         public void Damage(int quantity)
         {
-            HP -= quantity;
-            if(HP <= 0)
+            if(HP - quantity <= 0)
             {
                 Death();
             }
+            HP -= quantity;
         }
 
         public void GetItem(ItemData item)

@@ -15,8 +15,15 @@ namespace UI
         private Transform _contents;
         [SerializeField]
         private TextMeshProUGUI _floor;
+        [SerializeField]
+        private ContentsCounter _timer;
 
         private IFactory<GameObject> factory = new ContentsCounterFactory();
+
+        public void SetTimer(int timeLimit)
+        {
+            _timer.Value = timeLimit;
+        }
 
         public void SetFloor(string floorInfo)
         {
@@ -35,7 +42,7 @@ namespace UI
                 var counter = node.GetComponent<ContentsCounter>();
                 node.transform.SetParent(_contents);
                 node.transform.localScale = Vector3.one;
-                counter.Init(contents.Key, contents.Value);
+                counter.Init(contents.Key, contents.Value, true);
             }
             if(0 < option.PickPoint)
             {
@@ -43,7 +50,7 @@ namespace UI
                 var counter = node.GetComponent<ContentsCounter>();
                 node.transform.SetParent(_contents);
                 node.transform.localScale = Vector3.one;
-                counter.Init(new Pick().Image, option.PickPoint);
+                counter.Init(new Pick().Image, option.PickPoint, true);
             }
             if(0 < option.Stair)
             {
@@ -51,7 +58,7 @@ namespace UI
                 var counter = node.GetComponent<ContentsCounter>();
                 node.transform.SetParent(_contents);
                 node.transform.localScale = Vector3.one;
-                counter.Init(new Stair().Image, option.Stair);
+                counter.Init(new Stair().Image, option.Stair, true);
             }
         }
 

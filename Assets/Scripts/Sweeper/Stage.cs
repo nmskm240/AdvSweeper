@@ -78,6 +78,7 @@ namespace Sweeper
             }
             _info.ShowContents(stageOption);
             _info.SetFloor(_stageData.Name + NowFloor + "F");
+            _info.SetTimer(stageOption.Openable);
         }
 
         private void Clear()
@@ -137,6 +138,7 @@ namespace Sweeper
             {
                 Enemy = enemy,
                 PickPoint = pickPoint,
+                Openable = (int)(Mathf.Pow(size, 2) * 0.75f),
                 SpawnTable = RandomWithWeight.Lottos<EnemyData>(_stageData.SpawnTable, enemy),
                 ItemTable = _stageData.ItemTable,
             };

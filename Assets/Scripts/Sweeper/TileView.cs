@@ -41,7 +41,7 @@ namespace Sweeper
                 var contentsCounter = obj.GetComponent<ContentsCounter>();
                 var constructor = keyValuePair.Key.GetConstructor(Type.EmptyTypes);
                 var contents = constructor.Invoke(null) as ITileContent;
-                contentsCounter.Init(contents.Image, keyValuePair.Value);
+                contentsCounter.Init(contents.Image, keyValuePair.Value, true, Color.white);
                 obj.transform.SetParent(_hints);
                 obj.transform.localScale = Vector3.one;
             }

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sweeper.TileContents;
+using Adv;
+using UI;
 
 namespace Sweeper
 {    
@@ -37,6 +39,13 @@ namespace Sweeper
 
         public void Open()
         {
+            var timer = GameObject.Find("Timer").GetComponent<ContentsCounter>();
+            timer.Value--;
+            if(timer.Value <= 0 && Contents.GetType() != typeof(Enemy))
+            {
+                var player = GameObject.Find("Player").GetComponent<Player>();
+                player.Damage(1);
+            }
             CanOpen = (Contents.GetType() == typeof(Stair) || Contents.GetType() == typeof(Exit));
             Contents.Open();
         }

@@ -28,8 +28,6 @@ namespace Sweeper.TileContents
 
         public void Open()
         {
-            var player = GameObject.Find("Player").GetComponent<Player>();
-            player.GetItems(_datas);
             Observable.FromCoroutine(OpenProcess).Subscribe(x => {});
         }
 
@@ -40,7 +38,6 @@ namespace Sweeper.TileContents
             var basketRect = GameObject.Find("Basket").GetComponent<RectTransform>();
             foreach(var item in _datas)
             {
-                Debug.Log(item);
                 var obj = factory.Create();
                 var pickItem = obj.GetComponent<PickItem>();
                 obj.transform.SetParent(pickItems.transform);
