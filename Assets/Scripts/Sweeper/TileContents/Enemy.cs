@@ -3,7 +3,7 @@ using Adv;
 
 namespace Sweeper.TileContents
 {
-    public class Enemy : ITileContent
+    public class Enemy : ITileContents
     {
         private Sprite _image;
         private EnemyData _data;

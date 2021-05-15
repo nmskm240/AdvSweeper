@@ -8,7 +8,7 @@ using UI;
 
 namespace Sweeper.TileContents
 {
-    public class Pick : ITileContent
+    public class Pick : ITileContents
     {
         private List<ItemData> _datas;
         private Sprite _image;

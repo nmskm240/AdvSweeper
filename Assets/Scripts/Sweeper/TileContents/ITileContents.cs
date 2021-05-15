@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Sweeper.TileContents
 {
-    public interface ITileContent
+    public interface ITileContents
     {
         Sprite Image{ get; }
     

@@ -3,7 +3,7 @@ using UI;
 
 namespace Sweeper.TileContents
 {
-    public class Exit : ITileContent
+    public class Exit : ITileContents
     {
         private Sprite _image;
 

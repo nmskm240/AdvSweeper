@@ -40,14 +40,14 @@ namespace Sweeper
                 var obj = factory.Create();
                 var contentsCounter = obj.GetComponent<ContentsCounter>();
                 var constructor = keyValuePair.Key.GetConstructor(Type.EmptyTypes);
-                var contents = constructor.Invoke(null) as ITileContent;
+                var contents = constructor.Invoke(null) as ITileContents;
                 contentsCounter.Init(contents.Image, keyValuePair.Value, true, Color.white);
                 obj.transform.SetParent(_hints);
                 obj.transform.localScale = Vector3.one;
             }
         }
 
-        public void ShowContents(ITileContent contents)
+        public void ShowContents(ITileContents contents)
         {
             _contents.GetComponent<Image>().sprite = contents.Image;
         }

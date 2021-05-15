@@ -13,7 +13,7 @@ namespace Sweeper
         private List<Tile> _aroundTiles = new List<Tile>();
         private Dictionary<Type, int> _contentsMap = new Dictionary<Type, int>();
 
-        public ITileContent Contents { get; set; } = new None();
+        public ITileContents Contents { get; set; } = new None();
         public IEnumerable<Tile> AroundTiles { get { return _aroundTiles; }}
         public Vector2 Pos { get; set; }
         public IDictionary<Type, int> ContentsMap { get { return _contentsMap; } }
@@ -24,7 +24,7 @@ namespace Sweeper
             _aroundTiles.Add(tile);
         }
 
-        public void CountUpAroundTiles(ITileContent target)
+        public void CountUpAroundTiles(ITileContents target)
         {
             var type = target.GetType();
             foreach (var tile in _aroundTiles)

@@ -33,6 +33,7 @@ package Adv
         +<<property>>Quality:int
         +<<property>>Effects:IEnumerable<IEffect>{get only}
         +<<property>>Categories:IEnumerable<CategoryData>{get only}
+        +<<private>>Characteristics:IEnumerable<CharacteristicsData>
     }
     class EnemyData
     {
@@ -85,6 +86,13 @@ package Alchemy
         +<<property>>ID:string{get only}
         +<<property>>Name:string{get only}
     }
+    class CharacteristicsData
+    {
+        -_id:string
+        -_name:string
+        +<<property>>ID:string{get only}
+        +<<property>>Name:string{get only}
+    }
     class RecipeData
     {
         -_needMaterials:List<MaterialAndQuantity>
@@ -98,6 +106,11 @@ package Alchemy
         -_quantity:int
         +<<property>>Material:ScriptableObject
         +<<property>>Quantity:int
+    }
+    class Jar
+    {
+        +<<property>>Recipe:RecipeData
+        +Alchemy(materials:IEnumerable<ItemData>):ItemData
     }
 }
 
@@ -140,13 +153,13 @@ package Sweeper
     {
         -_aroundTiles:List<Tile>
         -_contentsMap::Dictionary<Type,int>
-        +<<property>>Contents:TileContents
+        +<<property>>Contents:ITileContents
         +<<property>>ContentsMap:IDictionary<Type,int>{ get only }
         +<<property>>AroundTiles:IEnumerable<TIle>{ get only }
         +<<property>>Pos:Vector2
         +<<property>>CanOpen:bool
         +AddAroundTile(tile:Tile)
-        +CountUpAround(target:TileContents):void
+        +CountUpAround(target:ITileContents):void
         +Open():void
     }
     class TileView
@@ -158,7 +171,7 @@ package Sweeper
         -_animator:Animator
         +Open():void
         +ShowHints(contentsMap:IDictionary<Type,int>):void
-        +ShowContens(contents:TileContents):void
+        +ShowContens(contents:ITileContents):void
         +ChangeBad():void
     }
     class TileController
@@ -180,7 +193,7 @@ package Sweeper
         -Reset(width:int,height:int):void
         -Clear():void
         +Create(width:int, height:int, stageOption:StageOption):void
-        +SetContents(contents:TileContents, index:int):void
+        +SetContents(contents:ITileContents, index:int):void
         +Next():void
     }
     class StageOption
@@ -315,15 +328,18 @@ IEffect ..|> 各種効果
 
 RecipeData --|> ScriptableObject
 CategoryData --|> ScriptableObject
+CharacteristicsData --|> ScriptableObject
 ItemData --|> ScriptableObject
 EnemyData --|> ScriptableObject
 StageData --|> ScriptableObject
 
 Player -- ItemViewer
 ItemViewer -- ItemNode
+Stage -- StageInfo
 
 TileController *--> Tile
 TileController *--> TileView
+Tile *--> ITileContents
 Stage *--> StageOption
 
 MaterialAndQuantity --* RecipeData

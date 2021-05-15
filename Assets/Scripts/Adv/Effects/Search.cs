@@ -7,7 +7,7 @@ namespace Adv.Effects
     public class Search : IEffect
     {
         [SerializeField]
-        private ITileContent _targetContents;
+        private ITileContents _targetContents;
 
         public void Activate()
         {

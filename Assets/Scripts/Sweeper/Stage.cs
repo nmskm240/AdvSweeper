@@ -112,7 +112,7 @@ namespace Sweeper
             }
         }
 
-        public void SetContents(ITileContent contents, int index = 1)
+        public void SetContents(ITileContents contents, int index = 1)
         {
             for(int i = 0; i < index; i++)
             {
