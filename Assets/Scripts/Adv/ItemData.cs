@@ -17,6 +17,8 @@ namespace Adv
         private string _name;
         [SerializeField]
         private string _info;
+        [SerializeField]
+        private bool _isMaterial;
         [SerializeReference, SubclassSelector]
         private List<IEffect> _effects;
         [SerializeField]
@@ -28,9 +30,11 @@ namespace Adv
         public string ID{ get { return _id; } }
         public string Name{ get { return _name; } }
         public string Info{ get { return _info; } }
+        public bool IsMaterial{ get{ return _isMaterial; } }
         public int Quality{ get; set; }
         public IEnumerable<IEffect> Effects{ get { return _effects; } }
         public IEnumerable<CategoryData> Categories{ get { return _categories; } }
+        public IEnumerable<CharacteristicsData> Characteristics{ get; set; }
         public float Rarity{ get { return _rarity; } }
     }
 }

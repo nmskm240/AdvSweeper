@@ -16,6 +16,7 @@ MonoBehaviour:
   _id: Water
   _name: "\u6C34"
   _info: 
+  _isMaterial: 1
   _effects: []
   _categories:
   - {fileID: 11400000, guid: 642a756c87c26c649ace951a11998f45, type: 2}

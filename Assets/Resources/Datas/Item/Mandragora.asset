@@ -16,6 +16,7 @@ MonoBehaviour:
   _id: Mandragora
   _name: "\u30DE\u30F3\u30C9\u30E9\u30B4\u30E9"
   _info: 
+  _isMaterial: 1
   _effects: []
   _categories:
   - {fileID: 11400000, guid: f7f741a2a626b9e4d88778ec3de6dfb2, type: 2}

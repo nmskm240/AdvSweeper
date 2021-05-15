@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MultiSceneManagement;
 using Adv;
 
 namespace UI
@@ -9,30 +10,31 @@ namespace UI
     {
         [SerializeField]
         private Transform _contents;
+        [SerializeField]
+        private ItemCollection _collections;
 
         private IFactory<GameObject> _factory = new ItemNodeFactory();
-        private Dictionary<ItemData, GameObject> _nodes = new Dictionary<ItemData, GameObject>();
-
-        public void AddItem(ItemData item)
+    
+        private void Awake() 
         {
-            if (_nodes.ContainsKey(item))
-            {
-                _nodes[item].GetComponent<ItemNode>().Holding++;
-            }
-            else
+            Show(_collections);
+        }
+
+        public void Show(ItemCollection collection)
+        {
+            foreach(var item in collection.Contents)
             {
                 var obj = _factory.Create();
                 var node = obj.GetComponent<ItemNode>();
-                _nodes.Add(item, obj);
-                node.Init(item);
                 obj.transform.SetParent(_contents);
                 obj.transform.localScale = Vector3.one;
+                node.Init(item);
             }
         }
 
-        public GameObject GetNode(ItemData item)
+        public void Close()
         {
-            return _nodes[item] ?? null;
+            MultiSceneManager.UnloadScene(gameObject.scene.name);
         }
     }
 }

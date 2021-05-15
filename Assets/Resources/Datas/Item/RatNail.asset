@@ -16,6 +16,7 @@ MonoBehaviour:
   _id: RatNail
   _name: "\u30CD\u30BA\u30DF\u306E\u722A"
   _info: 
+  _isMaterial: 1
   _effects: []
   _categories:
   - {fileID: 11400000, guid: 3ea807ea5d47018488d1b56e7ea947f4, type: 2}

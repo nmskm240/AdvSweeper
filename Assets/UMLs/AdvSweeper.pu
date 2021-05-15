@@ -24,12 +24,14 @@ package Adv
         -_id:string
         -_name:string
         -_info:string
+        -_isMaterial:bool
         -_effects:List<IEffect>
         -_categories:List<CategoryData>
         +<<property>>Imgae:Sprite{get only}
         +<<property>>ID:string{get only}
         +<<property>>Name:string{get only}
         +<<property>>Info:string{get only}
+        +<<property>>IsMaterial:bool{get only}
         +<<property>>Quality:int
         +<<property>>Effects:IEnumerable<IEffect>{get only}
         +<<property>>Categories:IEnumerable<CategoryData>{get only}
@@ -68,12 +70,18 @@ package Adv
     {
         -_hp:SliderParameter
         -_mp:SliderParameter
+        -_basket:ItemCollection
         +<<property>>HP:int
         +<<property>>MP:int
         +Damage(quantity:int):void
         +GetItem(item:ItemData):void
         +UseItem(item:ItemData):void
+        +SeeBasket():void
         -Death():void
+    }
+    class ItemCollection
+    {
+        +<<property>>Contents:List<ItemData>
     }
 }
 
@@ -109,8 +117,7 @@ package Alchemy
     }
     class Jar
     {
-        +<<property>>Recipe:RecipeData
-        +Alchemy(materials:IEnumerable<ItemData>):ItemData
+        +Alchemy(recipe:RecipeData,materials:IEnumerable<ItemData>):ItemData
     }
 }
 
@@ -277,10 +284,10 @@ package UI
     class ItemViewer
     {
         -_contents:Transform
+        -_collections:ItemCollection
         -_factory:IFactory<GameObject>
-        -_nodes:Dictionary<ItemData,GameObject>
-        +AddItem(item:ItemData):void
-        +GetNode(item:ItemData):GameObject
+        +Show(collection:ItemCollection):void
+        +Close():void
     }
     class PickItemFactory
     class PickItem
@@ -332,6 +339,7 @@ CharacteristicsData --|> ScriptableObject
 ItemData --|> ScriptableObject
 EnemyData --|> ScriptableObject
 StageData --|> ScriptableObject
+ItemCollection --|> ScriptableObject
 
 Player -- ItemViewer
 ItemViewer -- ItemNode

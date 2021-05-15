@@ -12,9 +12,7 @@ namespace Adv
         [SerializeField]
         private SliderParameter _mp;
         [SerializeField]
-        private ItemViewer _itemViewer;
-
-        private Dictionary<ItemData, int> _items = new Dictionary<ItemData, int>();
+        private ItemCollection _basket;
 
         public int HP
         {
@@ -26,7 +24,6 @@ namespace Adv
             get { return (int)_mp.Value; } 
             set { _mp.Value = value; } 
         }
-        public IDictionary<ItemData, int> Items { get { return _items; } }
 
         private void Awake()
         {
@@ -47,12 +44,7 @@ namespace Adv
 
         public void GetItem(ItemData item)
         {
-            if(!_items.ContainsKey(item))
-            {
-                _items.Add(item, 0);
-            }
-            _items[item]++;
-            _itemViewer.AddItem(item);
+            _basket.Contents.Add(item);
         }
 
         public void GetItems(IEnumerable<ItemData> items)
@@ -65,16 +57,15 @@ namespace Adv
 
         public void UseItem(ItemData item)
         {
-            if(!_items.ContainsKey(item))
-            {
-                return;
-            }
-            _items[item]--;
-            _itemViewer.GetNode(item).GetComponent<ItemNode>().Holding--;
             foreach(var effect in item.Effects)
             {
                 effect.Activate();
             }
+        }
+
+        public void SeeBasket()
+        {
+            MultiSceneManagement.MultiSceneManager.LoadScene("Basket");
         }
 
         private void Death()

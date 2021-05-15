@@ -16,6 +16,7 @@ MonoBehaviour:
   _id: MagicalHerb
   _name: "\u30DE\u30B8\u30AB\u30EB\u30CF\u30FC\u30D6"
   _info: 
+  _isMaterial: 1
   _effects: []
   _categories:
   - {fileID: 11400000, guid: f7f741a2a626b9e4d88778ec3de6dfb2, type: 2}

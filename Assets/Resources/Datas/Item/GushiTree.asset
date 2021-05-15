@@ -16,6 +16,7 @@ MonoBehaviour:
   _id: GushiTree
   _name: "\u30B0\u30B7\u306E\u6728"
   _info: 
+  _isMaterial: 1
   _effects: []
   _categories:
   - {fileID: 11400000, guid: f7f741a2a626b9e4d88778ec3de6dfb2, type: 2}

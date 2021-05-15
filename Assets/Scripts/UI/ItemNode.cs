@@ -32,18 +32,22 @@ namespace UI
         {
             _item = item;
             _image.sprite = _item.Image;
+            _text.enabled = !item.IsMaterial;
             _text.text = "x" + _holding;
         }
 
         public void OnPointerClick(PointerEventData e)
         {
-            var factroy = new DialogFactory();
-            var dialog = factroy.Create().GetComponent<Dialog>();
-            dialog.Show(DialogType.AgreeOnly, _item.Name + "を使用しますか?", x => 
+            if(gameObject.scene.name == "Game" && !_item.IsMaterial)
             {
-                var player = GameObject.Find("Player").GetComponent<Player>();
-                player.UseItem(_item);
-            });
+                var factroy = new DialogFactory();
+                var dialog = factroy.Create().GetComponent<Dialog>();
+                dialog.Show(DialogType.AgreeOnly, _item.Name + "を使用しますか?", x => 
+                {
+                    var player = GameObject.Find("Player").GetComponent<Player>();
+                    player.UseItem(_item);
+                });
+            }
         }
     }
 }

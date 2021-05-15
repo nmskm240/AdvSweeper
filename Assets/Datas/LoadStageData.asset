@@ -18,4 +18,4 @@ MonoBehaviour:
   _spawnTable:
   - {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
   _itemTable:
-  - {fileID: 11400000, guid: bfec9db2989421c42ba434436c7fabff, type: 2}
+  - {fileID: 11400000, guid: da8f71030585c8d468a00065d3babd36, type: 2}

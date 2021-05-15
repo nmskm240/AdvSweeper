@@ -16,6 +16,7 @@ MonoBehaviour:
   _id: Neutralizer-red
   _name: "\u4E2D\u548C\u5264\u3000\u8D64"
   _info: 
+  _isMaterial: 1
   _effects: []
   _categories:
   - {fileID: 11400000, guid: 097adad6fb8978e4795e8cf78328aaf5, type: 2}
