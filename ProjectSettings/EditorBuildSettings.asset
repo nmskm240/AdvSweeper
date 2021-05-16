@@ -12,20 +12,29 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: cca7f2850d254684cbd0bf0d86a9444c
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Menu/Menu.unity
     guid: f8fa55d063f95a64cb64fa63a2ec2485
+  - enabled: 1
+    path: Assets/Scenes/Menu/Alchmy.unity
+    guid: 152c7f1b508197e47ab09c36f1af9e60
+  - enabled: 1
+    path: Assets/Scenes/Menu/Container.unity
+    guid: 87cb9de33eda31946882384c37b17160
+  - enabled: 1
+    path: Assets/Scenes/Menu/Setting.unity
+    guid: 3dc733bd8de4ee44b89ae534fe0053a1
+  - enabled: 1
+    path: Assets/Scenes/Menu/StageSelect.unity
+    guid: 6002cf27061aba247a55101ff0faaccd
+  - enabled: 1
+    path: Assets/Scenes/Menu/Shop.unity
+    guid: 4408d6ad2c4661441abcaa3277f105b3
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Alchmy.unity
-    guid: 152c7f1b508197e47ab09c36f1af9e60
-  - enabled: 1
     path: Assets/Scenes/Credit.unity
     guid: 549b0bfda91f0444ba607766206da8c2
-  - enabled: 1
-    path: Assets/Scenes/Container.unity
-    guid: 87cb9de33eda31946882384c37b17160
   - enabled: 1
     path: Assets/Scenes/Basket.unity
     guid: 5de4370148293b746a2c55dd792f4619
