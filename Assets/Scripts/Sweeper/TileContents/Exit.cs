@@ -18,10 +18,10 @@ namespace Sweeper.TileContents
         {
             var factroy = new DialogFactory();
             var dialog = factroy.Create().GetComponent<Dialog>();
-            dialog.Show(DialogType.Switch, "出口を見つけた。\n探索を終了しますか？", x => 
+            dialog.Show(DialogType.Switch, "出口を見つけた。\n探索を終了しますか？", () => 
             {
                 MultiSceneManagement.MultiSceneManager.LoadScene("Menu");
-            }, y => { });
+            });
         }
     }
 }

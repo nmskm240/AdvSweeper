@@ -18,11 +18,11 @@ namespace Sweeper.TileContents
         {
             var factory = new DialogFactory();
             var dialog = factory.Create().GetComponent<Dialog>();
-            dialog.Show(DialogType.Switch, "次の階へ移動しますか？", x => 
+            dialog.Show(DialogType.Switch, "次の階へ移動しますか？", () => 
             {
                 var stage = GameObject.Find("Stage").GetComponent<Stage>();
                 stage.Next();
-            }, y =>{ });
+            });
         }
     }
 }
