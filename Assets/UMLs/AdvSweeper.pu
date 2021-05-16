@@ -71,12 +71,14 @@ package Adv
         -_hp:SliderParameter
         -_mp:SliderParameter
         -_basket:ItemCollection
+        -_container:ItemCollection
         +<<property>>HP:int
         +<<property>>MP:int
         +Damage(quantity:int):void
         +GetItem(item:ItemData):void
         +UseItem(item:ItemData):void
         +SeeBasket():void
+        +SwapToContainer():void
         -Death():void
     }
     class ItemCollection
@@ -229,7 +231,7 @@ package UI
         -_body:TextMeshProUGUI
         -_onAgree:GameObject
         -_onDisAgree:GameObject
-        +Show(type:DialogType,text:string,onAgree:Action<string>,onDisAgree:Action<string>)
+        +Show(type:DialogType,text:string,onAgree:Action,onDisAgree:Action)
     }
     enum DialogType
     {

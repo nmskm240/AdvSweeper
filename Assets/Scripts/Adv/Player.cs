@@ -13,6 +13,8 @@ namespace Adv
         private SliderParameter _mp;
         [SerializeField]
         private ItemCollection _basket;
+        [SerializeField]
+        private ItemCollection _container;
 
         public int HP
         {
@@ -66,6 +68,12 @@ namespace Adv
         public void SeeBasket()
         {
             MultiSceneManagement.MultiSceneManager.LoadScene("Basket");
+        }
+
+        public void SwapToContainer()
+        {
+            _container.Contents.AddRange(_basket.Contents);
+            _basket.Contents.Clear();
         }
 
         private void Death()

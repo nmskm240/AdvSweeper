@@ -1,4 +1,6 @@
 using UnityEngine;
+using MultiSceneManagement;
+using Adv;
 using UI;
 
 namespace Sweeper.TileContents
@@ -20,7 +22,9 @@ namespace Sweeper.TileContents
             var dialog = factroy.Create().GetComponent<Dialog>();
             dialog.Show(DialogType.Switch, "出口を見つけた。\n探索を終了しますか？", () => 
             {
-                MultiSceneManagement.MultiSceneManager.LoadScene("Menu");
+                var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+                player.SwapToContainer();
+                MultiSceneManager.LoadScene("Menu");
             });
         }
     }
