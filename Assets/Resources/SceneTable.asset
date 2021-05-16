@@ -29,8 +29,8 @@ MonoBehaviour:
     _category: MainMenu
     _parentName: Menu
   - _name: Credit
-    _category: Credit
-    _parentName: Menu
+    _category: MainMenu
+    _parentName: 
   - _name: Container
     _category: MainMenu
     _parentName: Menu
@@ -38,7 +38,7 @@ MonoBehaviour:
     _category: Sub
     _parentName: Game
   - _name: Setting
-    _category: ManiMenu
+    _category: MainMenu
     _parentName: Menu
   - _name: Shop
     _category: MainMenu
