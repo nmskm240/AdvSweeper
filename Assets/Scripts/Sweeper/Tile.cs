@@ -43,7 +43,7 @@ namespace Sweeper
             timer.Value--;
             if(timer.Value <= 0 && Contents.GetType() != typeof(Enemy))
             {
-                var player = GameObject.Find("Player").GetComponent<Player>();
+                var player = GameObject.FindWithTag("Player").GetComponent<Player>();
                 player.Damage(1);
             }
             CanOpen = (Contents.GetType() == typeof(Stair) || Contents.GetType() == typeof(Exit));

@@ -44,7 +44,7 @@ namespace UI
                 var dialog = factroy.Create().GetComponent<Dialog>();
                 dialog.Show(DialogType.AgreeOnly, _item.Name + "を使用しますか?", () => 
                 {
-                    var player = GameObject.Find("Player").GetComponent<Player>();
+                    var player = GameObject.FindWithTag("Player").GetComponent<Player>();
                     player.UseItem(_item);
                 });
             }
