@@ -82,7 +82,7 @@ namespace Adv
             var dialog = factory.Create().GetComponent<Dialog>();
             dialog.Show(DialogType.AgreeOnly, "力尽きてしまった。\nメニュー画面に戻ります。", () => 
             { 
-                MultiSceneManagement.MultiSceneManager.LoadScene("Menu");
+                MultiSceneManagement.MultiSceneManager.LoadScene("StageSelect");
             });
         }
     }

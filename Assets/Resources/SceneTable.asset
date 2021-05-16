@@ -26,14 +26,23 @@ MonoBehaviour:
     _category: Main
     _parentName: 
   - _name: Alchemy
-    _category: Main
-    _parentName: 
+    _category: MainMenu
+    _parentName: Menu
   - _name: Credit
     _category: Credit
     _parentName: Menu
   - _name: Container
-    _category: Main
-    _parentName: 
+    _category: MainMenu
+    _parentName: Menu
   - _name: Basket
     _category: Sub
     _parentName: Game
+  - _name: Setting
+    _category: ManiMenu
+    _parentName: Menu
+  - _name: Shop
+    _category: MainMenu
+    _parentName: Menu
+  - _name: StageSelect
+    _category: MainMenu
+    _parentName: Menu

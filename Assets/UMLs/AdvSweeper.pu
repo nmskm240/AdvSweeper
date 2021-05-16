@@ -268,10 +268,6 @@ package UI
         -_base:StageData
         -_loadStageData:StageData
     }
-    class TitleOptionsManager
-    {
-        -_tapZone:EventTrigger
-    }
     class ItemNode
     {
         -_image:Image
