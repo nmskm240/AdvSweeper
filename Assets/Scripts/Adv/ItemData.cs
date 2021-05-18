@@ -22,7 +22,7 @@ namespace Adv
         public int Quality{ get; set; }
         public IEnumerable<IEffect> Effects{ get { return _effects; } }
         public IEnumerable<CategoryData> Categories{ get { return _categories; } }
-        public IEnumerable<CharacteristicsData> Characteristics{ get; set; }
+        public IEnumerable<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
         public float Rarity{ get { return _rarity; } }
     }
 }

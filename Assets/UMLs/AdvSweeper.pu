@@ -20,15 +20,9 @@ package Adv
     }
     class ItemData
     {
-        -_id:string
-        -_name:string
-        -_info:string
         -_isMaterial:bool
         -_effects:List<IEffect>
         -_categories:List<CategoryData>
-        +<<property>>ID:string{get only}
-        +<<property>>Name:string{get only}
-        +<<property>>Info:string{get only}
         +<<property>>IsMaterial:bool{get only}
         +<<property>>Quality:int
         +<<property>>Effects:IEnumerable<IEffect>{get only}
@@ -37,25 +31,17 @@ package Adv
     }
     class EnemyData
     {
-        -_image:Sprite
-        -_id:string
-        -_name:string
         -_attack:int
         -_dropTable:List<ItemData>
-        +<<property>>Image:Sprite{get only}
-        +<<property>>ID:string{get only}
-        +<<property>>Name:string{get only}
         +<<property>>Attack:int{get only}
         +<<property>>DropTable:IEnumerable<ItemData>{get only}
     }
     class StageData
     {
-        -_name:string
         -_floor:int
         -_spawnRate:float
         -_spawnTable:List<EnemyData>
         -_itemTable:List<ItemData>
-        +<<property>>Name:string{get only}
         +<<property>>Floor:int{get only}
         +<<property>>SpawnRate:float{get only}
         +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
@@ -88,19 +74,7 @@ package Adv
 package Alchemy
 {
     class CategoryData
-    {
-        -_id:string
-        -_name:string
-        +<<property>>ID:string{get only}
-        +<<property>>Name:string{get only}
-    }
     class CharacteristicsData
-    {
-        -_id:string
-        -_name:string
-        +<<property>>ID:string{get only}
-        +<<property>>Name:string{get only}
-    }
     class RecipeData
     {
         -_needMaterials:List<MaterialAndQuantity>
@@ -124,11 +98,7 @@ package Alchemy
         -_container:ItemCollection
         +Alchemy():void
     }
-    class AlchemyMaterial
-    {
-        -_image:Sprite
-        +<<property>>Image:Sprite{get only}
-    }
+    abstract AlchemyMaterial
 }
 
 package Sweeper
@@ -291,9 +261,15 @@ package UI
     {
         -_contents:Transform
         -_collections:ItemCollection
+        -_order:ItemViewerDisplayOrder
         -_factory:IFactory<GameObject>
         +Show(collection:ItemCollection):void
         +Close():void
+        +OrderReset():void
+    }
+    class ItemViewerDisplayOrder
+    {
+        +<<property>>IDs:List<string>
     }
     class PickItemFactory
     class PickItem
@@ -315,11 +291,25 @@ package UI
     class MaterialNode
     {
         -_image:Image
-        -_nddeAndSelectedQuantity:TextMeshProUGUI
+        -_requiredAndSelectedNum:TextMeshProUGUI
+        -_materialAndQuantity:MaterialAndQuantity
+        -_selectedMaterials:List<ItemData>
+        +<<property>>SelectedMaterials:IEnumerable<ItemData>{get only}
         +Init(materialAndQuantity:MaterialAndQuantity):void
     }
 }
 
+abstract BaseData
+{
+    -_id:string
+    -_name:string
+    -_info:string
+    -_image:Sprite
+    +<<property>>ID:string{get only}
+    +<<property>>Name:string{get only}
+    +<<property>>Info:string{get only}
+    +<<property>>Image:Sprite{get only}
+}
 class GameManager
 interface IFactory<T>
 {
@@ -356,26 +346,34 @@ MaterialNode ..|> IPointerClickHandler
 EnemyData ..|> IHaveRariry
 ItemData ..|> IHaveRariry
 
-IEffect ..|> 各種効果
+各種効果 ..|> IEffect
 
-RecipeData --|> ScriptableObject
-AlchemyMaterial --|> ScriptableObject
-CharacteristicsData --|> ScriptableObject
-EnemyData --|> ScriptableObject
-StageData --|> ScriptableObject
+RecipeData --|> BaseData
+AlchemyMaterial --|> BaseData
+CharacteristicsData --|> BaseData
+EnemyData --|> BaseData
+StageData --|> BaseData
+BaseData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
+ItemViewerDisplayOrder --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
 
-Player -- ItemViewer
-ItemViewer -- ItemNode
 Stage -- StageInfo
+Dialog -- DialogType
+
+MaterialNode --> ItemViewerDisplayOrder : Data set
+ItemViewer --> ItemViewerDisplayOrder : Data set & load
 
 TileController *--> Tile
 TileController *--> TileView
 Tile *--> ITileContents
 Stage *--> StageOption
+
+CategoryData --o ItemData
+CharacteristicsData --o ItemData
+ItemNode --o ItemViewer
 
 MaterialAndQuantity --* RecipeData
 

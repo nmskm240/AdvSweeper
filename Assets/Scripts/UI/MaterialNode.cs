@@ -14,16 +14,24 @@ namespace UI
         [SerializeField]
         private Image _image;
         [SerializeField]
-        private TextMeshProUGUI _needAndSelectedQuantity;
+        private TextMeshProUGUI _requiredAndSelectedNum;
+
+        private MaterialAndQuantity _materialAndQuantity;
+        private List<ItemData> _selectedMaterials = new List<ItemData>();
+
+        public IEnumerable<ItemData> SelectedMaterials{ get { return _selectedMaterials; } }
 
         public void Init(MaterialAndQuantity materialAndQuantity)
         {
+            _materialAndQuantity = materialAndQuantity;
             _image.sprite = materialAndQuantity.Material.Image;
-            _needAndSelectedQuantity.text = "0/" + materialAndQuantity.Quantity;
+            _requiredAndSelectedNum.text = "0/" + materialAndQuantity.Quantity;
         }
 
         public void OnPointerClick(PointerEventData e)
         {
+            var order = Resources.Load("Datas/ItemViewerOrder") as ItemViewerDisplayOrder;
+            order.IDs.Add(_materialAndQuantity.Material.ID);
             MultiSceneManager.LoadScene("MaterialSelect");
         }
     }

@@ -2,11 +2,8 @@ using UnityEngine;
 
 namespace Alchemy
 {    
-    public class AlchemyMaterial : ScriptableObject 
+    public abstract class AlchemyMaterial : BaseData 
     {    
-        [SerializeField]
-        private Sprite _image;
 
-        public Sprite Image{ get { return _image; } }
     }
 }

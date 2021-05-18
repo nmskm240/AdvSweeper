@@ -16,8 +16,8 @@ namespace UI
 
         private ItemViewerDisplayOrder _order;
         private IFactory<GameObject> _factory = new ItemNodeFactory();
-    
-        private void Awake() 
+
+        private void Awake()
         {
             _order = Resources.Load("Datas/ItemViewerOrder") as ItemViewerDisplayOrder;
             Show(_collections);
@@ -25,23 +25,40 @@ namespace UI
 
         public void Show(ItemCollection collection)
         {
-            foreach(var item in collection.Contents)
+            foreach (var item in collection.Contents)
             {
-                if(_order != null)
+                if (_order.IDs.Count > 0)
                 {
-                    foreach(var id in _order.IDs)
+                    foreach (var id in _order.IDs)
                     {
-                        if(item.ID == id)
+                        if (item.ID == id
+                         || item.Categories.Any(c => c.ID == id)
+                         || item.Characteristics.Any(c => c.ID == id))
                         {
                             var obj = _factory.Create();
                             var node = obj.GetComponent<ItemNode>();
                             obj.transform.SetParent(_contents);
                             obj.transform.localScale = Vector3.one;
                             node.Init(item);
+                            break;
                         }
                     }
                 }
+                else
+                {
+                    var obj = _factory.Create();
+                    var node = obj.GetComponent<ItemNode>();
+                    obj.transform.SetParent(_contents);
+                    obj.transform.localScale = Vector3.one;
+                    node.Init(item);
+                }
             }
+            OrderReset();
+        }
+
+        public void OrderReset()
+        {
+            Resources.UnloadAsset(_order);
         }
 
         public void Close()
