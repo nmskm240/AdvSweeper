@@ -6,7 +6,7 @@ using Adv;
 namespace Alchemy
 {    
     [CreateAssetMenu(fileName = "RecipeData", menuName = "AdvSweeper/RecipeData", order = 0)]
-    public class RecipeData : ScriptableObject 
+    public class RecipeData : BaseData 
     {
         [SerializeField]
         private List<MaterialAndQuantity> _needMaterials;

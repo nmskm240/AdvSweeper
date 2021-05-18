@@ -10,12 +10,6 @@ namespace Adv
     public class ItemData : AlchemyMaterial, IHaveRarity
     {
         [SerializeField]
-        private string _id;
-        [SerializeField]
-        private string _name;
-        [SerializeField]
-        private string _info;
-        [SerializeField]
         private bool _isMaterial;
         [SerializeReference, SubclassSelector]
         private List<IEffect> _effects;
@@ -24,9 +18,6 @@ namespace Adv
         [SerializeField, Range(0.1f,100)]
         private float _rarity;
 
-        public string ID{ get { return _id; } }
-        public string Name{ get { return _name; } }
-        public string Info{ get { return _info; } }
         public bool IsMaterial{ get{ return _isMaterial; } }
         public int Quality{ get; set; }
         public IEnumerable<IEffect> Effects{ get { return _effects; } }

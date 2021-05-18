@@ -5,14 +5,8 @@ using UnityEngine;
 namespace Adv
 {    
     [CreateAssetMenu(fileName = "EnemyData", menuName = "AdvSweeper/EnemyData", order = 0)]
-    public class EnemyData : ScriptableObject, IHaveRarity
+    public class EnemyData : BaseData, IHaveRarity
     {
-        [SerializeField]
-        private Sprite _image;
-        [SerializeField]
-        private string _id;
-        [SerializeField]
-        private string _name;
         [SerializeField]
         private int _attack;
         [SerializeField]
@@ -20,9 +14,6 @@ namespace Adv
         [SerializeField, Range(0.1f,100)]
         private float _rarity;
 
-        public Sprite Image{ get { return _image;} }
-        public string ID { get { return _id; } }
-        public string Name{ get { return _name; } }
         public int Attack{ get { return _attack; } }
         public IEnumerable<ItemData> DropTable{ get { return _dropTable; } }
         public float Rarity{ get { return _rarity; } }
