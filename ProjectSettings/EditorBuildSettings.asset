@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Alchemy/RecipeSelect.unity
     guid: 5af1768a54a476c4e9b1f681b12c79ee
   - enabled: 1
+    path: Assets/Scenes/Menu/Alchemy/MaterialSelect.unity
+    guid: 597451b032de32544ab112d9d1cfffd6
+  - enabled: 1
     path: Assets/Scenes/Menu/Alchemy/AlchemyMain.unity
     guid: e2844c98d498c404f98b34e336162b0d
   - enabled: 1
