@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Neutralizer-red
   m_EditorClassIdentifier: 
   _needMaterials:
-  - _material: {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
-    _quantity: 2
   - _material: {fileID: 11400000, guid: 02d919676e05c4449ac2aa98d8310c14, type: 2}
+    _quantity: 2
+  - _material: {fileID: 11400000, guid: 642a756c87c26c649ace951a11998f45, type: 2}
     _quantity: 2
   _product: {fileID: 11400000, guid: 2496e54918b518a4ab428eec6c76d15f, type: 2}

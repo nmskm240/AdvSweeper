@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603cb3720b2794d488ddaadd016fb260, type: 3}
   m_Name: Neutralizer
   m_EditorClassIdentifier: 
+  _image: {fileID: 21300000, guid: abcae33eaf1d3f841b63e2404828df4c, type: 3}
   _id: Neutralizer
   _name: "\u4E2D\u548C\u5264"

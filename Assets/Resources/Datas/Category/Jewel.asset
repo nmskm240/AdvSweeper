@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603cb3720b2794d488ddaadd016fb260, type: 3}
   m_Name: Jewel
   m_EditorClassIdentifier: 
+  _image: {fileID: 21300000, guid: 9ecfc4b2ca911474f93ccb8f8800ec3e, type: 3}
   _id: Jewel
   _name: "\u5B9D\u77F3"

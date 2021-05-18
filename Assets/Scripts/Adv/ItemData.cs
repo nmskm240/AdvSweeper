@@ -7,10 +7,8 @@ using Alchemy;
 namespace Adv
 {    
     [CreateAssetMenu(fileName = "ItemData", menuName = "AdvSweeper/ItemData", order = 0)]
-    public class ItemData : ScriptableObject, IHaveRarity
+    public class ItemData : AlchemyMaterial, IHaveRarity
     {
-        [SerializeField]
-        private Sprite _image;
         [SerializeField]
         private string _id;
         [SerializeField]
@@ -26,7 +24,6 @@ namespace Adv
         [SerializeField, Range(0.1f,100)]
         private float _rarity;
 
-        public Sprite Image{ get { return _image; } }
         public string ID{ get { return _id; } }
         public string Name{ get { return _name; } }
         public string Info{ get { return _info; } }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HealingDrug
   m_EditorClassIdentifier: 
   _needMaterials:
-  - _material: {fileID: 11400000, guid: 7d1eb08a3f101f849b37fc56fc2886e9, type: 2}
-    _quantity: 1
   - _material: {fileID: 11400000, guid: cfea5f7e831bc0c4d904dc0f0512e6cf, type: 2}
+    _quantity: 1
+  - _material: {fileID: 11400000, guid: 7d1eb08a3f101f849b37fc56fc2886e9, type: 2}
     _quantity: 1
   _product: {fileID: 11400000, guid: bfec9db2989421c42ba434436c7fabff, type: 2}

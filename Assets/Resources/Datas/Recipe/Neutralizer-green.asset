@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Neutralizer-green
   m_EditorClassIdentifier: 
   _needMaterials:
-  - _material: {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
-    _quantity: 2
   - _material: {fileID: 11400000, guid: f7f741a2a626b9e4d88778ec3de6dfb2, type: 2}
+    _quantity: 2
+  - _material: {fileID: 11400000, guid: 642a756c87c26c649ace951a11998f45, type: 2}
     _quantity: 2
   _product: {fileID: 11400000, guid: 089062a2d267d9b4593bac3894f673de, type: 2}

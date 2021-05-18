@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603cb3720b2794d488ddaadd016fb260, type: 3}
   m_Name: Metal
   m_EditorClassIdentifier: 
+  _image: {fileID: 21300000, guid: 60228e633066efb4b912fb52c4802557, type: 3}
   _id: Metal
   _name: "\u91D1\u5C5E"
