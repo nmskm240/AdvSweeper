@@ -295,6 +295,7 @@ package UI
         -_materialAndQuantity:MaterialAndQuantity
         -_selectedMaterials:List<ItemData>
         +<<property>>SelectedMaterials:IEnumerable<ItemData>{get only}
+        -WaitSelect():IEnumerator
         +Init(materialAndQuantity:MaterialAndQuantity):void
     }
 }

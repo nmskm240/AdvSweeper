@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,6 +34,16 @@ namespace UI
             var order = Resources.Load("Datas/ItemViewerOrder") as ItemViewerDisplayOrder;
             order.IDs.Add(_materialAndQuantity.Material.ID);
             MultiSceneManager.LoadScene("MaterialSelect");
+            StartCoroutine(WaitSelect());
+        }
+
+        private IEnumerator WaitSelect()
+        {
+            var selectMaterials = Resources.Load("Datas/SelectMaterials") as ItemCollection;
+            yield return new WaitWhile(() => MultiSceneManager.IsLoaded("MaterialSelect"));
+            _selectedMaterials = selectMaterials.Contents;
+            _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
+            Resources.UnloadAsset(selectMaterials);
         }
     }
 }

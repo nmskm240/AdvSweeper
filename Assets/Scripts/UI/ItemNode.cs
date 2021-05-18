@@ -48,6 +48,20 @@ namespace UI
                     player.UseItem(_item);
                 });
             }
+            else if(gameObject.scene.name == "MaterialSelect")
+            {
+                var selectMaterial = Resources.Load("Datas/SelectMaterials") as ItemCollection;
+                if(selectMaterial.Contents.Contains(_item))
+                {
+                    _image.color = Color.white;
+                    selectMaterial.Contents.Remove(_item);
+                }
+                else 
+                {
+                    _image.color = Color.gray;
+                    selectMaterial.Contents.Add(_item);
+                }
+            }
         }
     }
 }
