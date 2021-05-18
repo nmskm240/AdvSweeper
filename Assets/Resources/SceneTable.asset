@@ -25,12 +25,12 @@ MonoBehaviour:
   - _name: Game
     _category: Main
     _parentName: 
-  - _name: Alchemy
+  - _name: AlchemyMain
     _category: MainMenu
     _parentName: Menu
   - _name: Credit
     _category: MainMenu
-    _parentName: 
+    _parentName: Menu
   - _name: Container
     _category: MainMenu
     _parentName: Menu
@@ -44,5 +44,8 @@ MonoBehaviour:
     _category: MainMenu
     _parentName: Menu
   - _name: StageSelect
+    _category: MainMenu
+    _parentName: Menu
+  - _name: RecipeSelect
     _category: MainMenu
     _parentName: Menu

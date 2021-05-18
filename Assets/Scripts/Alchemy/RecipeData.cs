@@ -15,5 +15,11 @@ namespace Alchemy
 
         public IEnumerable<MaterialAndQuantity> NeedMaterials{ get { return _needMaterials; } }
         public ItemData Product{ get { return _product; } }
+
+        public void Copy(RecipeData data)
+        {
+            _needMaterials = data.NeedMaterials as List<MaterialAndQuantity>;
+            _product = data.Product;
+        }
     }
 }

@@ -20,14 +20,12 @@ package Adv
     }
     class ItemData
     {
-        -_image:Sprite
         -_id:string
         -_name:string
         -_info:string
         -_isMaterial:bool
         -_effects:List<IEffect>
         -_categories:List<CategoryData>
-        +<<property>>Imgae:Sprite{get only}
         +<<property>>ID:string{get only}
         +<<property>>Name:string{get only}
         +<<property>>Info:string{get only}
@@ -109,17 +107,27 @@ package Alchemy
         -_product:ItemData
         +<<property>>NeedMaterials:List<MaterialAndQuantity>
         +<<property>>Product:ItemData
+        +Copy(data:RecipeData):void
     }
     class MaterialAndQuantity
     {
-        -_material:ScriptableObject
+        -_material:AlchemyMaterial
         -_quantity:int
-        +<<property>>Material:ScriptableObject
+        +<<property>>Material:AlchemyMaterial
         +<<property>>Quantity:int
     }
     class Jar
     {
-        +Alchemy(recipe:RecipeData,materials:IEnumerable<ItemData>):ItemData
+        -productImage:Image
+        -_recipe:RecipeData
+        -_materials:Transform
+        -_container:ItemCollection
+        +Alchemy():void
+    }
+    class AlchemyMaterial
+    {
+        -_image:Sprite
+        +<<property>>Image:Sprite{get only}
     }
 }
 
@@ -295,6 +303,21 @@ package UI
         +Init(sprite:Sprite):void
         +Move(tf:Transform):void
     }
+    class RecipeNode
+    {
+        -_image:Image
+        -_name:TextMeshProUGUI
+        -_out:RecipeData
+        -_base:RecipeData
+        +Init(recipe:RecipeData):void
+    }
+    class MaterialNodeFactory
+    class MaterialNode
+    {
+        -_image:Image
+        -_nddeAndSelectedQuantity:TextMeshProUGUI
+        +Init(materialAndQuantity:MaterialAndQuantity):void
+    }
 }
 
 class GameManager
@@ -315,16 +338,20 @@ DialogFactory ..|> IFactory
 ContentsCounterFactory ..|> IFactory
 ItemNodeFactroy ..|> IFactory
 PickItemFactory ..|> IFactory
+MaterialNodeFactory --|> IFactory
 
 TileFactory ..> Tile : Create
 DialogFactory ..> Dialog : Create
 ContentsCounterFactory ..> ContentsCounter : Create
 ItemNodeFactroy ..> ItemNode : Create 
 PickItemFactory ..> PickItem : Create
+MaterialNodeFactory ..> MaterialNode : Create
 
 TileController ..|> IPointerClickHandler
 StageNode ..|> IPointerClickHandler
 ItemNode ..|> IPointerClickHandler
+RecipeNode ..|> IPointerClickHandler
+MaterialNode ..|> IPointerClickHandler
 
 EnemyData ..|> IHaveRariry
 ItemData ..|> IHaveRariry
@@ -332,12 +359,14 @@ ItemData ..|> IHaveRariry
 IEffect ..|> 各種効果
 
 RecipeData --|> ScriptableObject
-CategoryData --|> ScriptableObject
+AlchemyMaterial --|> ScriptableObject
 CharacteristicsData --|> ScriptableObject
-ItemData --|> ScriptableObject
 EnemyData --|> ScriptableObject
 StageData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
+
+ItemData --|> AlchemyMaterial
+CategoryData --|> AlchemyMaterial
 
 Player -- ItemViewer
 ItemViewer -- ItemNode
