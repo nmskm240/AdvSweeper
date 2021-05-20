@@ -16,13 +16,13 @@ namespace Adv
 
         public int HP
         {
-            get { return (int)_hp.Value; } 
-            set { _hp.Value = value; } 
+            get { return (int)_hp.Value; }
+            set { _hp.Value = value; }
         }
         public int MP
         {
-            get { return (int)_mp.Value; } 
-            set { _mp.Value = value; } 
+            get { return (int)_mp.Value; }
+            set { _mp.Value = value; }
         }
 
         private void Awake()
@@ -35,29 +35,21 @@ namespace Adv
 
         public void Damage(int quantity)
         {
-            if(HP - quantity <= 0)
+            if (HP - quantity <= 0)
             {
                 Death();
             }
             HP -= quantity;
         }
 
-        public void GetItem(ItemData item)
+        public override void GetItem(ItemData item)
         {
             _basket.Contents.Add(item);
         }
 
-        public void GetItems(IEnumerable<ItemData> items)
-        {
-            foreach(var item in items)
-            {
-                GetItem(item);
-            }
-        }
-
         public void UseItem(ItemData item)
         {
-            foreach(var effect in item.Effects)
+            foreach (var effect in item.Effects)
             {
                 effect.Activate();
             }
@@ -78,8 +70,8 @@ namespace Adv
         {
             var factory = new DialogFactory();
             var dialog = factory.Create().GetComponent<Dialog>();
-            dialog.Show(DialogType.AgreeOnly, "力尽きてしまった。\nメニュー画面に戻ります。", () => 
-            { 
+            dialog.Show(DialogType.AgreeOnly, "力尽きてしまった。\nメニュー画面に戻ります。", () =>
+            {
                 MultiSceneManagement.MultiSceneManager.LoadScene("StageSelect");
             });
         }

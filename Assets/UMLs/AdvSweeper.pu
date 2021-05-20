@@ -58,7 +58,7 @@ package Adv
         +<<property>>HP:int
         +<<property>>MP:int
         +Damage(quantity:int):void
-        +GetItem(item:ItemData):void
+        +<<override>>GetItem(item:ItemData):void
         +UseItem(item:ItemData):void
         +SeeBasket():void
         +SwapToContainer():void
@@ -93,11 +93,13 @@ package Alchemy
     {
         -productImage:Image
         -_recipe:RecipeData
-        +Alchemy():void
+        +Alchemy(materials:IEnumerable<ItemData>):ItemData
     }
     class Alchemist
     {
         -_materials:Transform
+        -_jar:Jar
+        -_selectRecipeData:RecipeData
         +Alchemy():void
     }
     abstract AlchemyMaterial
@@ -296,6 +298,7 @@ package UI
         -_requiredAndSelectedNum:TextMeshProUGUI
         -_materialAndQuantity:MaterialAndQuantity
         -_selectedMaterials:List<ItemData>
+        +<<property>>NeedQuantity:int{get only}
         +<<property>>SelectedMaterials:IEnumerable<ItemData>{get only}
         -WaitSelect():IEnumerator
         +Init(materialAndQuantity:MaterialAndQuantity):void
@@ -316,6 +319,10 @@ abstract BaseData
 class Player
 {
     -_container:ItemCollection
+    +<<virtual>>GetItem(item:ItemData):void
+    +GetItmes(items:IEnumerable<ItemData>):void
+    +<<virtual>>RemoveItem(item:ItemData):void
+    +RemoveItems(items:IEnumerable<ItemData>):void
 }
 class GameManager
 interface IFactory<T>

@@ -17,8 +17,10 @@ namespace Alchemy
             _productImage.sprite = _selectRecipeData.Product.Image;
         }
 
-        public ItemData Alchemy()
+        public ItemData Alchemy(IEnumerable<ItemData> materials)
         {
+            var player = GameObject.Find("Player").GetComponent<Alchemist>();
+            player.RemoveItems(materials);
             return _selectRecipeData.Product;
         }
     }

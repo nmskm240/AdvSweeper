@@ -20,6 +20,7 @@ namespace UI
         private MaterialAndQuantity _materialAndQuantity;
         private List<ItemData> _selectedMaterials = new List<ItemData>();
 
+        public int NeedQuantity{ get { return _materialAndQuantity.Quantity;} }
         public IEnumerable<ItemData> SelectedMaterials{ get { return _selectedMaterials; } }
 
         public void Init(MaterialAndQuantity materialAndQuantity)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Adv;
 using UI;
@@ -29,7 +30,20 @@ namespace Alchemy
 
         public void Alchemy()
         {
-            _container.Contents.Add(_jar.Alchemy());
+            var useMaterials = new List<ItemData>();
+            foreach(Transform tf in _materials)
+            {
+                var materialNode = tf.gameObject.GetComponent<MaterialNode>();
+                if(materialNode.NeedQuantity != materialNode.SelectedMaterials.Count())
+                {
+                    var factory = new DialogFactory();
+                    var dialog = factory.Create().GetComponent<Dialog>();
+                    dialog.Show(DialogType.AgreeOnly, "素材の選択が完了していません。", () => {});
+                    return;
+                }
+                useMaterials.AddRange(materialNode.SelectedMaterials);
+            }
+            _container.Contents.Add(_jar.Alchemy(useMaterials));
         }
     }
 }
