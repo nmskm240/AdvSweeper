@@ -28,7 +28,7 @@ namespace Sweeper.TileContents
 
         public void Open()
         {
-            var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            var player = GameObject.FindWithTag("Player").GetComponent<Treasure>();
             player.GetItems(_datas);
             Observable.FromCoroutine(OpenProcess).Subscribe(x => {});
         }

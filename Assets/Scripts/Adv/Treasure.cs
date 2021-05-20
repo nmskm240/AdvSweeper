@@ -5,7 +5,7 @@ using UI;
 
 namespace Adv
 {
-    public class Player : MonoBehaviour
+    public class Treasure : Player
     {
         [SerializeField]
         private SliderParameter _hp;
@@ -13,8 +13,6 @@ namespace Adv
         private SliderParameter _mp;
         [SerializeField]
         private ItemCollection _basket;
-        [SerializeField]
-        private ItemCollection _container;
 
         public int HP
         {

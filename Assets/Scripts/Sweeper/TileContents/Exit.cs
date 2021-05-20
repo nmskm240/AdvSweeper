@@ -22,7 +22,7 @@ namespace Sweeper.TileContents
             var dialog = factroy.Create().GetComponent<Dialog>();
             dialog.Show(DialogType.Switch, "出口を見つけた。\n探索を終了しますか？", () => 
             {
-                var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+                var player = GameObject.FindWithTag("Player").GetComponent<Treasure>();
                 player.SwapToContainer();
                 MultiSceneManager.LoadScene("Menu");
             });

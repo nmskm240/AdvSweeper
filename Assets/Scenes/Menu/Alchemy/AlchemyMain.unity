@@ -297,6 +297,53 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1 &102852103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102852105}
+  - component: {fileID: 102852104}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &102852104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102852103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac06f52b2531f541b6cf505439fa40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 11400000, guid: f74f9a239d898be469386d48700a3831, type: 2}
+  _materials: {fileID: 57471851}
+  _jar: {fileID: 1126511399}
+  _selectRecipeData: {fileID: 11400000, guid: 6ce342d9207ce0f4392eddd0f193ff32, type: 2}
+--- !u!4 &102852105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102852103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 189.83302, y: 235.63011, z: -116.21875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161430385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1101,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1126511399}
+      - m_Target: {fileID: 102852104}
         m_MethodName: Alchemy
         m_Mode: 1
         m_Arguments:
@@ -1116,8 +1163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _productImage: {fileID: 1031391968}
   _selectRecipeData: {fileID: 11400000, guid: 6ce342d9207ce0f4392eddd0f193ff32, type: 2}
-  _materials: {fileID: 57471851}
-  _container: {fileID: 11400000, guid: f74f9a239d898be469386d48700a3831, type: 2}
 --- !u!1 &1942235357
 GameObject:
   m_ObjectHideFlags: 0

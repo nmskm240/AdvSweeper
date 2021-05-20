@@ -10,7 +10,7 @@ namespace Adv.Effects
 
         public void Activate()
         {
-            var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            var player = GameObject.FindWithTag("Player").GetComponent<Treasure>();
             player.HP += _quantity;
         }
     }

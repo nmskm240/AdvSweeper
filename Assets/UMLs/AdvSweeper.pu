@@ -50,12 +50,11 @@ package Adv
         +LottoSpawnTable(count:int):IEnumerable<EnemyData>
         +LottoItemTable(count:int):IEnumerable<ItemData>
     }
-    class Player
+    class Treasure
     {
         -_hp:SliderParameter
         -_mp:SliderParameter
         -_basket:ItemCollection
-        -_container:ItemCollection
         +<<property>>HP:int
         +<<property>>MP:int
         +Damage(quantity:int):void
@@ -94,8 +93,11 @@ package Alchemy
     {
         -productImage:Image
         -_recipe:RecipeData
+        +Alchemy():void
+    }
+    class Alchemist
+    {
         -_materials:Transform
-        -_container:ItemCollection
         +Alchemy():void
     }
     abstract AlchemyMaterial
@@ -311,6 +313,10 @@ abstract BaseData
     +<<property>>Info:string{get only}
     +<<property>>Image:Sprite{get only}
 }
+class Player
+{
+    -_container:ItemCollection
+}
 class GameManager
 interface IFactory<T>
 {
@@ -360,6 +366,9 @@ ItemViewerDisplayOrder --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
+
+Treasure --|> Player
+Alchemist --|> Player
 
 Stage -- StageInfo
 Dialog -- DialogType
