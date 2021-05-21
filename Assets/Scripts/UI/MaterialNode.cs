@@ -40,8 +40,8 @@ namespace UI
 
         private IEnumerator WaitSelect()
         {
-            var selectMaterials = Resources.Load("Datas/SelectMaterials") as ItemCollection;
             yield return new WaitWhile(() => MultiSceneManager.IsLoaded("MaterialSelect"));
+            var selectMaterials = Resources.Load("Datas/SelectMaterials") as ItemCollection;
             _selectedMaterials = selectMaterials.Contents;
             _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
             Resources.UnloadAsset(selectMaterials);
