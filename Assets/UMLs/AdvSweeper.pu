@@ -9,6 +9,11 @@ package Adv
             +Activate():void
         }
         class 各種効果
+        class EffectData
+        {
+            -_effect:IEffect
+            +<<property>>Effect:IEffect
+        }
     }
     interface IHaveRariry
     {
@@ -21,11 +26,11 @@ package Adv
     class ItemData
     {
         -_isMaterial:bool
-        -_effects:List<IEffect>
+        -_effects:List<EffectData>
         -_categories:List<CategoryData>
         +<<property>>IsMaterial:bool{get only}
         +<<property>>Quality:int
-        +<<property>>Effects:IEnumerable<IEffect>{get only}
+        +<<property>>Effects:IEnumerable<EffectData>{get only}
         +<<property>>Categories:IEnumerable<CategoryData>{get only}
         +<<private>>Characteristics:IEnumerable<CharacteristicsData>
     }
@@ -59,7 +64,6 @@ package Adv
         +<<property>>MP:int
         +Damage(quantity:int):void
         +<<override>>GetItem(item:ItemData):void
-        +UseItem(item:ItemData):void
         +SeeBasket():void
         +SwapToContainer():void
         -Death():void
@@ -68,6 +72,7 @@ package Adv
     {
         +<<property>>Contents:List<ItemData>
     }
+    class ItemDataCompare
 }
 
 package Alchemy
@@ -93,6 +98,7 @@ package Alchemy
     {
         -productImage:Image
         -_recipe:RecipeData
+        +SetRecipe(recipe:RecipeData):void
         +Alchemy(materials:IEnumerable<ItemData>):ItemData
     }
     class Alchemist
@@ -100,6 +106,7 @@ package Alchemy
         -_materials:Transform
         -_jar:Jar
         -_selectRecipeData:RecipeData
+        -_materialNodes:List<MaterialNode>
         +Alchemy():void
     }
     abstract AlchemyMaterial
@@ -265,15 +272,26 @@ package UI
     {
         -_contents:Transform
         -_collections:ItemCollection
-        -_order:ItemViewerDisplayOrder
         -_factory:IFactory<GameObject>
+        #_order:ItemViewOrder
+        #_closeButton:Button
+        -CreateItemNode(item:ItemData):void
+        #Close():void
         +Show(collection:ItemCollection):void
-        +Close():void
-        +OrderReset():void
     }
-    class ItemViewerDisplayOrder
+    class ItemSelector
+    {
+        -_selectedItems:ItemCollection
+        -_selectNum:int
+    }
+    class ItemViewOrder
     {
         +<<property>>IDs:List<string>
+        +Reset():void
+    }
+    class ItemSelectOrder
+    {
+        +SelectNum:int
     }
     class PickItemFactory
     class PickItem
@@ -302,6 +320,7 @@ package UI
         +<<property>>SelectedMaterials:IEnumerable<ItemData>{get only}
         -WaitSelect():IEnumerator
         +Init(materialAndQuantity:MaterialAndQuantity):void
+        +SelectClear():void
     }
 }
 
@@ -316,6 +335,7 @@ abstract BaseData
     +<<property>>Info:string{get only}
     +<<property>>Image:Sprite{get only}
 }
+class BaseDataCompare
 class Player
 {
     -_container:ItemCollection
@@ -362,6 +382,9 @@ ItemData ..|> IHaveRariry
 
 各種効果 ..|> IEffect
 
+ItemDataCompare ..|> IEqualityComparer
+BaseDataCompare ..|> IEqualityComparer
+
 RecipeData --|> BaseData
 AlchemyMaterial --|> BaseData
 CharacteristicsData --|> BaseData
@@ -369,7 +392,7 @@ EnemyData --|> BaseData
 StageData --|> BaseData
 BaseData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
-ItemViewerDisplayOrder --|> ScriptableObject
+ItemViewOrder --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
@@ -377,11 +400,15 @@ CategoryData --|> AlchemyMaterial
 Treasure --|> Player
 Alchemist --|> Player
 
+ItemSelector --|> ItemViewer
+ItemSelectOrder --|> ItemViewOrder
+
 Stage -- StageInfo
 Dialog -- DialogType
 
-MaterialNode --> ItemViewerDisplayOrder : Data set
-ItemViewer --> ItemViewerDisplayOrder : Data set & load
+MaterialNode --> ItemSelectOrder : Data set
+ItemViewer --> ItemViewOrder : Data set & load
+ItemSelector --> ItemSelectOrder : Data set & load
 
 TileController *--> Tile
 TileController *--> TileView
