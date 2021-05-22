@@ -47,14 +47,6 @@ namespace Adv
             _basket.Contents.Add(item);
         }
 
-        public void UseItem(ItemData item)
-        {
-            foreach (var effect in item.Effects)
-            {
-                effect.Activate();
-            }
-        }
-
         public void SeeBasket()
         {
             MultiSceneManagement.MultiSceneManager.LoadScene("Basket");
