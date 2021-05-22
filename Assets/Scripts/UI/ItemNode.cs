@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -46,13 +47,12 @@ namespace UI
                 dialog.Show(DialogType.AgreeOnly, _item.Name + "を使用しますか?", () => 
                 {
                     var player = GameObject.FindWithTag("Player").GetComponent<Treasure>();
-                    player.UseItem(_item);
                 });
             }
             else if(gameObject.scene.name == "MaterialSelect")
             {
                 var selectMaterial = Resources.Load("Datas/SelectMaterials") as ItemCollection;
-                if(selectMaterial.Contents.Contains(_item))
+                if(selectMaterial.Contents.Contains(_item, new ItemDataCompare()))
                 {
                     _image.color = Color.white;
                     selectMaterial.Contents.Remove(_item);

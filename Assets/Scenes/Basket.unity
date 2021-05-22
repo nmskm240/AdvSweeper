@@ -536,6 +536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _contents: {fileID: 888767544}
   _collections: {fileID: 11400000, guid: e370a56a03fffa241aa9aa3e0f0383a4, type: 2}
+  _order: {fileID: 11400000, guid: 91c160ab1fb1cdc4d93a7cfdf4c02a70, type: 2}
+  _closeButton: {fileID: 968136394}
 --- !u!1 &888767543
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,18 +679,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 968136395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 489481940}
-        m_MethodName: Close
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &968136395
 MonoBehaviour:
   m_ObjectHideFlags: 0

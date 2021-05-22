@@ -868,6 +868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _contents: {fileID: 80889962}
   _collections: {fileID: 11400000, guid: f74f9a239d898be469386d48700a3831, type: 2}
+  _order: {fileID: 11400000, guid: 91c160ab1fb1cdc4d93a7cfdf4c02a70, type: 2}
+  _closeButton: {fileID: 0}
 --- !u!114 &2085243895
 MonoBehaviour:
   m_ObjectHideFlags: 0

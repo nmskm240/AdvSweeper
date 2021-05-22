@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b35f6c44fbba21344bdf6313f054abb3, type: 3}
-  m_Name: ItemViewerOrder
+  m_Script: {fileID: 11500000, guid: 7247849dabe43ca4f95a5f72a5e90a62, type: 3}
+  m_Name: ItemViewOrder
   m_EditorClassIdentifier: 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using MultiSceneManagement;
 using Adv;
 
@@ -13,14 +14,31 @@ namespace UI
         private Transform _contents;
         [SerializeField]
         private ItemCollection _collections;
+        [SerializeField]
+        protected ItemViewOrder _order;
+        [SerializeField]
+        protected Button _closeButton;
 
-        private ItemViewerDisplayOrder _order;
         private IFactory<GameObject> _factory = new ItemNodeFactory();
 
-        private void Awake()
+        protected virtual void Awake()
         {
-            _order = Resources.Load("Datas/ItemViewerOrder") as ItemViewerDisplayOrder;
+            _closeButton?.onClick.AddListener(() => Close());
             Show(_collections);
+        }
+
+        private void CreateItemNode(ItemData item)
+        {
+            var obj = _factory.Create();
+            var node = obj.GetComponent<ItemNode>();
+            obj.transform.SetParent(_contents);
+            obj.transform.localScale = Vector3.one;
+            node.Init(item);
+        }
+
+        protected virtual void Close()
+        {
+            MultiSceneManager.UnloadScene(gameObject.scene.name);
         }
 
         public void Show(ItemCollection collection)
@@ -35,35 +53,17 @@ namespace UI
                          || item.Categories.Any(c => c.ID == id)
                          || item.Characteristics.Any(c => c.ID == id))
                         {
-                            var obj = _factory.Create();
-                            var node = obj.GetComponent<ItemNode>();
-                            obj.transform.SetParent(_contents);
-                            obj.transform.localScale = Vector3.one;
-                            node.Init(item);
+                            CreateItemNode(item);
                             break;
                         }
                     }
                 }
                 else
                 {
-                    var obj = _factory.Create();
-                    var node = obj.GetComponent<ItemNode>();
-                    obj.transform.SetParent(_contents);
-                    obj.transform.localScale = Vector3.one;
-                    node.Init(item);
+                    CreateItemNode(item);
                 }
             }
-            OrderReset();
-        }
-
-        public void OrderReset()
-        {
-            Resources.UnloadAsset(_order);
-        }
-
-        public void Close()
-        {
-            MultiSceneManager.UnloadScene(gameObject.scene.name);
+            _order.Reset();
         }
     }
 }

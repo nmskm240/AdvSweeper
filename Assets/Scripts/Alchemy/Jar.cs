@@ -9,19 +9,20 @@ namespace Alchemy
     {
         [SerializeField]
         private Image _productImage;
-        [SerializeField]
-        private RecipeData _selectRecipeData;
 
-        private void Awake() 
+        private RecipeData _recipe;
+
+        public void SetRecipe(RecipeData recipe)
         {
-            _productImage.sprite = _selectRecipeData.Product.Image;
+            _recipe = recipe;
+            _productImage.sprite = _recipe.Product.Image;
         }
 
         public ItemData Alchemy(IEnumerable<ItemData> materials)
         {
-            var player = GameObject.Find("Player").GetComponent<Alchemist>();
+            var player = GameObject.Find("Player").GetComponent<Player>();
             player.RemoveItems(materials);
-            return _selectRecipeData.Product;
+            return ScriptableObject.Instantiate(_recipe.Product);
         }
     }
 }

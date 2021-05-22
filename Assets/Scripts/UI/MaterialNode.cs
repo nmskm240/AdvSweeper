@@ -30,10 +30,17 @@ namespace UI
             _requiredAndSelectedNum.text = "0/" + materialAndQuantity.Quantity;
         }
 
+        public void SelectClear()
+        {
+            _selectedMaterials.Clear();
+            _requiredAndSelectedNum.text = "0/" + _materialAndQuantity.Quantity;
+        }
+
         public void OnPointerClick(PointerEventData e)
         {
-            var order = Resources.Load("Datas/ItemViewerOrder") as ItemViewerDisplayOrder;
+            var order = Resources.Load("Datas/ItemSelectOrder") as ItemSelectOrder;
             order.IDs.Add(_materialAndQuantity.Material.ID);
+            order.SelectNum = _materialAndQuantity.Quantity;
             MultiSceneManager.LoadScene("MaterialSelect");
             StartCoroutine(WaitSelect());
         }
