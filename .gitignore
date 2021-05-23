@@ -59,9 +59,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 .vscode/
-Assets/Plugins/Demigiant/
-Assets/Plugins/Dimigiant.meta
-Assets/Plugins/UniRx/
-Assets/Plugins/UniRx.meta
+Assets/Plugins/
+Assets/Plugins.meta
 Assets/GUI Kit Mono Round/
 Assets/GUI Kit Mono Round.meta
