@@ -316,6 +316,8 @@ package UI
     {
         -_image:Image
         -_requiredAndSelectedNum:TextMeshProUGUI
+        -_selectMaterials:ItemCollection
+        -_order:ItemSelectOrder
         -_materialAndQuantity:MaterialAndQuantity
         -_selectedMaterials:List<ItemData>
         +<<property>>NeedQuantity:int{get only}

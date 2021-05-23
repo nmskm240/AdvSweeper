@@ -44,6 +44,7 @@ namespace UI
         {
             _order.IDs.Add(_materialAndQuantity.Material.ID);
             _order.SelectNum = _materialAndQuantity.Quantity;
+            _selectMaterials.Contents = _selectedMaterials;
             MultiSceneManager.LoadScene("MaterialSelect");
             StartCoroutine(WaitSelect());
         }
