@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 464967804}
         m_MethodName: SeeBasket
         m_Mode: 1
         m_Arguments:
@@ -721,6 +721,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _contents: {fileID: 772054459}
   _collections: {fileID: 11400000, guid: d8d46416e6f6a1a4d9134045f6cf0df9, type: 2}
+  _order: {fileID: 0}
+  _closeButton: {fileID: 0}
 --- !u!224 &713554241 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5298629944297211173, guid: 662450352cc95e440a8f777d839b0b33,
