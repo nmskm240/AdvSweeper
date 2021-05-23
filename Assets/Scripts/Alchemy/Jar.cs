@@ -9,8 +9,15 @@ namespace Alchemy
     {
         [SerializeField]
         private Image _productImage;
+        [SerializeField]
+        private Button _alchemyButton;
 
         private RecipeData _recipe;
+
+        public void SetCanAlchemy(bool canAlchemy)
+        {
+            _alchemyButton.interactable = canAlchemy;
+        }
 
         public void SetRecipe(RecipeData recipe)
         {

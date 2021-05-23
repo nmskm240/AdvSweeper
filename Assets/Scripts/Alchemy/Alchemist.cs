@@ -16,6 +16,7 @@ namespace Alchemy
         private RecipeData _selectRecipeData;
 
         private List<MaterialNode> _materialNodes = new List<MaterialNode>();
+        private bool _canAlchemy = true;
 
         private void Awake()
         {
@@ -30,6 +31,16 @@ namespace Alchemy
                 _materialNodes.Add(node);
             }
             _jar.SetRecipe(_selectRecipeData);
+        }
+
+        private void Update()
+        {
+            _canAlchemy = true;
+            foreach(var materialNode in _materialNodes)
+            {
+                _canAlchemy &= materialNode.NeedQuantity == materialNode.SelectedMaterials.Count();
+            }
+            _jar.SetCanAlchemy(_canAlchemy);
         }
 
         public void Alchemy()

@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d880351ad376b94f967166279a7c7b7, type: 3}
   m_Name: Container
   m_EditorClassIdentifier: 
+  Contents:
+  - {fileID: 0}
