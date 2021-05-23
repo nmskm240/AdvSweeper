@@ -8,5 +8,10 @@ namespace MultiSceneManagement
         {
             MultiSceneManager.LoadScene(sceneName);
         }
+
+        public void Unload(string sceneName)
+        {
+            MultiSceneManager.UnloadScene(sceneName);
+        }
     }
 }
