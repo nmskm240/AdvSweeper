@@ -157,7 +157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
+  m_BackGroundColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 11400000, guid: f74f9a239d898be469386d48700a3831, type: 2}
-  _water: {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
+  _item: {fileID: 0}
 --- !u!4 &1741667121
 Transform:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ namespace UI
             node.Init(item);
         }
 
-        protected virtual void Close()
+        public virtual void Close()
         {
             MultiSceneManager.UnloadScene(gameObject.scene.name);
         }
