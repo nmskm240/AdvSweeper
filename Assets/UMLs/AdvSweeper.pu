@@ -98,6 +98,7 @@ package Alchemy
     {
         -productImage:Image
         -_recipe:RecipeData
+        +SetCanAlchemy(canAlchemy:bool):void
         +SetRecipe(recipe:RecipeData):void
         +Alchemy(materials:IEnumerable<ItemData>):ItemData
     }
@@ -107,6 +108,7 @@ package Alchemy
         -_jar:Jar
         -_selectRecipeData:RecipeData
         -_materialNodes:List<MaterialNode>
+        -_canAlchemy:bool
         +Alchemy():void
     }
     abstract AlchemyMaterial

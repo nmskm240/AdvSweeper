@@ -16,6 +16,10 @@ namespace UI
         private Image _image;
         [SerializeField]
         private TextMeshProUGUI _requiredAndSelectedNum;
+        [SerializeField]
+        private ItemCollection _selectMaterials;
+        [SerializeField]
+        private ItemSelectOrder _order;
 
         private MaterialAndQuantity _materialAndQuantity;
         private List<ItemData> _selectedMaterials = new List<ItemData>();
@@ -38,9 +42,8 @@ namespace UI
 
         public void OnPointerClick(PointerEventData e)
         {
-            var order = Resources.Load("Datas/ItemSelectOrder") as ItemSelectOrder;
-            order.IDs.Add(_materialAndQuantity.Material.ID);
-            order.SelectNum = _materialAndQuantity.Quantity;
+            _order.IDs.Add(_materialAndQuantity.Material.ID);
+            _order.SelectNum = _materialAndQuantity.Quantity;
             MultiSceneManager.LoadScene("MaterialSelect");
             StartCoroutine(WaitSelect());
         }
@@ -48,10 +51,10 @@ namespace UI
         private IEnumerator WaitSelect()
         {
             yield return new WaitWhile(() => MultiSceneManager.IsLoaded("MaterialSelect"));
-            var selectMaterials = Resources.Load("Datas/SelectMaterials") as ItemCollection;
-            _selectedMaterials = selectMaterials.Contents;
+            _selectedMaterials = new List<ItemData>(_selectMaterials.Contents);
             _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
-            Resources.UnloadAsset(selectMaterials);
+            _selectMaterials.Contents.Clear();
+            _order.Reset();
         }
     }
 }

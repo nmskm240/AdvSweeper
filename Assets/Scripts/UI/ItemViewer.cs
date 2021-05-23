@@ -63,7 +63,6 @@ namespace UI
                     CreateItemNode(item);
                 }
             }
-            _order.Reset();
         }
     }
 }

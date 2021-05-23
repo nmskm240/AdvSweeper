@@ -6,14 +6,14 @@ public class DebugManager : MonoBehaviour
     [SerializeField]
     private ItemCollection _container;
     [SerializeField]
-    private ItemData _water;
+    private ItemData _item;
 
     private void OnGUI() 
     {
         if(GUI.Button(new Rect(0,0,100,20), "create"))
         {
-            _water.Quality = UnityEngine.Random.Range(0,100);
-            _container.Contents.Add(ScriptableObject.Instantiate(_water));
+            _item.Quality = UnityEngine.Random.Range(0,100);
+            _container.Contents.Add(ScriptableObject.Instantiate(_item));
         }
     }
 }

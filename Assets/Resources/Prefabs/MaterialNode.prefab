@@ -239,3 +239,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 4681946282985067978}
   _requiredAndSelectedNum: {fileID: 6841844818576306642}
+  _selectMaterials: {fileID: 11400000, guid: 2f93f44baef6ded4e949c7e50852cdcf, type: 2}
+  _order: {fileID: 11400000, guid: 9332ecaa035f21a48a7cef386198994b, type: 2}
