@@ -243,7 +243,9 @@ package UI
     }
     class SliderParameter
     {
+        -_options:SliderParameterOptions
         -_text:TextMeshProUGUI
+        -_value:TextMeshProUGUI
         -_slider:Slider
         +<<property>>Name:string{get only}
         +<<property>>Min:float{get only}
@@ -252,6 +254,12 @@ package UI
         +Init(name:string,min:float,max:float):void
         +SetName(name:string):void
         +Range(min:float,max:float):void
+    }
+    enum SliderParameterOptions
+    {
+        ValueNone,
+        ValueOnly,
+        ValueAndMax,
     }
     class StageNode
     {
@@ -371,7 +379,7 @@ MaterialNodeFactory --|> IFactory
 TileFactory ..> Tile : Create
 DialogFactory ..> Dialog : Create
 ContentsCounterFactory ..> ContentsCounter : Create
-ItemNodeFactroy ..> ItemNode : Create 
+ItemNodeFactroy ..> ItemNode : Create
 PickItemFactory ..> PickItem : Create
 MaterialNodeFactory ..> MaterialNode : Create
 
