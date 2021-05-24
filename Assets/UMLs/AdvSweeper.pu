@@ -47,13 +47,13 @@ package Adv
         -_spawnRate:float
         -_spawnTable:List<EnemyData>
         -_itemTable:List<ItemData>
+        -_qualityRange:MinMax
         +<<property>>Floor:int{get only}
         +<<property>>SpawnRate:float{get only}
         +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
         +<<property>>ItemTable:IEnumerable<ItemData>{get only}
+        +<<property>>QualityRange:MinMax{get only}
         +Copy(data:StageData):void
-        +LottoSpawnTable(count:int):IEnumerable<EnemyData>
-        +LottoItemTable(count:int):IEnumerable<ItemData>
     }
     class Treasure
     {
@@ -278,7 +278,7 @@ package UI
         #_order:ItemViewOrder
         #_closeButton:Button
         -CreateItemNode(item:ItemData):void
-        #Close():void
+        +Close():void
         +Show(collection:ItemCollection):void
     }
     class ItemSelector

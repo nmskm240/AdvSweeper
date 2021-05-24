@@ -16,11 +16,14 @@ namespace Adv
         private List<EnemyData> _spawnTable = new List<EnemyData>();
         [SerializeField]
         private List<ItemData> _itemTable = new List<ItemData>();
+        [SerializeField, MinMaxRange(0,999)]
+        private MinMax _qualityRange;
 
         public int Floor{ get { return _floor; } }
         public float SpawnRate{ get { return _spawnRate; } }
         public IEnumerable<EnemyData> SpawnTable{ get { return _spawnTable; } }
         public IEnumerable<ItemData> ItemTable{ get { return _itemTable; } }
+        public MinMax QualityRange{ get { return _qualityRange; } }
 
         public void Copy(StageData data)
         {

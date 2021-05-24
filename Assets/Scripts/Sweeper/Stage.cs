@@ -66,6 +66,10 @@ namespace Sweeper
                 var items = new List<ItemData>();
                 var value = UnityEngine.Random.Range(1, 5);
                 items.AddRange(RandomWithWeight.Lottos<ItemData>(stageOption.ItemTable, value));
+                foreach(var item in items)
+                {
+                    item.Quality = (int)_stageData.QualityRange.randomValue;
+                }
                 SetContents(new Pick(items));
             }
             if(NowFloor < _stageData.Floor)
