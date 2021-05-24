@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,9 +28,11 @@ namespace Alchemy
 
         public ItemData Alchemy(IEnumerable<ItemData> materials)
         {
+            var product = ScriptableObject.Instantiate(_recipe.Product);
             var player = GameObject.Find("Player").GetComponent<Player>();
+            product.Quality = materials.Select(item => item.Quality).Sum() / materials.Count();
             player.RemoveItems(materials);
-            return ScriptableObject.Instantiate(_recipe.Product);
+            return product;
         }
     }
 }
