@@ -336,6 +336,10 @@ package UI
     }
 }
 
+abstract LongPressMonoBehaviour
+{
+    #OnLongPressed():void
+}
 abstract BaseData
 {
     -_id:string
@@ -346,6 +350,7 @@ abstract BaseData
     +<<property>>Name:string{get only}
     +<<property>>Info:string{get only}
     +<<property>>Image:Sprite{get only}
+    +Copy(data:BaseData):void
 }
 class BaseDataCompare
 class Player
@@ -414,6 +419,7 @@ Alchemist --|> Player
 
 ItemSelector --|> ItemViewer
 ItemSelectOrder --|> ItemViewOrder
+ItemNode --|> LongPressMonoBehaviour
 
 Stage -- StageInfo
 Dialog -- DialogType

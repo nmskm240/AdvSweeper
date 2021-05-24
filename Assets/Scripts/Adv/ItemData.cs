@@ -24,5 +24,15 @@ namespace Adv
         public IEnumerable<CategoryData> Categories{ get { return _categories; } }
         public IEnumerable<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
         public float Rarity{ get { return _rarity; } }
+
+        public new void Copy(ItemData data)
+        {
+            base.Copy(data);
+            _isMaterial = data.IsMaterial;
+            Quality = data.Quality;
+            _effects = data.Effects as List<EffectData>;
+            _categories = data.Categories as List<CategoryData>;
+            Characteristics = data.Characteristics as List<CharacteristicsData>;
+        }
     }
 }

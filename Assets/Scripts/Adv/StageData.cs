@@ -25,9 +25,9 @@ namespace Adv
         public IEnumerable<ItemData> ItemTable{ get { return _itemTable; } }
         public MinMax QualityRange{ get { return _qualityRange; } }
 
-        public void Copy(StageData data)
+        public new void Copy(StageData data)
         {
-            _name = data.Name;
+            base.Copy(data);
             _floor = data.Floor;
             _spawnRate = data.SpawnRate;
             _spawnTable = data.SpawnTable as List<EnemyData>;

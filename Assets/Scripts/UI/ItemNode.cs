@@ -1,14 +1,15 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.EventSystems;
+using TMPro;
+using MultiSceneManagement;
 using Adv;
 using Alchemy;
 
 namespace UI
 {
-    public class ItemNode : MonoBehaviour, IPointerClickHandler
+    public class ItemNode : LongPressMonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
         private Image _image;
@@ -30,8 +31,9 @@ namespace UI
             }
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             if (gameObject.scene.name == "MaterialSelect")
             {
                 var selectMaterial = Resources.Load("Datas/SelectMaterials") as ItemCollection;
@@ -72,6 +74,13 @@ namespace UI
                     selectMaterial.Contents.Add(_item);
                 }
             }
+        }
+
+        protected override void OnLongPressed()
+        {
+            var item = Resources.Load("Datas/ItemInfoOrder") as ItemData;
+            item.Copy(_item);
+            MultiSceneManager.LoadScene("ItemInfo");
         }
     }
 }

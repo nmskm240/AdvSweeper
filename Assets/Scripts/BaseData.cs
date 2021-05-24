@@ -15,4 +15,12 @@ public class BaseData : ScriptableObject
     public string Name{ get { return _name; } }
     public string Info{ get { return _info; } }
     public Sprite Image{ get { return _image; } }
+
+    public virtual void Copy(BaseData data)
+    {
+        _id = data.ID;
+        _name = data.Name;
+        _info = data.Info;
+        _image = data.Image;
+    }
 }
