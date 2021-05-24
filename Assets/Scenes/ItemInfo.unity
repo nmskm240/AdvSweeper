@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 205435567}
   - component: {fileID: 205435569}
   - component: {fileID: 205435568}
+  - component: {fileID: 205435570}
   m_Layer: 5
   m_Name: ItemInfoViewer
   m_TagString: Untagged
@@ -272,6 +273,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205435566}
   m_CullTransparentMesh: 0
+--- !u!114 &205435570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205435566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714bcf0c40066d7458db94410ec6cff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _order: {fileID: 11400000, guid: 669ff895aeb0d9a46b5b959f95d2b8d5, type: 2}
+  _itemName: {fileID: 1249769192}
+  _itemImage: {fileID: 703559664}
+  _itemQuality: {fileID: 811049580}
+  _effectIcons: {fileID: 176222926}
+  _characteristicIcons: {fileID: 1145274235}
 --- !u!1 &355362967
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +440,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703559662}
   m_CullTransparentMesh: 0
+--- !u!114 &811049580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 718647494782790246, guid: 662450352cc95e440a8f777d839b0b33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1704778762}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a2ea689a60e87409ec090c5d409e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &956064927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,7 +1418,7 @@ PrefabInstance:
     - target: {fileID: 55249975344539647, guid: 662450352cc95e440a8f777d839b0b33,
         type: 3}
       propertyPath: m_text
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 55249975344539647, guid: 662450352cc95e440a8f777d839b0b33,
         type: 3}
@@ -1402,7 +1433,7 @@ PrefabInstance:
     - target: {fileID: 5298629942781362983, guid: 662450352cc95e440a8f777d839b0b33,
         type: 3}
       propertyPath: m_Value
-      value: 421
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5298629942781362983, guid: 662450352cc95e440a8f777d839b0b33,
         type: 3}

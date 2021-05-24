@@ -52,3 +52,6 @@ MonoBehaviour:
   - _name: MaterialSelect
     _category: Sub
     _parentName: AlchemyMain
+  - _name: ItemInfo
+    _category: Info
+    _parentName: 
