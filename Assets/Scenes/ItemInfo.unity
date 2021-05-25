@@ -1430,6 +1430,16 @@ PrefabInstance:
       propertyPath: _options
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5298629942781362982, guid: 662450352cc95e440a8f777d839b0b33,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298629942781362982, guid: 662450352cc95e440a8f777d839b0b33,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5298629942781362983, guid: 662450352cc95e440a8f777d839b0b33,
         type: 3}
       propertyPath: m_Value
