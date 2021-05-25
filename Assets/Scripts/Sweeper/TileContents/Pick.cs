@@ -32,10 +32,10 @@ namespace Sweeper.TileContents
             var items = new List<ItemData>();
             foreach(var item in _datas)
             {
-                items.Add(ScriptableObject.Instantiate(item));
+                items.Add(item);
             }
             player.GetItems(items);
-            Observable.FromCoroutine(OpenProcess).Subscribe(x => {});
+            Observable.FromCoroutine(OpenProcess).Subscribe();
         }
 
         private IEnumerator OpenProcess()

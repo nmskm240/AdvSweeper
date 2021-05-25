@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950886f5b078a01459ad7eb76c1a2a2f, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
+  _id: 
   _name: "\u30C6\u30B9\u30C8\u30B9\u30C6\u30FC\u30B8"
+  _info: 
+  _image: {fileID: 0}
   _floor: 2
   _spawnRate: 0.15
   _spawnTable:
@@ -24,3 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a92377c47f77ee840a546645f05a9875, type: 2}
   - {fileID: 11400000, guid: cfea5f7e831bc0c4d904dc0f0512e6cf, type: 2}
   - {fileID: 11400000, guid: 3607e2d90017dd14d871cf0ae99b6651, type: 2}
+  _qualityRange:
+    min: 10
+    max: 25

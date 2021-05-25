@@ -65,10 +65,11 @@ namespace Sweeper
             {
                 var items = new List<ItemData>();
                 var value = UnityEngine.Random.Range(1, 5);
-                items.AddRange(RandomWithWeight.Lottos<ItemData>(stageOption.ItemTable, value));
-                foreach(var item in items)
+                foreach(var data in RandomWithWeight.Lottos<ItemData>(stageOption.ItemTable, value))
                 {
+                    var item = ScriptableObject.Instantiate(data);
                     item.Quality = (int)_stageData.QualityRange.randomValue;
+                    items.Add(item);
                 }
                 SetContents(new Pick(items));
             }

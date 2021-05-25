@@ -32,6 +32,7 @@ namespace Adv
             _spawnRate = data.SpawnRate;
             _spawnTable = data.SpawnTable as List<EnemyData>;
             _itemTable = data.ItemTable as List<ItemData>;
+            _qualityRange = data.QualityRange;
         }
     }
 }
