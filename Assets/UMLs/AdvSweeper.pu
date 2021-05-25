@@ -30,6 +30,7 @@ package Adv
         -_categories:List<CategoryData>
         +<<property>>IsMaterial:bool{get only}
         +<<property>>Quality:int
+        +<<property>>Price:int
         +<<property>>Effects:IEnumerable<EffectData>{get only}
         +<<property>>Categories:IEnumerable<CategoryData>{get only}
         +<<private>>Characteristics:IEnumerable<CharacteristicsData>

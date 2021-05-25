@@ -20,6 +20,7 @@ namespace Adv
 
         public bool IsMaterial{ get{ return _isMaterial; } }
         public int Quality{ get; set; }
+        public int Price{ get; set; }
         public IEnumerable<EffectData> Effects{ get { return _effects; } }
         public IEnumerable<CategoryData> Categories{ get { return _categories; } }
         public IEnumerable<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
