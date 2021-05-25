@@ -1,5 +1,5 @@
 using UnityEngine;
-using UI;
+using UI.Popups;
 
 namespace Sweeper.TileContents
 {

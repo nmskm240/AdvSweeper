@@ -1,4 +1,4 @@
-namespace UI
+namespace UI.Popups
 {
     public enum DialogType
     {

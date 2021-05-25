@@ -1,7 +1,7 @@
 using UnityEngine;
 using MultiSceneManagement;
 using Adv;
-using UI;
+using UI.Popups;
 
 namespace Sweeper.TileContents
 {

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace UI
+namespace UI.Counters
 {    
     public class ContentsCounter : MonoBehaviour 
     {

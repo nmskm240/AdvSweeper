@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Viewers
 {
     public class ItemNodeFactory : Object, IFactory<GameObject>
     {

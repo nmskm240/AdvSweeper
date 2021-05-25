@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace UI
+namespace UI.Popups
 {    
     public class Dialog : MonoBehaviour 
     {

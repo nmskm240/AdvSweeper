@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Adv;
 
-namespace UI
+namespace UI.Viewers
 {
     public class ItemSelector : ItemViewer
     {

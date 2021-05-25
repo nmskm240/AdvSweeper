@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 using Sweeper.TileContents;
-using UI;
+using UI.Counters;
 
 namespace Sweeper
 {

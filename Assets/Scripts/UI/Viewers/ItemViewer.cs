@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using MultiSceneManagement;
 using Adv;
 
-namespace UI
+namespace UI.Viewers
 {
     public class ItemViewer : MonoBehaviour
     {

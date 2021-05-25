@@ -209,27 +209,104 @@ package Sweeper
 
 package UI
 {
-    class ContentsCounter
+    package Counters
     {
-        -_image:Sprite
-        -_value:TextMeshProUGUI
-        +<<property>>Value:int
-        +Init(image:Sprite,value:int,operand:bool,color:Color)
+        class ContentsCounter
+        {
+            -_image:Sprite
+            -_value:TextMeshProUGUI
+            +<<property>>Value:int
+            +Init(image:Sprite,value:int,operand:bool,color:Color)
+        }
+        class ContentsCounterFactory
     }
-    class ContentsCounterFactory
-    class Dialog
+    package Popups
     {
-        -_body:TextMeshProUGUI
-        -_onAgree:GameObject
-        -_onDisAgree:GameObject
-        +Show(type:DialogType,text:string,onAgree:Action,onDisAgree:Action)
+        class Dialog
+        {
+            -_body:TextMeshProUGUI
+            -_onAgree:GameObject
+            -_onDisAgree:GameObject
+            +Show(type:DialogType,text:string,onAgree:Action,onDisAgree:Action)
+        }
+        enum DialogType
+        {
+            AgreeOnly,
+            Switch,
+        }
+        class DialogFactory
     }
-    enum DialogType
+    package Sliders
     {
-        AgreeOnly,
-        Switch,
+        class SliderParameter
+        {
+            -_options:SliderParameterOptions
+            -_text:TextMeshProUGUI
+            -_value:TextMeshProUGUI
+            -_slider:Slider
+            +<<property>>Name:string{get only}
+            +<<property>>Min:float{get only}
+            +<<property>>Max:float{get only}
+            +<<property>>Value:float
+            +Init(name:string,min:float,max:float):void
+            +SetName(name:string):void
+            +Range(min:float,max:float):void
+        }
+        enum SliderParameterOptions
+        {
+            ValueNone,
+            ValueOnly,
+            ValueAndMax,
+        }
     }
-    class DialogFactory
+    package Viewers
+    {
+        class ItemInfoViewer
+        {
+            -_order:ItemData
+            -_itemName:TextMeshProUGUI
+            -_itemImage:Image
+            -_itemQuality:SliderParameter
+            -_effectIcons:Transform
+            -_characteristicIcons:Transform
+        }
+        class ItemNode
+        {
+            -_image:Image
+            -_text:TextMeshProUGUI
+            -_item:ItemData
+            -_holding:int
+            +<<property>>Item:ItemData{get only}
+            +<<property>>Holding:int
+            +Init(item:ItemData):void
+        }
+        class ItemNodeFactroy
+        class ItemViewer
+        {
+            -_contents:Transform
+            -_collections:ItemCollection
+            -_factory:IFactory<GameObject>
+            #_order:ItemViewOrder
+            #_closeButton:Button
+            -CreateItemNode(item:ItemData):void
+            +Close():void
+            +Show(collection:ItemCollection):void
+        }
+        class ItemSelector
+        {
+            -_selectedItems:ItemCollection
+            -_selectNum:int
+        }
+        class ItemViewOrder
+        {
+            +<<property>>IDs:List<string>
+            +Reset():void
+        }
+        class ItemSelectOrder
+        {
+            +SelectNum:int
+        }
+    }
     class StageInfo
     {
         -_contents:Transform
@@ -241,68 +318,14 @@ package UI
         +ShowContents(option:StageOption)
         -CountContents<T>(list:IEnumerable<T>)
     }
-    class SliderParameter
-    {
-        -_options:SliderParameterOptions
-        -_text:TextMeshProUGUI
-        -_value:TextMeshProUGUI
-        -_slider:Slider
-        +<<property>>Name:string{get only}
-        +<<property>>Min:float{get only}
-        +<<property>>Max:float{get only}
-        +<<property>>Value:float
-        +Init(name:string,min:float,max:float):void
-        +SetName(name:string):void
-        +Range(min:float,max:float):void
-    }
-    enum SliderParameterOptions
-    {
-        ValueNone,
-        ValueOnly,
-        ValueAndMax,
-    }
+
     class StageNode
     {
         -_text:TextMeshProUGUI
         -_base:StageData
         -_loadStageData:StageData
     }
-    class ItemNode
-    {
-        -_image:Image
-        -_text:TextMeshProUGUI
-        -_item:ItemData
-        -_holding:int
-        +<<property>>Item:ItemData{get only}
-        +<<property>>Holding:int
-        +Init(item:ItemData):void
-    }
-    class ItemNodeFactroy
-    class ItemViewer
-    {
-        -_contents:Transform
-        -_collections:ItemCollection
-        -_factory:IFactory<GameObject>
-        #_order:ItemViewOrder
-        #_closeButton:Button
-        -CreateItemNode(item:ItemData):void
-        +Close():void
-        +Show(collection:ItemCollection):void
-    }
-    class ItemSelector
-    {
-        -_selectedItems:ItemCollection
-        -_selectNum:int
-    }
-    class ItemViewOrder
-    {
-        +<<property>>IDs:List<string>
-        +Reset():void
-    }
-    class ItemSelectOrder
-    {
-        +SelectNum:int
-    }
+
     class PickItemFactory
     class PickItem
     {

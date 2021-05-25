@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UI;
+using UI.Popups;
+using UI.Sliders;
 
 namespace Adv
 {

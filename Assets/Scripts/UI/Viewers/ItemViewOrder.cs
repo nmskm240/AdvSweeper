@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UI
+namespace UI.Viewers
 {    
     [CreateAssetMenu(fileName = "ItemViewOrder", menuName = "AdvSweeper/ItemViewOrder", order = 0)]
     public class ItemViewOrder : ScriptableObject 

@@ -6,6 +6,7 @@ using TMPro;
 using Sweeper;
 using Sweeper.TileContents;
 using Adv;
+using UI.Counters;
 
 namespace UI
 {

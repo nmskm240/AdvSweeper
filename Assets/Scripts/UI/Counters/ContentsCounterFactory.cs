@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Counters
 {
     public class  ContentsCounterFactory : Object, IFactory<GameObject>
     {

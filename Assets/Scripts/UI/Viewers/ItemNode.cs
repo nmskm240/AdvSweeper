@@ -6,8 +6,9 @@ using TMPro;
 using MultiSceneManagement;
 using Adv;
 using Alchemy;
+using UI.Popups;
 
-namespace UI
+namespace UI.Viewers
 {
     public class ItemNode : LongPressMonoBehaviour, IPointerClickHandler
     {

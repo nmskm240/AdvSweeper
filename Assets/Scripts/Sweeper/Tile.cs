@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sweeper.TileContents;
 using Adv;
-using UI;
+using UI.Counters;
 
 namespace Sweeper
 {    

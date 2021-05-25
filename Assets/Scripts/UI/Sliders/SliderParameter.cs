@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-namespace UI
+namespace UI.Sliders
 {
     public class SliderParameter : MonoBehaviour
     {

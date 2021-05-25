@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Adv;
+using UI.Sliders;
 
-namespace UI
+namespace UI.Viewers
 {    
     public class ItemInfoViewer : MonoBehaviour 
     {

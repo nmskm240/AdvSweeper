@@ -1,4 +1,4 @@
-namespace UI
+namespace UI.Sliders
 {
     public enum SliderParameterOptions
     {
