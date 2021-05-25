@@ -15,13 +15,13 @@ namespace UI.Viewers
         [SerializeField]
         private Image _itemImage;
         [SerializeField]
-        private SliderParameter _itemQuality;
+        private CycleSlider _itemQuality;
         [SerializeField]
         private Transform _effectIcons;
         [SerializeField]
         private Transform _characteristicIcons;
 
-        private void Awake()
+        private void Start()
         {
             _itemName.text = _order.Name;
             _itemImage.sprite = _order.Image;
