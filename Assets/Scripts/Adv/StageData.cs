@@ -12,6 +12,8 @@ namespace Adv
         private int _floor = 1;
         [SerializeField, Range(0f,0.3f)]
         private float _spawnRate = 0.15f;
+        [SerializeField, Range(0f,1f)]
+        private float _openableRate = 0.75f;
         [SerializeField]
         private List<EnemyData> _spawnTable = new List<EnemyData>();
         [SerializeField]
@@ -21,6 +23,7 @@ namespace Adv
 
         public int Floor{ get { return _floor; } }
         public float SpawnRate{ get { return _spawnRate; } }
+        public float OpenableRate{ get{ return _openableRate; } }
         public IEnumerable<EnemyData> SpawnTable{ get { return _spawnTable; } }
         public IEnumerable<ItemData> ItemTable{ get { return _itemTable; } }
         public MinMax QualityRange{ get { return _qualityRange; } }

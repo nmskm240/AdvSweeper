@@ -143,7 +143,7 @@ namespace Sweeper
             {
                 Enemy = enemy,
                 PickPoint = pickPoint,
-                Openable = (int)(Mathf.Pow(size, 2) * 0.75f),
+                Openable = (int)(Mathf.Pow(size, 2) * _stageData.OpenableRate),
                 SpawnTable = RandomWithWeight.Lottos<EnemyData>(_stageData.SpawnTable, enemy),
                 ItemTable = _stageData.ItemTable,
             };

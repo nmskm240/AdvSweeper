@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950886f5b078a01459ad7eb76c1a2a2f, type: 3}
+  m_Name: Near-forest
+  m_EditorClassIdentifier: 
+  _id: Near-forest
+  _name: "\u8FD1\u304F\u306E\u68EE"
+  _info: 
+  _image: {fileID: 0}
+  _floor: 5
+  _spawnRate: 0.1
+  _openableRate: 0.75
+  _spawnTable:
+  - {fileID: 11400000, guid: ddf9be033b669394eb872cea130d1867, type: 2}
+  - {fileID: 11400000, guid: 723c7208b29017343b5468825c702dd3, type: 2}
+  - {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
+  _itemTable:
+  - {fileID: 11400000, guid: da8f71030585c8d468a00065d3babd36, type: 2}
+  - {fileID: 11400000, guid: a92377c47f77ee840a546645f05a9875, type: 2}
+  - {fileID: 11400000, guid: cfea5f7e831bc0c4d904dc0f0512e6cf, type: 2}
+  _qualityRange:
+    min: 25
+    max: 40
