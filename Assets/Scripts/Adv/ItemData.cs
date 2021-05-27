@@ -6,7 +6,7 @@ using Alchemy;
 
 namespace Adv
 {    
-    [CreateAssetMenu(fileName = "ItemData", menuName = "AdvSweeper/ItemData", order = 0)]
+    [System.Serializable, CreateAssetMenu(fileName = "ItemData", menuName = "AdvSweeper/ItemData", order = 0)]
     public class ItemData : AlchemyMaterial, IHaveRarity
     {
         [SerializeField]
@@ -34,6 +34,21 @@ namespace Adv
             _effects = data.Effects as List<EffectData>;
             _categories = data.Categories as List<CategoryData>;
             Characteristics = data.Characteristics as List<CharacteristicsData>;
+        }
+
+        public override string ToString()
+        {
+            var effectIDs = "";
+            var characteristicIDs = "";
+            foreach(var effect in Effects)
+            {
+                effectIDs += effect.ID + ","; 
+            }
+            foreach(var characteristic in Characteristics)
+            {
+                characteristicIDs += characteristic.ID + ",";
+            }
+            return ID + " " + Quality + " " + effectIDs + " " + characteristicIDs;
         }
     }
 }
