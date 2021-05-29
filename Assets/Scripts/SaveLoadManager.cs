@@ -9,15 +9,12 @@ using Adv;
 public class SaveLoadManager : MonoBehaviour 
 {
     [SerializeField]
-    private ItemCollection _container;
-
-    private SaveData _data;
+    private SaveData _data = new SaveData();
     private string _filePath;
 
     private void Awake()
     {
         _filePath = Application.persistentDataPath + "/savedata.json";
-        _data = new SaveData(_container);
     }
 
     private IEnumerator Start()
@@ -34,7 +31,6 @@ public class SaveLoadManager : MonoBehaviour
     public void Save()
     {
         var json = JsonUtility.ToJson(_data, true);
- 
         var streamWriter = new StreamWriter(_filePath);
         streamWriter.Write(json);
         streamWriter.Flush();
@@ -47,9 +43,10 @@ public class SaveLoadManager : MonoBehaviour
         {
             var streamReader = new StreamReader(_filePath);
             var data = streamReader.ReadToEnd();
+            var container = Resources.Load("Datas/Container") as ItemCollection;
             streamReader.Close();
             _data = JsonUtility.FromJson<SaveData>(data);
-            foreach(var itemData in _data.Container)
+            foreach(var itemData in _data.ContainerDatas)
             {
                 var datas = itemData.Split(' ');
                 var item = Instantiate(Resources.Load("Datas/Item/" + datas[0])) as ItemData;
@@ -62,7 +59,7 @@ public class SaveLoadManager : MonoBehaviour
                 {
                     item.Characteristics.Append(Resources.Load("Datas/Characteristics/" + characteristic));
                 }
-                _container.Contents.Add(item);
+                container.Contents.Add(item);
             }
         }
     }

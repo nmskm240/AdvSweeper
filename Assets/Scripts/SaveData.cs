@@ -5,20 +5,17 @@ using Adv;
 [System.Serializable]
 public class SaveData : ISerializationCallbackReceiver
 {
+    [SerializeField]
     private ItemCollection _container;
 
-    public List<string> Container = new List<string>();
-
-    public SaveData(ItemCollection container)
-    {
-        _container = container;
-    }
+    public List<string> ContainerDatas = new List<string>();
 
     public void OnBeforeSerialize()
     {
+        ContainerDatas.Clear();
         foreach (var item in _container.Contents)
         {
-            Container.Add(item.ToString());
+            ContainerDatas.Add(item.ToString());
         }
     }
 

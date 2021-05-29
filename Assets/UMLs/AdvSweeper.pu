@@ -386,6 +386,18 @@ class Player
     +RemoveItems(items:IEnumerable<ItemData>):void
 }
 class GameManager
+class SaveData
+{
+    -_container:ItemCollection
+    +ContainerDatas:List<string>
+}
+class SaveLoadManager
+{
+    -_data:SaveData
+    -_filePath:string
+    +Save():void
+    +Load():void
+}
 interface IFactory<T>
 {
     +Create():T
@@ -426,6 +438,8 @@ ItemData ..|> IHaveRariry
 ItemDataCompare ..|> IEqualityComparer
 BaseDataCompare ..|> IEqualityComparer
 
+SaveData ..|> ISerializationCallbackReceiver
+
 RecipeData --|> BaseData
 AlchemyMaterial --|> BaseData
 CharacteristicsData --|> BaseData
@@ -462,5 +476,6 @@ CharacteristicsData --o ItemData
 ItemNode --o ItemViewer
 
 MaterialAndQuantity --* RecipeData
+SaveData --* SaveLoadManager
 
 @enduml
