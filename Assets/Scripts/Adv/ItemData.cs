@@ -21,7 +21,7 @@ namespace Adv
         public int Price{ get; set; }
         public IEnumerable<EffectData> Effects{ get { return _effects; } }
         public IEnumerable<CategoryData> Categories{ get { return _categories; } }
-        public IEnumerable<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
+        public List<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
 
         public new void Copy(ItemData data)
         {

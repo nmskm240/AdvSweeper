@@ -25,7 +25,7 @@ package Adv
         +<<property>>Price:int
         +<<property>>Effects:IEnumerable<EffectData>{get only}
         +<<property>>Categories:IEnumerable<CategoryData>{get only}
-        +<<private>>Characteristics:IEnumerable<CharacteristicsData>
+        +<<private>>Characteristics:List<CharacteristicsData>
     }
     class EnemyData
     {
@@ -40,11 +40,13 @@ package Adv
         -_spawnRate:float
         -_spawnTable:List<WeightNode<EnemyData>>
         -_itemTable:List<WeightNode<ItemData>>
+        -_characteristicsTable:List<WeightNode<CharacteristicsData>>
         -_qualityRange:MinMax
         +<<property>>Floor:int{get only}
         +<<property>>SpawnRate:float{get only}
         +<<property>>SpawnTable:IEnumerable<WeightNode<EnemyData>>{get only}
         +<<property>>ItemTable:IEnumerable<WeightNode<ItemData>>{get only}
+        +<<property>>CharacteristicsTable:IEnumerable<WeightNode<CharacteristicsData>>{get only}
         +<<property>>QualityRange:MinMax{get only}
         +Copy(data:StageData):void
     }
@@ -71,6 +73,10 @@ package Alchemy
 {
     class CategoryData
     class CharacteristicsData
+    {
+        -_effect:IEffect
+        +<<property>>Effect:IEnumerable<IEffect>{get only}
+    }
     class RecipeData
     {
         -_needMaterials:List<MaterialAndQuantity>

@@ -8,5 +8,7 @@ namespace Alchemy
     {
         [SerializeReference, SubclassSelector]
         private IEffect _effect;
+
+        public IEffect Effect{ get { return _effect; } }
     }
 }

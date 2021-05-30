@@ -12,21 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950886f5b078a01459ad7eb76c1a2a2f, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  _id: 
+  _id: TestStage
   _name: "\u30C6\u30B9\u30C8\u30B9\u30C6\u30FC\u30B8"
-  _info: 
+  _info: "\u30C6\u30B9\u30C8\u30B9\u30C6\u30FC\u30B8"
   _image: {fileID: 0}
   _floor: 2
   _spawnRate: 0.15
+  _openableRate: 0.75
   _spawnTable:
-  - {fileID: 11400000, guid: 723c7208b29017343b5468825c702dd3, type: 2}
-  - {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
+  - Node: {fileID: 11400000, guid: 57062ad5f13542a4bae9e0a23993b540, type: 2}
+    Weight: 1
   _itemTable:
-  - {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
-  - {fileID: 11400000, guid: da8f71030585c8d468a00065d3babd36, type: 2}
-  - {fileID: 11400000, guid: a92377c47f77ee840a546645f05a9875, type: 2}
-  - {fileID: 11400000, guid: cfea5f7e831bc0c4d904dc0f0512e6cf, type: 2}
-  - {fileID: 11400000, guid: 3607e2d90017dd14d871cf0ae99b6651, type: 2}
+  - Node: {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
+    Weight: 1
+  _characteristicsTable:
+  - Node: {fileID: 11400000, guid: d0299db821b58024cac67a77eedcb106, type: 2}
+    Weight: 1
+  - Node: {fileID: 11400000, guid: 3f5f923435bd44e4a83b44a4cebe7a06, type: 2}
+    Weight: 1
+  - Node: {fileID: 11400000, guid: af2b92c4213fd6549afc272789c4a334, type: 2}
+    Weight: 1
   _qualityRange:
     min: 10
     max: 25
