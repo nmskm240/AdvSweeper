@@ -15,14 +15,6 @@ package Adv
             +<<property>>Effect:IEffect
         }
     }
-    interface IHaveRariry
-    {
-        +<<property>>Rarity:int{get only}
-    }
-    class RandomWithWeight <<static>>
-    {
-        +<<static>>Lotto<T>(item:IEnumerable<T>):IEnumerable<T>
-    }
     class ItemData
     {
         -_isMaterial:bool
@@ -46,13 +38,13 @@ package Adv
     {
         -_floor:int
         -_spawnRate:float
-        -_spawnTable:List<EnemyData>
-        -_itemTable:List<ItemData>
+        -_spawnTable:List<WeightNode<EnemyData>>
+        -_itemTable:List<WeightNode<ItemData>>
         -_qualityRange:MinMax
         +<<property>>Floor:int{get only}
         +<<property>>SpawnRate:float{get only}
-        +<<property>>SpawnTable:IEnumerable<EnemyData>{get only}
-        +<<property>>ItemTable:IEnumerable<ItemData>{get only}
+        +<<property>>SpawnTable:IEnumerable<WeightNode<EnemyData>>{get only}
+        +<<property>>ItemTable:IEnumerable<WeightNode<ItemData>>{get only}
         +<<property>>QualityRange:MinMax{get only}
         +Copy(data:StageData):void
     }
@@ -417,21 +409,11 @@ ItemNodeFactroy ..|> IFactory
 PickItemFactory ..|> IFactory
 MaterialNodeFactory --|> IFactory
 
-TileFactory ..> Tile : Create
-DialogFactory ..> Dialog : Create
-ContentsCounterFactory ..> ContentsCounter : Create
-ItemNodeFactroy ..> ItemNode : Create
-PickItemFactory ..> PickItem : Create
-MaterialNodeFactory ..> MaterialNode : Create
-
 TileController ..|> IPointerClickHandler
 StageNode ..|> IPointerClickHandler
 ItemNode ..|> IPointerClickHandler
 RecipeNode ..|> IPointerClickHandler
 MaterialNode ..|> IPointerClickHandler
-
-EnemyData ..|> IHaveRariry
-ItemData ..|> IHaveRariry
 
 各種効果 ..|> IEffect
 
@@ -462,10 +444,6 @@ ItemNode --|> LongPressMonoBehaviour
 Stage -- StageInfo
 Dialog -- DialogType
 
-MaterialNode --> ItemSelectOrder : Data set
-ItemViewer --> ItemViewOrder : Data set & load
-ItemSelector --> ItemSelectOrder : Data set & load
-
 TileController *--> Tile
 TileController *--> TileView
 Tile *--> ITileContents
@@ -477,5 +455,15 @@ ItemNode --o ItemViewer
 
 MaterialAndQuantity --* RecipeData
 SaveData --* SaveLoadManager
+
+TileFactory ..> Tile : Create
+DialogFactory ..> Dialog : Create
+ContentsCounterFactory ..> ContentsCounter : Create
+ItemNodeFactroy ..> ItemNode : Create
+PickItemFactory ..> PickItem : Create
+MaterialNodeFactory ..> MaterialNode : Create
+MaterialNode ..> ItemSelectOrder : Data set
+ItemViewer ..> ItemViewOrder : Data set & load
+ItemSelector ..> ItemSelectOrder : Data set & load
 
 @enduml
