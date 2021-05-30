@@ -65,7 +65,6 @@ package Adv
     {
         +<<property>>Contents:List<ItemData>
     }
-    class ItemDataCompare
 }
 
 package Alchemy
@@ -368,7 +367,7 @@ abstract BaseData
     +<<property>>Image:Sprite{get only}
     +Copy(data:BaseData):void
 }
-class BaseDataCompare
+class ObjectCompare<T>
 class Player
 {
     -_container:ItemCollection
@@ -417,8 +416,7 @@ MaterialNode ..|> IPointerClickHandler
 
 各種効果 ..|> IEffect
 
-ItemDataCompare ..|> IEqualityComparer
-BaseDataCompare ..|> IEqualityComparer
+ObjectCompare ..|> IEqualityComparer
 
 SaveData ..|> ISerializationCallbackReceiver
 
