@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 using Adv;
 
@@ -8,6 +9,7 @@ public class DebugManager : MonoBehaviour
     [SerializeField]
     private ItemData _item;
 
+    [Conditional("UNITY_EDITOR")]
     private void OnGUI() 
     {
         if(GUI.Button(new Rect(0,0,100,20), "create"))
