@@ -7,7 +7,7 @@ using Alchemy;
 namespace Adv
 {    
     [System.Serializable, CreateAssetMenu(fileName = "ItemData", menuName = "AdvSweeper/ItemData", order = 0)]
-    public class ItemData : AlchemyMaterial, IHaveRarity
+    public class ItemData : AlchemyMaterial
     {
         [SerializeField]
         private bool _isMaterial;
@@ -15,8 +15,6 @@ namespace Adv
         private List<EffectData> _effects;
         [SerializeField]
         private List<CategoryData> _categories;
-        [SerializeField, Range(0.1f,100)]
-        private float _rarity;
 
         public bool IsMaterial{ get{ return _isMaterial; } }
         public int Quality{ get; set; }
@@ -24,7 +22,6 @@ namespace Adv
         public IEnumerable<EffectData> Effects{ get { return _effects; } }
         public IEnumerable<CategoryData> Categories{ get { return _categories; } }
         public IEnumerable<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
-        public float Rarity{ get { return _rarity; } }
 
         public new void Copy(ItemData data)
         {

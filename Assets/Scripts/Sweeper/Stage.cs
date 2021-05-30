@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using RandomWithWeights;
 using Sweeper.TileContents;
 using Adv;
 using UI;
@@ -65,7 +66,7 @@ namespace Sweeper
             {
                 var items = new List<ItemData>();
                 var value = UnityEngine.Random.Range(1, 5);
-                foreach(var data in RandomWithWeight.Lottos<ItemData>(stageOption.ItemTable, value))
+                foreach(var data in RandomWithWeight.Lottos<ItemData>(_stageData.ItemTable, value))
                 {
                     var item = ScriptableObject.Instantiate(data);
                     item.Quality = (int)_stageData.QualityRange.randomValue;
@@ -145,7 +146,6 @@ namespace Sweeper
                 PickPoint = pickPoint,
                 Openable = (int)(Mathf.Pow(size, 2) * _stageData.OpenableRate),
                 SpawnTable = RandomWithWeight.Lottos<EnemyData>(_stageData.SpawnTable, enemy),
-                ItemTable = _stageData.ItemTable,
             };
             NowFloor++;
             Create(size, size, option);

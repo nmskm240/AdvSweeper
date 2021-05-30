@@ -20,13 +20,21 @@ MonoBehaviour:
   _spawnRate: 0.1
   _openableRate: 0.75
   _spawnTable:
-  - {fileID: 11400000, guid: ddf9be033b669394eb872cea130d1867, type: 2}
-  - {fileID: 11400000, guid: 723c7208b29017343b5468825c702dd3, type: 2}
-  - {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
+  - Node: {fileID: 11400000, guid: e986dee831769024da9ede38f760406e, type: 2}
+    Weight: 1
+  - Node: {fileID: 11400000, guid: 723c7208b29017343b5468825c702dd3, type: 2}
+    Weight: 1
+  - Node: {fileID: 11400000, guid: ddf9be033b669394eb872cea130d1867, type: 2}
+    Weight: 1
   _itemTable:
-  - {fileID: 11400000, guid: da8f71030585c8d468a00065d3babd36, type: 2}
-  - {fileID: 11400000, guid: a92377c47f77ee840a546645f05a9875, type: 2}
-  - {fileID: 11400000, guid: cfea5f7e831bc0c4d904dc0f0512e6cf, type: 2}
+  - Node: {fileID: 11400000, guid: da8f71030585c8d468a00065d3babd36, type: 2}
+    Weight: 1.5
+  - Node: {fileID: 11400000, guid: a92377c47f77ee840a546645f05a9875, type: 2}
+    Weight: 1
+  - Node: {fileID: 11400000, guid: cfea5f7e831bc0c4d904dc0f0512e6cf, type: 2}
+    Weight: 1
+  - Node: {fileID: 11400000, guid: 59fc31bba624bc846b558f84f87e9edf, type: 2}
+    Weight: 2
   _qualityRange:
     min: 25
     max: 40
