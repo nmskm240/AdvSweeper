@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: QualityUp_Lv1
   _name: "\u54C1\u8CEA\u4E0A\u6607 Lv1"
   _info: "\u54C1\u8CEA\u304C5\u4E0A\u304C\u308B"
-  _image: {fileID: 0}
+  _image: {fileID: 21300000, guid: 8a629867d3f26754b92b174b00b7050c, type: 3}
   _effect:
     id: 0
   references:

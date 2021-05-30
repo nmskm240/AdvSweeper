@@ -19,8 +19,8 @@ namespace Adv
         public bool IsMaterial{ get{ return _isMaterial; } }
         public int Quality{ get; set; }
         public int Price{ get; set; }
-        public IEnumerable<EffectData> Effects{ get { return _effects; } }
-        public IEnumerable<CategoryData> Categories{ get { return _categories; } }
+        public List<EffectData> Effects{ get { return _effects; } }
+        public List<CategoryData> Categories{ get { return _categories; } }
         public List<CharacteristicsData> Characteristics{ get; set; } = new List<CharacteristicsData>();
 
         public new void Copy(ItemData data)
@@ -35,17 +35,12 @@ namespace Adv
 
         public override string ToString()
         {
-            var effectIDs = "";
             var characteristicIDs = "";
-            foreach(var effect in Effects)
-            {
-                effectIDs += effect.ID + ","; 
-            }
             foreach(var characteristic in Characteristics)
             {
                 characteristicIDs += characteristic.ID + ",";
             }
-            return ID + " " + Quality + " " + effectIDs + " " + characteristicIDs;
+            return ID + " " + Quality + " " + characteristicIDs;
         }
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: Heal
   _name: "\u50B7\u304C\u76F4\u308B"
   _info: "\u4F53\u529B\u30922\u56DE\u5FA9\u3059\u308B"
-  _image: {fileID: 0}
+  _image: {fileID: 21300000, guid: 30f5f292f1b9d7d4384be5f3be914f67, type: 3}
   _effect:
     id: 0
   references:
