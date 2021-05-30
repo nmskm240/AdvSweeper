@@ -53,12 +53,7 @@ public class SaveLoadManager : MonoBehaviour
                 var datas = itemData.Split(' ');
                 var item = Instantiate(Resources.Load("Datas/Item/" + datas[0])) as ItemData;
                 item.Quality = int.TryParse(datas[1], out var result) ? result : 0;
-                foreach (var effect in datas[2].Split(','))
-                {
-                    if (string.IsNullOrEmpty(effect)) continue;
-                    item.Effects.Add(Resources.Load("Datas/Effect/" + effect) as EffectData);
-                }
-                foreach (var characteristic in datas[3].Split(','))
+                foreach (var characteristic in datas[2].Split(','))
                 {
                     if (string.IsNullOrEmpty(characteristic)) continue;
                     item.Characteristics.Add(Resources.Load("Datas/Characteristic/" + characteristic) as CharacteristicsData);
