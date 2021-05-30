@@ -45,8 +45,8 @@ public class SaveLoadManager : MonoBehaviour
             var data = streamReader.ReadToEnd();
             var container = Resources.Load("Datas/Container") as ItemCollection;
             streamReader.Close();
-            _data = JsonUtility.FromJson<SaveData>(data);
-            foreach(var itemData in _data.ContainerDatas)
+            var savedata = JsonUtility.FromJson<SaveData>(data);
+            foreach(var itemData in savedata.ContainerDatas)
             {
                 var datas = itemData.Split(' ');
                 var item = Instantiate(Resources.Load("Datas/Item/" + datas[0])) as ItemData;
