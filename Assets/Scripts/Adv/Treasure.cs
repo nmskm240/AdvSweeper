@@ -55,7 +55,7 @@ namespace Adv
 
         public void SwapToContainer()
         {
-            _container.Contents.AddRange(_basket.Contents);
+            base.GetItems(_basket.Contents);
             _basket.Contents.Clear();
         }
 
