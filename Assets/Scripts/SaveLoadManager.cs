@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using MultiSceneManagement;
 using Adv;
+using Adv.Effects;
+using Alchemy;
 
-public class SaveLoadManager : MonoBehaviour 
+public class SaveLoadManager : MonoBehaviour
 {
     [SerializeField]
     private SaveData _data = new SaveData();
@@ -21,7 +23,7 @@ public class SaveLoadManager : MonoBehaviour
     {
         Load();
         yield return new WaitWhile(() => MultiSceneManager.IsLoaded("Title"));
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(30f);
             Save();
@@ -36,7 +38,7 @@ public class SaveLoadManager : MonoBehaviour
         streamWriter.Flush();
         streamWriter.Close();
     }
-     
+
     public void Load()
     {
         if (File.Exists(_filePath))
@@ -46,18 +48,20 @@ public class SaveLoadManager : MonoBehaviour
             var container = Resources.Load("Datas/Container") as ItemCollection;
             streamReader.Close();
             var savedata = JsonUtility.FromJson<SaveData>(data);
-            foreach(var itemData in savedata.ContainerDatas)
+            foreach (var itemData in savedata.ContainerDatas)
             {
                 var datas = itemData.Split(' ');
                 var item = Instantiate(Resources.Load("Datas/Item/" + datas[0])) as ItemData;
-                item.Quality = int.Parse(datas[1]);
-                foreach(var effect in datas[2].Split(','))
+                item.Quality = int.TryParse(datas[1], out var result) ? result : 0;
+                foreach (var effect in datas[2].Split(','))
                 {
-                    item.Effects.Append(Resources.Load("Datas/Effect/" + effect));
+                    if (string.IsNullOrEmpty(effect)) continue;
+                    item.Effects.Add(Resources.Load("Datas/Effect/" + effect) as EffectData);
                 }
-                foreach(var characteristic in datas[3].Split(','))
+                foreach (var characteristic in datas[3].Split(','))
                 {
-                    item.Characteristics.Append(Resources.Load("Datas/Characteristics/" + characteristic));
+                    if (string.IsNullOrEmpty(characteristic)) continue;
+                    item.Characteristics.Add(Resources.Load("Datas/Characteristic/" + characteristic) as CharacteristicsData);
                 }
                 container.Contents.Add(item);
             }
