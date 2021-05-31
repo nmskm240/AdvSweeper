@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2debad004b34dec4499a84b7d833aabd, type: 3}
   m_Name: Neutralizer-blue
   m_EditorClassIdentifier: 
-  _id: 
+  _id: Neutralizer-blue
   _name: 
   _info: 
   _image: {fileID: 0}
-  _needMaterials:
-  - _material: {fileID: 11400000, guid: 642a756c87c26c649ace951a11998f45, type: 2}
-    _quantity: 5
-  _product: {fileID: 11400000, guid: b78c60eef68fb354d975710b49b95e2e, type: 2}
+  _recipe:
+    _materials:
+    - _material: {fileID: 11400000, guid: 642a756c87c26c649ace951a11998f45, type: 2}
+      _quantity: 5
+    _product: {fileID: 11400000, guid: b78c60eef68fb354d975710b49b95e2e, type: 2}

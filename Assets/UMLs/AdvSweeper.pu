@@ -6,7 +6,7 @@ package Adv
     {
         interface IEffect
         {
-            +Activate():void
+            +Activate(item:ItemData):void
         }
         class 各種効果
         class EffectData
@@ -79,11 +79,9 @@ package Alchemy
     }
     class RecipeData
     {
-        -_needMaterials:List<MaterialAndQuantity>
-        -_product:ItemData
+        -_recipe:Synthesizer<MaterialAndQuantity, ItemData>
         +<<property>>NeedMaterials:List<MaterialAndQuantity>
         +<<property>>Product:ItemData
-        +Copy(data:RecipeData):void
     }
     class MaterialAndQuantity
     {
@@ -405,6 +403,13 @@ class SaveLoadManager
     +Save():void
     +Load():void
 }
+class Synthesizer<TMaterial, TProduct>
+{
+    -_materials:List<TMaterial>
+    -_product:TProduct
+    +<<property>>Materials:IEnumerable<TMaterial>
+    +<<property>>Product:TProduct
+}
 interface IFactory<T>
 {
     +Create():T
@@ -468,7 +473,7 @@ CategoryData --o ItemData
 CharacteristicsData --o ItemData
 ItemNode --o ItemViewer
 
-MaterialAndQuantity --* RecipeData
+Synthesizer --* RecipeData
 SaveData --* SaveLoadManager
 
 TileFactory ..> Tile : Create

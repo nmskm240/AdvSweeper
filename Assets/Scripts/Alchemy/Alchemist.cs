@@ -21,7 +21,8 @@ namespace Alchemy
         private void Awake()
         {
             var factory = new MaterialNodeFactory();
-            foreach (var materialAndQuantity in _selectRecipeData.NeedMaterials)
+            var recipe = Resources.Load("Datas/Recipe/" + _selectRecipeData.ID) as RecipeData;
+            foreach (var materialAndQuantity in recipe.NeedMaterials)
             {
                 var obj = factory.Create();
                 var node = obj.GetComponent<MaterialNode>();
@@ -30,7 +31,7 @@ namespace Alchemy
                 node.Init(materialAndQuantity);
                 _materialNodes.Add(node);
             }
-            _jar.SetRecipe(_selectRecipeData);
+            _jar.SetRecipe(recipe);
         }
 
         private void Update()

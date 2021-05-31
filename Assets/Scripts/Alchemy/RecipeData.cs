@@ -9,18 +9,9 @@ namespace Alchemy
     public class RecipeData : BaseData 
     {
         [SerializeField]
-        private List<MaterialAndQuantity> _needMaterials;
-        [SerializeField]
-        private ItemData _product;
+        private Synthesizer<MaterialAndQuantity, ItemData> _recipe = new Synthesizer<MaterialAndQuantity, ItemData>();
 
-        public IEnumerable<MaterialAndQuantity> NeedMaterials{ get { return _needMaterials; } }
-        public ItemData Product{ get { return _product; } }
-
-        public new void Copy(RecipeData data)
-        {
-            base.Copy(data);
-            _needMaterials = data.NeedMaterials as List<MaterialAndQuantity>;
-            _product = data.Product;
-        }
+        public IEnumerable<MaterialAndQuantity> NeedMaterials{ get { return _recipe.Materials; } }
+        public ItemData Product{ get { return _recipe.Product; } }
     }
 }
