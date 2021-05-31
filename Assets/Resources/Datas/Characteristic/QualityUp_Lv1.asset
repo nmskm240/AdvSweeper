@@ -21,4 +21,6 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: QualityChange, ns: Adv.Effects, asm: Assembly-CSharp}
+      data:
+        _quantity: 5
