@@ -9,7 +9,7 @@ namespace Adv.Effects
         [SerializeField]
         private ITileContents _targetContents;
 
-        public void Activate()
+        public void Activate(ItemData item)
         {
             var stage = GameObject.Find("Stage").GetComponent<Stage>();
             foreach(var obj in stage.Map)
