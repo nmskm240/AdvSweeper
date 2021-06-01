@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: CharacteristicsTree
   m_EditorClassIdentifier: 
   _nodes:
-    _materials: []
-    _product: {fileID: 0}
+  - _materials:
+    - {fileID: 11400000, guid: d0299db821b58024cac67a77eedcb106, type: 2}
+    - {fileID: 11400000, guid: 08ff27c61dbd72e4797352cf579051f3, type: 2}
+    _product: {fileID: 11400000, guid: a017c64a30b2a9b44ba1b3d41c3a3c8e, type: 2}
