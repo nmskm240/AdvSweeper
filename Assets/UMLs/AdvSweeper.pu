@@ -107,6 +107,11 @@ package Alchemy
         -_canAlchemy:bool
         +Alchemy():void
     }
+    class CharacteristicsTree
+    {
+        -_nodes:List<Synthesizer<CharacteristicsData,CharacteristicsData>>
+        +<<property>>Nodes:IEnumerable<Synthesizer<CharacteristicsData,CharacteristicsData>>
+    }
     abstract AlchemyMaterial
 }
 
