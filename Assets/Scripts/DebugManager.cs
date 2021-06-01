@@ -9,7 +9,7 @@ public class DebugManager : MonoBehaviour
     [SerializeField]
     private ItemData _item;
 
-    [Conditional("UNITY_EDITOR")]
+    #if UNITY_EDITOR
     private void OnGUI() 
     {
         if(GUI.Button(new Rect(0,0,100,20), "create"))
@@ -18,4 +18,5 @@ public class DebugManager : MonoBehaviour
             _container.Contents.Add(ScriptableObject.Instantiate(_item));
         }
     }
+    #endif
 }
