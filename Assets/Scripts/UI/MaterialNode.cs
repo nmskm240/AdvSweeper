@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using MultiSceneManagement;
 using TMPro;
+using UniRx;
 using Adv;
 using Alchemy;
 using UI.Viewers;
@@ -45,7 +46,8 @@ namespace UI
         {
             _order.IDs.Add(_materialAndQuantity.Material.ID);
             _order.SelectNum = _materialAndQuantity.Quantity;
-            _selectMaterials.Contents = _selectedMaterials;
+            _selectMaterials.Contents.Clear();
+            _selectMaterials.Contents.AddRange(_selectedMaterials);
             MultiSceneManager.LoadScene("MaterialSelect");
             StartCoroutine(WaitSelect());
         }
@@ -53,7 +55,8 @@ namespace UI
         private IEnumerator WaitSelect()
         {
             yield return new WaitWhile(() => MultiSceneManager.IsLoaded("MaterialSelect"));
-            _selectedMaterials = new List<ItemData>(_selectMaterials.Contents);
+            _selectedMaterials.Clear();
+            _selectedMaterials.AddRange(_selectMaterials.Contents);
             _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
             _selectMaterials.Contents.Clear();
             _order.Reset();
