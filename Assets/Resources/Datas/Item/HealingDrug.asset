@@ -17,6 +17,7 @@ MonoBehaviour:
   _info: "\u4F7F\u3046\u3068HP\u30922\u56DE\u5FA9\u3059\u308B\u3002"
   _image: {fileID: 21300000, guid: 17dbfd00050ed32429d0c0c9333fd721, type: 3}
   _isMaterial: 0
+  _price: 10
   _effects:
   - {fileID: 11400000, guid: e144ed758df5cbf4a8c6e062e9f9339a, type: 2}
   _categories:

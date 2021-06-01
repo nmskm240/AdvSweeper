@@ -72,7 +72,7 @@ namespace Sweeper
                     var item = ScriptableObject.Instantiate(data);
                     var characteristics = RandomWithWeight.Lottos<CharacteristicsData>(_stageData.CharacteristicsTable, UnityEngine.Random.Range(0, 3));
                     item.Quality = (int)_stageData.QualityRange.randomValue;
-                    item.Characteristics.AddRange(characteristics.Distinct(new ObjectCompare<CharacteristicsData>()));
+                    item.Init(characteristics.Distinct(new ObjectCompare<CharacteristicsData>()));
                     items.Add(item);
                 }
                 SetContents(new Pick(items));

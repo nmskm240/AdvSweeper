@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73ccf5d2d0cae445bf0cd6e96623f73, type: 3}
   m_Name: Neutralizer-yellow
   m_EditorClassIdentifier: 
-  _image: {fileID: 21300000, guid: 21f38b461c82fba4d87aec5074956a1c, type: 3}
   _id: Neutralizer-yellow
   _name: "\u4E2D\u548C\u5264\u3000\u9EC4"
   _info: 
+  _image: {fileID: 21300000, guid: 21f38b461c82fba4d87aec5074956a1c, type: 3}
   _isMaterial: 1
+  _price: 7
   _effects: []
   _categories:
   - {fileID: 11400000, guid: 097adad6fb8978e4795e8cf78328aaf5, type: 2}
   - {fileID: 11400000, guid: 3ea807ea5d47018488d1b56e7ea947f4, type: 2}
-  _rarity: 100
-  references:
-    version: 1
