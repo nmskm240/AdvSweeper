@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d880351ad376b94f967166279a7c7b7, type: 3}
-  m_Name: Container
+  m_Script: {fileID: 11500000, guid: c73ccf5d2d0cae445bf0cd6e96623f73, type: 3}
+  m_Name: ItemTemplate
   m_EditorClassIdentifier: 
-  _template: {fileID: 11400000, guid: edc5c4ec33f2fdf45aa7fc6b335765ca, type: 2}
-  Contents: []
+  _id: 
+  _name: 
+  _info: 
+  _image: {fileID: 0}
+  _isMaterial: 0
+  _effects: []
+  _categories: []

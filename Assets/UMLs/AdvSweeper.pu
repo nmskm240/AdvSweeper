@@ -115,6 +115,27 @@ package Alchemy
     abstract AlchemyMaterial
 }
 
+package SaveSystem
+{
+    interface ISavable<T>
+    {
+        +Serialize():string
+        +Deserialize(data:string):T
+    }
+    class SaveData
+    {
+        -_container:ItemCollection
+        +ContainerData:string
+    }
+    class SaveLoadManager
+    {
+        -_data:SaveData
+        -_filePath:string
+        +Save():void
+        +Load():void
+    }
+}
+
 package Sweeper
 {
     package TileContents
@@ -396,18 +417,6 @@ class Player
     +RemoveItems(items:IEnumerable<ItemData>):void
 }
 class GameManager
-class SaveData
-{
-    -_container:ItemCollection
-    +ContainerDatas:List<string>
-}
-class SaveLoadManager
-{
-    -_data:SaveData
-    -_filePath:string
-    +Save():void
-    +Load():void
-}
 class Synthesizer<TMaterial, TProduct>
 {
     -_materials:List<TMaterial>
@@ -446,6 +455,9 @@ MaterialNode ..|> IPointerClickHandler
 ObjectCompare ..|> IEqualityComparer
 
 SaveData ..|> ISerializationCallbackReceiver
+
+ItemData ..|> ISavable
+ItemCollection ..|> ISavable
 
 RecipeData --|> BaseData
 AlchemyMaterial --|> BaseData
