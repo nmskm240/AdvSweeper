@@ -55,3 +55,6 @@ MonoBehaviour:
   - _name: ItemInfo
     _category: Info
     _parentName: 
+  - _name: CharacteristicSelect
+    _category: Sub
+    _parentName: AlchemyMain

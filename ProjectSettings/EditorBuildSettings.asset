@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Alchemy/MaterialSelect.unity
     guid: 597451b032de32544ab112d9d1cfffd6
   - enabled: 1
+    path: Assets/Scenes/Menu/Alchemy/CharacteristicSelect.unity
+    guid: c2fdece93af21d149a22ee1cecffc891
+  - enabled: 1
     path: Assets/Scenes/Menu/Alchemy/AlchemyMain.unity
     guid: e2844c98d498c404f98b34e336162b0d
   - enabled: 1

@@ -15,11 +15,11 @@ namespace Adv
         [SerializeField]
         private int _price;
         [SerializeField]
-        private List<EffectData> _effects;
+        private List<EffectData> _effects = new List<EffectData>();
         [SerializeField]
-        private List<CategoryData> _categories;
+        private List<CategoryData> _categories = new List<CategoryData>();
 
-        private List<CharacteristicsData> _characteristics;
+        private List<CharacteristicsData> _characteristics = new List<CharacteristicsData>();
 
         public bool IsMaterial { get { return _isMaterial; } }
         public int Quality { get; set; }

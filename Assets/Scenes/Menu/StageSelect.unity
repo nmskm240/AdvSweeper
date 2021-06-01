@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 62882b58a554fb849b7fce17386d8954,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -118,6 +119,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -175,6 +178,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -250,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -299,6 +304,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -373,6 +379,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -459,6 +466,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &208727358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,42 +608,6 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u30C6\u30B9\u30C8\u30B9\u30C6\u30FC\u30B8"
       objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0e359bc6fc94dfe41b94f4b299ceb594,
-        type: 3}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.49411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.5974546
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.86271363
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.9245283
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 7600131579037292101, guid: 2872a777286b43c4c86a2bf16085d995,
         type: 3}
       propertyPath: _base
@@ -717,6 +689,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -797,6 +770,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &532668051
 Canvas:
   m_ObjectHideFlags: 0
@@ -891,6 +865,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1094,6 +1069,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1168,6 +1144,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1331,39 +1308,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
         type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0e359bc6fc94dfe41b94f4b299ceb594,
-        type: 3}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.49411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.5974546
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.86271363
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.9245283
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554978586099026141, guid: 2872a777286b43c4c86a2bf16085d995,
-        type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600131579037292101, guid: 2872a777286b43c4c86a2bf16085d995,
         type: 3}
@@ -1432,6 +1378,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
