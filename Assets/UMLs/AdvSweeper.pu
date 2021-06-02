@@ -263,6 +263,17 @@ package UI
     }
     package Sliders
     {
+        class CycleSlider
+        {
+            -_range:MinMax
+            -_value:TextMeshProUGUI
+            -_back:Image
+            -_fill:Image
+            -_colors:Color[]
+            -_scale:float
+            +<<property>>Value:int
+            
+        }
         class SliderParameter
         {
             -_options:SliderParameterOptions
