@@ -8,24 +8,12 @@ using Adv;
 
 namespace UI.Viewers
 {
-    public class ItemViewer : MonoBehaviour
+    public class ItemViewer : Viewer<ViewerOrder>
     {
         [SerializeField]
-        private Transform _contents;
-        [SerializeField]
         private ItemCollection _collections;
-        [SerializeField]
-        protected ItemViewOrder _order;
-        [SerializeField]
-        protected Button _closeButton;
 
         private IFactory<GameObject> _factory = new ItemNodeFactory();
-
-        protected virtual void Awake()
-        {
-            _closeButton?.onClick.AddListener(() => Close());
-            Show(_collections);
-        }
 
         private void CreateItemNode(ItemData item)
         {
@@ -36,18 +24,14 @@ namespace UI.Viewers
             node.Init(item);
         }
 
-        public virtual void Close()
+        public override void Show()
         {
-            MultiSceneManager.UnloadScene(gameObject.scene.name);
-        }
-
-        public void Show(ItemCollection collection)
-        {
-            foreach (var item in collection.Contents)
+            ContentsReset();
+            foreach (var item in _collections.Contents)
             {
-                if (_order.IDs.Count > 0)
+                if (_order.WhiteList.Count > 0)
                 {
-                    foreach (var id in _order.IDs)
+                    foreach (var id in _order.WhiteList)
                     {
                         if (item.ID == id
                          || item.Categories.Any(c => c.ID == id)

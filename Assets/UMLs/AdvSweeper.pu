@@ -272,7 +272,7 @@ package UI
             -_colors:Color[]
             -_scale:float
             +<<property>>Value:int
-            
+
         }
         class SliderParameter
         {
@@ -321,28 +321,33 @@ package UI
         class ItemNodeFactroy
         class ItemViewer
         {
-            -_contents:Transform
-            -_collections:ItemCollection
+            -_collectons:ItemCollection
             -_factory:IFactory<GameObject>
-            #_order:ItemViewOrder
-            #_closeButton:Button
             -CreateItemNode(item:ItemData):void
-            +Close():void
-            +Show(collection:ItemCollection):void
         }
         class ItemSelector
+        abstract Viewer<T>
         {
-            -_selectedItems:ItemCollection
-            -_selectNum:int
+            -_order:T
+            -_contents:Transform
+            #ContentsReset():void
+            +Show():void
         }
-        class ItemViewOrder
+        abstract Selector<T>
         {
-            +<<property>>IDs:List<string>
-            +Reset():void
+            -_order:T
+            -_completBtn:Button
+            #OnSelectComplet():void
         }
-        class ItemSelectOrder
+        class ViewerOrder
         {
-            +SelectNum:int
+            +<<property>>WhiteList:List<string>
+        }
+        class SelectorOrder
+        {
+            +MaxNumberOfSelectable:int
+            +MinNumberOfSelectable:int
+            +Results:List<string>
         }
         class EffectIconFactory
         class EffectIcon
@@ -393,8 +398,8 @@ package UI
     {
         -_image:Image
         -_requiredAndSelectedNum:TextMeshProUGUI
-        -_selectMaterials:ItemCollection
-        -_order:ItemSelectOrder
+        -_viewerOrder:ViewerOrder
+        -_selectorOrder:SelectorOrder
         -_materialAndQuantity:MaterialAndQuantity
         -_selectedMaterials:List<ItemData>
         +<<property>>NeedQuantity:int{get only}
@@ -438,6 +443,14 @@ class Synthesizer<TMaterial, TProduct>
     +<<property>>Materials:IEnumerable<TMaterial>
     +<<property>>Product:TProduct
 }
+abstract OrderReceiveMonoBehaviour<T>
+{
+    #_order:T
+}
+interface IOrder
+{
+    +Reset():void
+}
 interface IFactory<T>
 {
     +Create():T
@@ -464,6 +477,9 @@ ItemNode ..|> IPointerClickHandler
 RecipeNode ..|> IPointerClickHandler
 MaterialNode ..|> IPointerClickHandler
 
+ViewerOrder ..|> IOrder
+SelectorOrder ..|> IOrder
+
 各種効果 ..|> IEffect
 
 ObjectCompare ..|> IEqualityComparer
@@ -488,8 +504,11 @@ CategoryData --|> AlchemyMaterial
 Treasure --|> Player
 Alchemist --|> Player
 
-ItemSelector --|> ItemViewer
-ItemSelectOrder --|> ItemViewOrder
+Selector --|> OrderHasMonoBehaviour
+Viewer --|> OrderHasMonoBehaviour
+ItemSelector --|> Selector
+ItemViewer --|> Viewer
+
 ItemNode --|> LongPressMonoBehaviour
 
 Stage -- StageInfo
@@ -506,6 +525,7 @@ ItemNode --o ItemViewer
 
 Synthesizer --* RecipeData
 SaveData --* SaveLoadManager
+IOrder --* OrderHasMonoBehaviour
 
 TileFactory ..> Tile : Create
 DialogFactory ..> Dialog : Create
@@ -514,8 +534,5 @@ ItemNodeFactroy ..> ItemNode : Create
 PickItemFactory ..> PickItem : Create
 MaterialNodeFactory ..> MaterialNode : Create
 EffectIconFactory ..> EffectIcon : Create
-MaterialNode ..> ItemSelectOrder : Data set
-ItemViewer ..> ItemViewOrder : Data set & load
-ItemSelector ..> ItemSelectOrder : Data set & load
 
 @enduml

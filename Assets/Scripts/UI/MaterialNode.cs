@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,9 +20,9 @@ namespace UI
         [SerializeField]
         private TextMeshProUGUI _requiredAndSelectedNum;
         [SerializeField]
-        private ItemCollection _selectMaterials;
+        private ViewerOrder _viewerOrder;        
         [SerializeField]
-        private ItemSelectOrder _order;
+        private SelectorOrder _selectorOrder;
 
         private MaterialAndQuantity _materialAndQuantity;
         private List<ItemData> _selectedMaterials = new List<ItemData>();
@@ -44,10 +45,11 @@ namespace UI
 
         public void OnPointerClick(PointerEventData e)
         {
-            _order.IDs.Add(_materialAndQuantity.Material.ID);
-            _order.SelectNum = _materialAndQuantity.Quantity;
-            _selectMaterials.Contents.Clear();
-            _selectMaterials.Contents.AddRange(_selectedMaterials);
+            _viewerOrder.WhiteList.Add(_materialAndQuantity.Material.ID);
+            _selectorOrder.MinNumberOfSelectable = _materialAndQuantity.Quantity;
+            _selectorOrder.MaxNumberOfSelectable = _materialAndQuantity.Quantity;
+            _selectorOrder.Results.Clear();
+            _selectorOrder.Results.AddRange(_selectedMaterials);
             MultiSceneManager.LoadScene("MaterialSelect");
             StartCoroutine(WaitSelect());
         }
@@ -56,10 +58,10 @@ namespace UI
         {
             yield return new WaitWhile(() => MultiSceneManager.IsLoaded("MaterialSelect"));
             _selectedMaterials.Clear();
-            _selectedMaterials.AddRange(_selectMaterials.Contents);
+            _selectedMaterials.AddRange(_selectorOrder.Results.Cast<ItemData>());
             _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
-            _selectMaterials.Contents.Clear();
-            _order.Reset();
+            _viewerOrder.Reset();
+            _selectorOrder.Reset();
         }
     }
 }

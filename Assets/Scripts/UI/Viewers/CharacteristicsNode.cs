@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using MultiSceneManagement;
 
-namespace UI.Viewer
+namespace UI.Viewers
 {    
     public class CharacteristicsNode : MonoBehaviour, IPointerClickHandler
     {

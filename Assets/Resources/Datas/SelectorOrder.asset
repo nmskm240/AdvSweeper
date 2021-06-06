@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7247849dabe43ca4f95a5f72a5e90a62, type: 3}
-  m_Name: ItemViewOrder
+  m_Script: {fileID: 11500000, guid: 96d6be1d1aa0b67449f9ff7563e9e00d, type: 3}
+  m_Name: SelectorOrder
   m_EditorClassIdentifier: 
+  MaxNumberOfSelectable: 0
+  MinNumberOfSelectable: 0
+  Results: []

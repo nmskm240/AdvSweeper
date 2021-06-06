@@ -1,29 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Adv;
 
 namespace UI.Viewers
 {
-    public class ItemSelector : ItemViewer
+    public class ItemSelector : Selector<SelectorOrder>
     {
-        [SerializeReference]
-        private ItemCollection _selectedItems;
-
-        private int _selectNum;
-
-        protected override void Awake()
+        protected virtual void Update()
         {
-            base.Awake();
-            if(_order is ItemSelectOrder)
-            {
-                _selectNum = (_order as ItemSelectOrder).SelectNum;
-            }
-        }
-
-        private void Update()
-        {
-            _closeButton.interactable = _selectedItems.Contents.Count == _selectNum;
+            _completBtn.interactable = (_order.MinNumberOfSelectable <= _order.Results.Count && _order.Results.Count <= _order.MaxNumberOfSelectable);
         }
     }
 }

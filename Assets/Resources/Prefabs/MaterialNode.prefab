@@ -280,7 +280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 708829cc54f97413dac29875ba319162, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 690c7adcf8bcd44279eefcbad1ea4d7b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -319,7 +319,8 @@ MonoBehaviour:
   _image: {fileID: 8655337980142735945}
   _requiredAndSelectedNum: {fileID: 6841844818576306642}
   _selectMaterials: {fileID: 11400000, guid: 2f93f44baef6ded4e949c7e50852cdcf, type: 2}
-  _order: {fileID: 11400000, guid: 9332ecaa035f21a48a7cef386198994b, type: 2}
+  _viewerOrder: {fileID: 11400000, guid: 91c160ab1fb1cdc4d93a7cfdf4c02a70, type: 2}
+  _selectorOrder: {fileID: 11400000, guid: 9332ecaa035f21a48a7cef386198994b, type: 2}
 --- !u!1 &9014168634967632250
 GameObject:
   m_ObjectHideFlags: 0

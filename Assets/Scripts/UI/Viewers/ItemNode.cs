@@ -37,8 +37,8 @@ namespace UI.Viewers
             base.Start();
             if (gameObject.scene.name == "MaterialSelect")
             {
-                var selectMaterial = Resources.Load("Datas/SelectMaterials") as ItemCollection;
-                _image.color = (selectMaterial.Contents.Contains(_item, new ObjectCompare<ItemData>())) ? Color.gray : Color.white;
+                var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
+                _image.color = (selectorOrder.Results.Contains(_item, new ObjectCompare<Object>())) ? Color.gray : Color.white;
             }
         }
 
@@ -63,16 +63,16 @@ namespace UI.Viewers
             }
             else if (gameObject.scene.name == "MaterialSelect")
             {
-                var selectMaterial = Resources.Load("Datas/SelectMaterials") as ItemCollection;
-                if (selectMaterial.Contents.Contains(_item, new ObjectCompare<ItemData>()))
+                var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
+                if (selectorOrder.Results.Contains(_item, new ObjectCompare<Object>()))
                 {
                     _image.color = Color.white;
-                    selectMaterial.Contents.Remove(_item);
+                    selectorOrder.Results.Remove(_item);
                 }
                 else
                 {
                     _image.color = Color.gray;
-                    selectMaterial.Contents.Add(_item);
+                    selectorOrder.Results.Add(_item);
                 }
             }
         }
