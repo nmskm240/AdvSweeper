@@ -482,9 +482,9 @@ DialogFactory ..|> IFactory
 ContentsCounterFactory ..|> IFactory
 ItemNodeFactroy ..|> IFactory
 PickItemFactory ..|> IFactory
-MaterialNodeFactory --|> IFactory
-EffectIconFactory --|> IFactory
-CharacteristicsNodeFactory --|> IFactory
+MaterialNodeFactory ..|> IFactory
+EffectIconFactory ..|> IFactory
+CharacteristicsNodeFactory ..|> IFactory
 
 TileController ..|> IPointerClickHandler
 StageNode ..|> IPointerClickHandler
@@ -520,8 +520,8 @@ CategoryData --|> AlchemyMaterial
 Treasure --|> Player
 Alchemist --|> Player
 
-Selector --|> OrderHasMonoBehaviour
-Viewer --|> OrderHasMonoBehaviour
+Selector --|> OrderReceiveMonoBehaviour
+Viewer --|> OrderReceiveMonoBehaviour
 ItemSelector --|> Selector
 ItemViewer --|> Viewer
 CharacteristicsViewer --|> Viewer
@@ -544,7 +544,7 @@ CharacteristicsNode --o CharacteristicsViewer
 
 Synthesizer --* RecipeData
 SaveData --* SaveLoadManager
-IOrder --* OrderHasMonoBehaviour
+IOrder --* OrderReceiveMonoBehaviour
 
 TileFactory ..> Tile : Create
 DialogFactory ..> Dialog : Create
