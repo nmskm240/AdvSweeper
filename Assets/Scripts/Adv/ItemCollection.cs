@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,21 +23,16 @@ namespace Adv
 
         public string Serialize()
         {
-            var data = string.Empty;
-            foreach (var item in Contents)
-            {
-                data += item.Serialize() + ".";
-            }
-            return data;
+            return string.Join("|", Contents.Select(item => item.Serialize()));
         }
 
         public ItemCollection Deserialize(string data)
         {
             if (!string.IsNullOrEmpty(data))
             {
-                foreach (var item in data.Split('.'))
+                foreach (var item in data.Split('|'))
                 {
-                    Contents.Add(_template.Deserialize(data));
+                    Contents.Add(_template.Deserialize(item));
                 }
             }
             return this;

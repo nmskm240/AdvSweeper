@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,11 +52,12 @@ namespace Adv
             {
                 characteristicIDs += characteristic.ID + ",";
             }
-            return ID + " " + Quality + " " + characteristicIDs;
+            return ID + " " + Quality + " " + string.Join(",", Characteristics.Select(c => c.ID));
         }
 
         public ItemData Deserialize(string data)
         {
+            Debug.Log(data);
             var datas = data.Split(' ');
             var item = Instantiate(Resources.Load("Datas/Item/" + datas[0])) as ItemData;
             var characteristics = new List<CharacteristicsData>();
@@ -64,6 +66,7 @@ namespace Adv
             {
                 if (string.IsNullOrEmpty(characteristic)) continue;
                 characteristics.Add(Resources.Load("Datas/Characteristic/" + characteristic) as CharacteristicsData);
+                Debug.Log(characteristic);
             }
             item.Init(characteristics);
             return item;

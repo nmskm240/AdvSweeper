@@ -9,7 +9,7 @@ namespace SaveSystem
     {
         [SerializeField]
         private ItemCollection _container;
-
+        [HideInInspector]
         public string ContainerData;
 
         public void OnBeforeSerialize()
