@@ -106,9 +106,12 @@ package Alchemy
         -_materials:Transform
         -_jar:Jar
         -_selectRecipeData:RecipeData
+        -_sOrder:SelectorOrder
+        -_vOrder:ViewerOrder
         -_materialNodes:List<MaterialNode>
         -_canAlchemy:bool
         +Alchemy():void
+        -AlchemyProcess:IEnumerator
     }
     class CharacteristicsTree
     {
@@ -297,6 +300,17 @@ package UI
     }
     package Viewers
     {
+        class CharacteristicsNode
+        {
+            -_image:Image
+            -_name:TextMeshProUGUI
+            -_info:TextMeshProUGUI
+            -_data:BaseData
+            +Init(data:BaseData):void
+        }
+        class CharacteristicsNodeFactory
+        class CharacteristicsViewer
+        class CharacteristicsSelector
         class ItemInfoViewer
         {
             -_order:ItemData
@@ -470,12 +484,14 @@ ItemNodeFactroy ..|> IFactory
 PickItemFactory ..|> IFactory
 MaterialNodeFactory --|> IFactory
 EffectIconFactory --|> IFactory
+CharacteristicsNodeFactory --|> IFactory
 
 TileController ..|> IPointerClickHandler
 StageNode ..|> IPointerClickHandler
 ItemNode ..|> IPointerClickHandler
 RecipeNode ..|> IPointerClickHandler
 MaterialNode ..|> IPointerClickHandler
+CharacteristicsNode ..|> IPointerClickHandler
 
 ViewerOrder ..|> IOrder
 SelectorOrder ..|> IOrder
@@ -508,6 +524,8 @@ Selector --|> OrderHasMonoBehaviour
 Viewer --|> OrderHasMonoBehaviour
 ItemSelector --|> Selector
 ItemViewer --|> Viewer
+CharacteristicsViewer --|> Viewer
+CharacteristicsSelector --|> Selector
 
 ItemNode --|> LongPressMonoBehaviour
 
@@ -522,6 +540,7 @@ Stage *--> StageOption
 CategoryData --o ItemData
 CharacteristicsData --o ItemData
 ItemNode --o ItemViewer
+CharacteristicsNode --o CharacteristicsViewer
 
 Synthesizer --* RecipeData
 SaveData --* SaveLoadManager
@@ -534,5 +553,6 @@ ItemNodeFactroy ..> ItemNode : Create
 PickItemFactory ..> PickItem : Create
 MaterialNodeFactory ..> MaterialNode : Create
 EffectIconFactory ..> EffectIcon : Create
+CharacteristicsNodeFactory ..> CharacteristicsNode : Create
 
 @enduml

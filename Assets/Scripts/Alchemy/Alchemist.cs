@@ -1,8 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using MultiSceneManagement;
 using Adv;
 using UI;
+using UI.Viewers;
 
 namespace Alchemy
 {
@@ -14,6 +17,10 @@ namespace Alchemy
         private Jar _jar;
         [SerializeField]
         private RecipeData _selectRecipeData;
+        [SerializeField]
+        private SelectorOrder _sOrder;
+        [SerializeField]
+        private ViewerOrder _vOrder;
 
         private List<MaterialNode> _materialNodes = new List<MaterialNode>();
         private bool _canAlchemy = true;
@@ -46,13 +53,34 @@ namespace Alchemy
 
         public void Alchemy()
         {
+            StartCoroutine(AlchemyProcess());
+        }
+
+        private IEnumerator AlchemyProcess()
+        {
             var useMaterials = new List<ItemData>();
+            var candidateCharacteristics = new List<CharacteristicsData>();
             foreach (var materialNode in _materialNodes)
             {
-                useMaterials.AddRange(materialNode.SelectedMaterials);
+                var selectedMaterials = materialNode.SelectedMaterials;
+                useMaterials.AddRange(selectedMaterials);
+                foreach(var characteristics in selectedMaterials.Select(m => m.Characteristics))
+                {
+                    candidateCharacteristics.AddRange(characteristics);
+                }
                 materialNode.SelectClear();
             }
-            GetItem(_jar.Alchemy(useMaterials));
+            var fixCharacteristics = candidateCharacteristics.Select(c => c.ID);
+            _vOrder.WhiteList.AddRange(fixCharacteristics.Distinct());
+            _sOrder.MinNumberOfSelectable = 0;
+            _sOrder.MaxNumberOfSelectable = 3;
+            var item = _jar.Alchemy(useMaterials);
+            MultiSceneManager.LoadScene("CharacteristicSelect");
+            yield return new WaitWhile(() => MultiSceneManager.IsLoaded("CharacteristicSelect"));
+            item.Init(_sOrder.Results.Cast<CharacteristicsData>());
+            GetItem(item);
+            _vOrder.Reset();
+            _sOrder.Reset();
         }
     }
 }
