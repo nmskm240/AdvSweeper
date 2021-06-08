@@ -311,9 +311,12 @@ package UI
         class CharacteristicsNodeFactory
         class CharacteristicsViewer
         class CharacteristicsSelector
+        class ItemInfoViewerOrder
+        {
+            +Data:ItemData
+        }
         class ItemInfoViewer
         {
-            -_order:ItemData
             -_itemName:TextMeshProUGUI
             -_itemImage:Image
             -_itemQuality:SliderParameter
@@ -495,6 +498,7 @@ CharacteristicsNode ..|> IPointerClickHandler
 
 ViewerOrder ..|> IOrder
 SelectorOrder ..|> IOrder
+ItemInfoViewerOrder ..|> IOrder
 
 各種効果 ..|> IEffect
 
@@ -513,6 +517,7 @@ StageData --|> BaseData
 BaseData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
 ItemViewOrder --|> ScriptableObject
+ItemInfoViewerOrder --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
@@ -526,6 +531,7 @@ ItemSelector --|> Selector
 ItemViewer --|> Viewer
 CharacteristicsViewer --|> Viewer
 CharacteristicsSelector --|> Selector
+ItemInfoViewer --|> Viewer
 
 ItemNode --|> LongPressMonoBehaviour
 
