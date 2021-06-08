@@ -17,10 +17,6 @@ namespace Alchemy
         private Jar _jar;
         [SerializeField]
         private RecipeData _selectRecipeData;
-        [SerializeField]
-        private SelectorOrder _sOrder;
-        [SerializeField]
-        private ViewerOrder _vOrder;
 
         private List<MaterialNode> _materialNodes = new List<MaterialNode>();
         private bool _canAlchemy = true;
@@ -58,6 +54,9 @@ namespace Alchemy
 
         private IEnumerator AlchemyProcess()
         {
+            var sOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
+            var vOrder = Resources.Load("Datas/ViewerOrder") as ViewerOrder;
+            var iOrder = Resources.Load("Datas/ItemInfoViewerOrder") as ItemInfoViewerOrder;
             var useMaterials = new List<ItemData>();
             var candidateCharacteristics = new List<CharacteristicsData>();
             foreach (var materialNode in _materialNodes)
@@ -71,16 +70,18 @@ namespace Alchemy
                 materialNode.SelectClear();
             }
             var fixCharacteristics = candidateCharacteristics.Select(c => c.ID);
-            _vOrder.WhiteList.AddRange(fixCharacteristics.Distinct());
-            _sOrder.MinNumberOfSelectable = 0;
-            _sOrder.MaxNumberOfSelectable = 3;
+            vOrder.WhiteList.AddRange(fixCharacteristics.Distinct());
+            sOrder.MinNumberOfSelectable = 0;
+            sOrder.MaxNumberOfSelectable = 3;
             var item = _jar.Alchemy(useMaterials);
             MultiSceneManager.LoadScene("CharacteristicSelect");
             yield return new WaitWhile(() => MultiSceneManager.IsLoaded("CharacteristicSelect"));
-            item.Init(_sOrder.Results.Cast<CharacteristicsData>());
+            item.Init(sOrder.Results.Cast<CharacteristicsData>());
             GetItem(item);
-            _vOrder.Reset();
-            _sOrder.Reset();
+            vOrder.Reset();
+            sOrder.Reset();
+            iOrder.Data = item;
+            MultiSceneManager.LoadScene("ItemInfo");
         }
     }
 }

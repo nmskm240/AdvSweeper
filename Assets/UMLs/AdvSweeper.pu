@@ -106,8 +106,6 @@ package Alchemy
         -_materials:Transform
         -_jar:Jar
         -_selectRecipeData:RecipeData
-        -_sOrder:SelectorOrder
-        -_vOrder:ViewerOrder
         -_materialNodes:List<MaterialNode>
         -_canAlchemy:bool
         +Alchemy():void
