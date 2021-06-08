@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI.Viewers
 {
-    [CreateAssetMenu(fileName = "SelectorOrder", menuName = "AdvSweeper/SelectorOrder", order = 0)]
+    [CreateAssetMenu(fileName = "SelectorOrder", menuName = "AdvSweeper/Order/SelectorOrder", order = 0)]
     public class SelectorOrder : ScriptableObject, IOrder
     {
         public int MaxNumberOfSelectable = 0;

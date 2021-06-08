@@ -79,8 +79,8 @@ namespace UI.Viewers
 
         protected override void OnLongPressed()
         {
-            var item = Resources.Load("Datas/ItemInfoOrder") as ItemData;
-            item.Copy(_item);
+            var item = Resources.Load("Datas/ItemInfoViewerOrder") as ItemInfoViewerOrder;
+            item.Data = _item;
             MultiSceneManager.LoadScene("ItemInfo");
         }
     }

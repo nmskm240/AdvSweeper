@@ -7,10 +7,8 @@ using UI.Sliders;
 
 namespace UI.Viewers
 {    
-    public class ItemInfoViewer : MonoBehaviour 
+    public class ItemInfoViewer : Viewer<ItemInfoViewerOrder>
     {
-        [SerializeField]
-        private ItemData _order;
         [SerializeField]
         private TextMeshProUGUI _itemName;
         [SerializeField]
@@ -24,13 +22,13 @@ namespace UI.Viewers
 
         private IFactory<GameObject> _factory = new EffectIconFactory();
 
-        private void Start()
+        public override void Show()
         {
-            _itemName.text = _order.Name;
-            _itemImage.sprite = _order.Image;
-            _itemQuality.Value = _order.Quality;
-            ShowIcons(_order.Effects, _effectIcons);
-            ShowIcons(_order.Characteristics, _characteristicIcons);
+            _itemName.text = _order.Data.Name;
+            _itemImage.sprite = _order.Data.Image;
+            _itemQuality.Value = _order.Data.Quality;
+            ShowIcons(_order.Data.Effects, _effectIcons);
+            ShowIcons(_order.Data.Characteristics, _characteristicIcons);
         }
 
         private void ShowIcons(IEnumerable<BaseData> datas, Transform parent)

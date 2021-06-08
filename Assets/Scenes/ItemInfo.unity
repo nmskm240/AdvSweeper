@@ -331,7 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714bcf0c40066d7458db94410ec6cff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _order: {fileID: 11400000, guid: 669ff895aeb0d9a46b5b959f95d2b8d5, type: 2}
+  _order: {fileID: 11400000, guid: eb740d3d691ea304ba8824ec0cf0efaf, type: 2}
+  _contents: {fileID: 0}
   _itemName: {fileID: 1249769192}
   _itemImage: {fileID: 703559664}
   _itemQuality: {fileID: 1951023125}
