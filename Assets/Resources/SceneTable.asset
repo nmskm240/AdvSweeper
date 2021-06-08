@@ -49,9 +49,9 @@ MonoBehaviour:
   - _name: RecipeSelect
     _category: MainMenu
     _parentName: Menu
-  - _name: MaterialSelect
+  - _name: ItemSelect
     _category: Sub
-    _parentName: AlchemyMain
+    _parentName: 
   - _name: ItemInfo
     _category: Info
     _parentName: 

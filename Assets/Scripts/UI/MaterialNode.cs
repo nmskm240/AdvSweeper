@@ -50,13 +50,13 @@ namespace UI
             _selectorOrder.MaxNumberOfSelectable = _materialAndQuantity.Quantity;
             _selectorOrder.Results.Clear();
             _selectorOrder.Results.AddRange(_selectedMaterials);
-            MultiSceneManager.LoadScene("MaterialSelect");
+            MultiSceneManager.LoadScene("ItemSelect");
             StartCoroutine(WaitSelect());
         }
 
         private IEnumerator WaitSelect()
         {
-            yield return new WaitWhile(() => MultiSceneManager.IsLoaded("MaterialSelect"));
+            yield return new WaitWhile(() => MultiSceneManager.IsLoaded("ItemSelect"));
             _selectedMaterials.Clear();
             _selectedMaterials.AddRange(_selectorOrder.Results.Cast<ItemData>());
             _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;

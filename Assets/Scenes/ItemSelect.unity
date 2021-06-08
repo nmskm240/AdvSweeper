@@ -892,7 +892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u7D20\u6750\u9078\u629E"
+  m_text: "\u30A2\u30A4\u30C6\u30E0\u9078\u629E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e7cecc8c5d74734daeaa7f40e5988c5, type: 2}
   m_sharedMaterial: {fileID: 1645845508038689342, guid: 8e7cecc8c5d74734daeaa7f40e5988c5,
@@ -1255,7 +1255,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MaterialSelect
+          m_StringArgument: ItemSelect
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1408719376

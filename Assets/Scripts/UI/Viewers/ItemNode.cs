@@ -35,7 +35,7 @@ namespace UI.Viewers
         protected override void Start()
         {
             base.Start();
-            if (gameObject.scene.name == "MaterialSelect")
+            if (gameObject.scene.name == "ItemSelect")
             {
                 var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
                 _image.color = (selectorOrder.Results.Contains(_item, new ObjectCompare<Object>())) ? Color.gray : Color.white;
@@ -61,7 +61,7 @@ namespace UI.Viewers
                     var player = GameObject.FindWithTag("Player").GetComponent<Treasure>();
                 });
             }
-            else if (gameObject.scene.name == "MaterialSelect")
+            else if (gameObject.scene.name == "ItemSelect")
             {
                 var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
                 if (selectorOrder.Results.Contains(_item, new ObjectCompare<Object>()))
