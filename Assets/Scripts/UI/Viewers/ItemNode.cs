@@ -37,7 +37,7 @@ namespace UI.Viewers
             base.Start();
             if (gameObject.scene.name == "ItemSelect")
             {
-                var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
+                var selectorOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
                 _image.color = (selectorOrder.Results.Contains(_item, new ObjectCompare<Object>())) ? Color.gray : Color.white;
             }
         }
@@ -63,7 +63,7 @@ namespace UI.Viewers
             }
             else if (gameObject.scene.name == "ItemSelect")
             {
-                var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
+                var selectorOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
                 if (selectorOrder.Results.Contains(_item, new ObjectCompare<Object>()))
                 {
                     _image.color = Color.white;
@@ -79,7 +79,7 @@ namespace UI.Viewers
 
         protected override void OnLongPressed()
         {
-            var item = Resources.Load("Datas/ItemInfoViewerOrder") as ItemInfoViewerOrder;
+            var item = Resources.Load("Datas/Order/ItemInfoViewerOrder") as ItemInfoViewerOrder;
             item.Data = _item;
             MultiSceneManager.LoadScene("ItemInfo");
         }

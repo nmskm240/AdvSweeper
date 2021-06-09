@@ -27,7 +27,7 @@ namespace UI.Viewers
 
         public void OnPointerClick(PointerEventData e)
         {
-            var selectorOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
+            var selectorOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
             if(selectorOrder.Results.Contains(_data, new ObjectCompare<Object>()))
             {
                 _image.color = Color.white;

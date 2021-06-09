@@ -54,9 +54,9 @@ namespace Alchemy
 
         private IEnumerator AlchemyProcess()
         {
-            var sOrder = Resources.Load("Datas/SelectorOrder") as SelectorOrder;
-            var vOrder = Resources.Load("Datas/ViewerOrder") as ViewerOrder;
-            var iOrder = Resources.Load("Datas/ItemInfoViewerOrder") as ItemInfoViewerOrder;
+            var sOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
+            var vOrder = Resources.Load("Datas/Order/ViewerOrder") as ViewerOrder;
+            var iOrder = Resources.Load("Datas/Order/ItemInfoViewerOrder") as ItemInfoViewerOrder;
             var useMaterials = new List<ItemData>();
             var candidateCharacteristics = new List<CharacteristicsData>();
             foreach (var materialNode in _materialNodes)
