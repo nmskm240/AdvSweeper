@@ -12,7 +12,7 @@ namespace Adv
     public class ItemData : AlchemyMaterial, ISavable<ItemData>
     {
         [SerializeField]
-        private bool _isMaterial;
+        private bool _isItem;
         [SerializeField]
         private int _price;
         [SerializeField]
@@ -22,7 +22,7 @@ namespace Adv
 
         private List<CharacteristicsData> _characteristics = new List<CharacteristicsData>();
 
-        public bool IsMaterial { get { return _isMaterial; } }
+        public bool IsItem { get { return _isItem; } }
         public int Quality { get; set; }
         public int Price { get { return _price; } set { _price = value; } }
         public IEnumerable<EffectData> Effects { get { return _effects; } }
@@ -32,17 +32,6 @@ namespace Adv
         public void Init(IEnumerable<CharacteristicsData> characteristicsDatas)
         {
             _characteristics = new List<CharacteristicsData>(characteristicsDatas);
-        }
-
-        public new void Copy(ItemData data)
-        {
-            base.Copy(data);
-            _isMaterial = data.IsMaterial;
-            Quality = data.Quality;
-            Price = data.Price;
-            _effects = data.Effects as List<EffectData>;
-            _categories = data.Categories as List<CategoryData>;
-            _characteristics = data.Characteristics as List<CharacteristicsData>;
         }
 
         public string Serialize()

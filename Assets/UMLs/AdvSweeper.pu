@@ -17,12 +17,12 @@ package Adv
     }
     class ItemData
     {
-        -_isMaterial:bool
+        -_isItem:bool
         -_price:int
         -_effects:List<EffectData>
         -_categories:List<CategoryData>
         -_characteristics:List<CharacteristicsData>
-        +<<property>>IsMaterial:bool{get only}
+        +<<property>>IsItem:bool{get only}
         +<<property>>Quality:int
         +<<property>>Price:int
         +<<property>>Effects:IEnumerable<EffectData>{get only}
@@ -308,11 +308,6 @@ package UI
         }
         class CharacteristicsNodeFactory
         class CharacteristicsViewer
-        class CharacteristicsSelector
-        class ItemInfoViewerOrder
-        {
-            +Data:ItemData
-        }
         class ItemInfoViewer
         {
             -_itemName:TextMeshProUGUI
@@ -338,7 +333,6 @@ package UI
             -_collectons:ItemCollection
             -CreateItemNode(item:ItemData):void
         }
-        class ItemSelector
         abstract Viewer<T>
         {
             -_order:T
@@ -346,12 +340,29 @@ package UI
             #ContentsReset():void
             +Show():void
         }
+        class EffectIconFactory
+        class EffectIcon
+        {
+            -_icon:Image
+            -_lv:GameObject
+            -_text:TextMeshProUGUI
+            +Init(data:BaseData):void
+        }
+    }
+    package Selectors
+    {
         abstract Selector<T>
         {
             -_order:T
             -_completBtn:Button
             #OnSelectComplet():void
         }
+        class ItemSelector
+        class CharacteristicsSelector
+
+    }
+    package Orders
+    {
         class ViewerOrder
         {
             +<<property>>WhiteList:List<string>
@@ -362,13 +373,13 @@ package UI
             +MinNumberOfSelectable:int
             +Results:List<string>
         }
-        class EffectIconFactory
-        class EffectIcon
+        class ItemInfoViewerOrder
         {
-            -_icon:Image
-            -_lv:GameObject
-            -_text:TextMeshProUGUI
-            +Init(data:BaseData):void
+            +Data:ItemData
+        }
+        class ItemViewerOrder
+        {
+            +ItemOnly:bool
         }
     }
     class StageInfo
@@ -514,6 +525,7 @@ BaseData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
 ItemViewOrder --|> ScriptableObject
 ItemInfoViewerOrder --|> ScriptableObject
+ItemViewerOrder --|> ViewerOrder
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial

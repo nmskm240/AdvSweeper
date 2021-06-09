@@ -1,4 +1,6 @@
-namespace UI.Viewers
+using UI.Orders;
+
+namespace UI.Selectors
 {
     public class CharacteristicsSelector : Selector<SelectorOrder>
     {

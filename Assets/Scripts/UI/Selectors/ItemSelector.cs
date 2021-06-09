@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Adv;
+using UI.Orders;
 
-namespace UI.Viewers
+namespace UI.Selectors
 {
     public class ItemSelector : Selector<SelectorOrder>
     {

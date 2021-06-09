@@ -1,6 +1,6 @@
 using Adv;
 
-namespace UI.Viewers
+namespace UI.Orders
 {
     using UnityEngine;
     

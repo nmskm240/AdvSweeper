@@ -7,6 +7,7 @@ using MultiSceneManagement;
 using Adv;
 using Alchemy;
 using UI.Popups;
+using UI.Orders;
 
 namespace UI.Viewers
 {
@@ -46,13 +47,13 @@ namespace UI.Viewers
         {
             _item = item;
             _image.sprite = _item.Image;
-            _text.enabled = !item.IsMaterial;
+            _text.enabled = item.IsItem;
             _text.text = "x" + _holding;
         }
 
         public void OnPointerClick(PointerEventData e)
         {
-            if (gameObject.scene.name == "Game" && !_item.IsMaterial)
+            if (gameObject.scene.name == "Game" && _item.IsItem)
             {
                 var factroy = new DialogFactory();
                 var dialog = factroy.Create().GetComponent<Dialog>();

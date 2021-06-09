@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UI.Viewers
+namespace UI.Orders
 {    
     [CreateAssetMenu(fileName = "ViewerOrder", menuName = "AdvSweeper/Order/ViewerOrder", order = 0)]
     public class ViewerOrder : ScriptableObject, IOrder
     {
         public List<string> WhiteList = new List<string>();
 
-        public void Reset()
+        public virtual void Reset()
         {
             WhiteList.Clear();
         }

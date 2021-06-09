@@ -5,10 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using MultiSceneManagement;
 using Adv;
+using UI.Orders;
 
 namespace UI.Viewers
 {
-    public class ItemViewer : Viewer<ViewerOrder>
+    public class ItemViewer : Viewer<ItemViewerOrder>
     {
         [SerializeField]
         private ItemCollection _collections;
@@ -28,6 +29,10 @@ namespace UI.Viewers
             ContentsReset();
             foreach (var item in _collections.Contents)
             {
+                if(_order.ItemOnly != item.IsItem)
+                {
+                    continue;
+                }
                 if (_order.WhiteList.Count > 0)
                 {
                     foreach (var id in _order.WhiteList)

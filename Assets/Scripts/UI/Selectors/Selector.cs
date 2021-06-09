@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MultiSceneManagement;
 
-namespace UI.Viewers
+namespace UI.Selectors
 {    
     public abstract class Selector<T> : OrderReceiveMonoBehaviour<T> where T : ScriptableObject, IOrder
     {
