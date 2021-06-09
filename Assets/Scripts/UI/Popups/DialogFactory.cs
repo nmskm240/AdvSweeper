@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI.Popups
 {
-    public class DialogFactory : Object, IFactory<GameObject>
+    public class DialogFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public DialogFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/Dialog") as GameObject);
+            _original = Resources.Load("Prefabs/Dialog") as GameObject;
         }
     }
 }

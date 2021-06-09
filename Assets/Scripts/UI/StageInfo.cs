@@ -19,8 +19,6 @@ namespace UI
         [SerializeField]
         private ContentsCounter _timer;
 
-        private IFactory<GameObject> factory = new ContentsCounterFactory();
-
         public void SetTimer(int timeLimit)
         {
             _timer.Value = timeLimit;
@@ -33,6 +31,7 @@ namespace UI
 
         public void ShowContents(StageOption option)
         {
+            var factory = new ContentsCounterFactory();
             foreach (Transform tf in _contents)
             {
                 Destroy(tf.gameObject);

@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Sweeper
 {
-    public class TileFactory : Object, IFactory<GameObject>
+    public class TileFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public TileFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/Tile") as GameObject);
+            _original = Resources.Load("Prefabs/Tile") as GameObject;
         }
     }
 }

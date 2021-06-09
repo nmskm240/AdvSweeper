@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI
 {
-    public class PickItemFactory : Object, IFactory<GameObject>
+    public class PickItemFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public PickItemFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/PickItem") as GameObject);
+            _original = Resources.Load("Prefabs/PickItem") as GameObject;
         }
     }
 }

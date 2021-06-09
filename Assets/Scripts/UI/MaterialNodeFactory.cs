@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI
 {
-    public class MaterialNodeFactory : Object, IFactory<GameObject>
+    public class MaterialNodeFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public MaterialNodeFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/MaterialNode") as GameObject);
+            _original = Resources.Load("Prefabs/MaterialNode") as GameObject;
         }
     }
 }

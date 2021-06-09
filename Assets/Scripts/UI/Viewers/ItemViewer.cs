@@ -13,11 +13,10 @@ namespace UI.Viewers
         [SerializeField]
         private ItemCollection _collections;
 
-        private IFactory<GameObject> _factory = new ItemNodeFactory();
-
         private void CreateItemNode(ItemData item)
         {
-            var obj = _factory.Create();
+            var factory = new ItemNodeFactory();
+            var obj = factory.Create();
             var node = obj.GetComponent<ItemNode>();
             obj.transform.SetParent(_contents);
             obj.transform.localScale = Vector3.one;

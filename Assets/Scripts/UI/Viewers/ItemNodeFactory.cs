@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI.Viewers
 {
-    public class ItemNodeFactory : Object, IFactory<GameObject>
+    public class ItemNodeFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public ItemNodeFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/ItemNode") as GameObject);
+            _original = Resources.Load("Prefabs/ItemNode") as GameObject;
         }
     }
 }

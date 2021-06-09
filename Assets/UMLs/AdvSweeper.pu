@@ -320,7 +320,6 @@ package UI
             -_itemQuality:SliderParameter
             -_effectIcons:Transform
             -_characteristicIcons:Transform
-            -_factory:IFactory<GameObject>
             -ShowIcons(datas:IEnumeralbe<BaseData>,parent:Transform):void
         }
         class ItemNode
@@ -337,7 +336,6 @@ package UI
         class ItemViewer
         {
             -_collectons:ItemCollection
-            -_factory:IFactory<GameObject>
             -CreateItemNode(item:ItemData):void
         }
         class ItemSelector
@@ -378,7 +376,6 @@ package UI
         -_contents:Transform
         -_floor:TextMeshProUGUI
         -_timer:ContentsCounter
-        -factory:IFactory<GameObject
         +SetTimer(timeLimit:int):void
         +SetFloor(floorInfo:string)
         +ShowContents(option:StageOption)
@@ -466,8 +463,9 @@ interface IOrder
 {
     +Reset():void
 }
-interface IFactory<T>
+abstract Factory<T>
 {
+    #_original:T
     +Create():T
 }
 
@@ -477,15 +475,6 @@ None ..|> ITileContents
 Stair ..|> ITileContents
 Pick ..|> ITileContents
 Exit ..|> ITileContents
-
-TileFactory ..|> IFactory
-DialogFactory ..|> IFactory
-ContentsCounterFactory ..|> IFactory
-ItemNodeFactroy ..|> IFactory
-PickItemFactory ..|> IFactory
-MaterialNodeFactory ..|> IFactory
-EffectIconFactory ..|> IFactory
-CharacteristicsNodeFactory ..|> IFactory
 
 TileController ..|> IPointerClickHandler
 StageNode ..|> IPointerClickHandler
@@ -506,6 +495,15 @@ SaveData ..|> ISerializationCallbackReceiver
 
 ItemData ..|> ISavable
 ItemCollection ..|> ISavable
+
+TileFactory --|> Factory
+DialogFactory --|> Factory
+ContentsCounterFactory --|> Factory
+ItemNodeFactroy --|> Factory
+PickItemFactory --|> Factory
+MaterialNodeFactory --|> Factory
+EffectIconFactory --|> Factory
+CharacteristicsNodeFactory --|> Factory
 
 RecipeData --|> BaseData
 AlchemyMaterial --|> BaseData

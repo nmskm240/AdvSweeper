@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI.Viewers
 {
-    public class CharacteristicsNodeFactory : Object, IFactory<GameObject>
+    public class CharacteristicsNodeFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public CharacteristicsNodeFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/CharacteristicsNode") as GameObject);
+            _original = Resources.Load("Prefabs/CharacteristicsNode") as GameObject;
         }
     }
 }

@@ -20,8 +20,6 @@ namespace UI.Viewers
         [SerializeField]
         private Transform _characteristicIcons;
 
-        private IFactory<GameObject> _factory = new EffectIconFactory();
-
         public override void Show()
         {
             _itemName.text = _order.Data.Name;
@@ -33,9 +31,10 @@ namespace UI.Viewers
 
         private void ShowIcons(IEnumerable<BaseData> datas, Transform parent)
         {
+            var factory = new EffectIconFactory();
             foreach(var data in datas)
             {
-                var obj = _factory.Create();
+                var obj = factory.Create();
                 var node = obj.GetComponent<EffectIcon>();
                 node.Init(data);
                 obj.transform.SetParent(parent);

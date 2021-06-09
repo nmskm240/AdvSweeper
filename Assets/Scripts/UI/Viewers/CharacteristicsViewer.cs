@@ -5,13 +5,12 @@ namespace UI.Viewers
 {
     public class CharacteristicsViewer : Viewer<ViewerOrder>
     {
-        private IFactory<GameObject> _factory = new CharacteristicsNodeFactory();
-
         public override void Show()
         {
+            var factory = new CharacteristicsNodeFactory();
             foreach(var characteristics in _order.WhiteList)
             {
-                var obj = _factory.Create();
+                var obj = factory.Create();
                 var node = obj.GetComponent<CharacteristicsNode>();
                 var data = Resources.Load("Datas/Characteristic/" + characteristics) as CharacteristicsData;
                 obj.transform.SetParent(_contents);

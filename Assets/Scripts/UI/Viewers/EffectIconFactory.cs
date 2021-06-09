@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI.Viewers
 {
-    public class EffectIconFactory : Object, IFactory<GameObject>
+    public class EffectIconFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public EffectIconFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/EffectIcon") as GameObject);
+            _original = Resources.Load("Prefabs/EffectIcon") as GameObject;
         }
     }
 }

@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace UI.Counters
 {
-    public class  ContentsCounterFactory : Object, IFactory<GameObject>
+    public class  ContentsCounterFactory : Factory<GameObject>
     {
-        public GameObject Create()
+        public ContentsCounterFactory()
         {
-            return Instantiate(Resources.Load("Prefabs/ContentsCounter") as GameObject);
+            _original = Resources.Load("Prefabs/ContentsCounter") as GameObject;
         }
     }
 }
