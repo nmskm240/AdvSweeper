@@ -8,10 +8,11 @@ using Sweeper.TileContents;
 using Alchemy;
 using Adv;
 using UI;
+using UI.Orders;
 
 namespace Sweeper
 {
-    public class Stage : MonoBehaviour
+    public class Stage : OrderReceiveMonoBehaviour<LoadStageOrder>
     {
         [SerializeField]
         private int _viewSize = 600;
@@ -19,8 +20,6 @@ namespace Sweeper
         private GridLayoutGroup _gridLayputGroup;
         [SerializeField]
         private StageInfo _info;
-        [SerializeField]
-        private StageData _stageData;
 
         public GameObject[,] Map { get; private set; }
         public int Width { get; private set; }
@@ -67,17 +66,17 @@ namespace Sweeper
             {
                 var items = new List<ItemData>();
                 var value = UnityEngine.Random.Range(1, 5);
-                foreach (var data in RandomWithWeight.Lottos<ItemData>(_stageData.ItemTable, value))
+                foreach (var data in RandomWithWeight.Lottos<ItemData>(_order.Data.ItemTable, value))
                 {
                     var item = ScriptableObject.Instantiate(data);
-                    var characteristics = RandomWithWeight.Lottos<CharacteristicsData>(_stageData.CharacteristicsTable, UnityEngine.Random.Range(0, 3));
-                    item.Quality = (int)_stageData.QualityRange.randomValue;
+                    var characteristics = RandomWithWeight.Lottos<CharacteristicsData>(_order.Data.CharacteristicsTable, UnityEngine.Random.Range(0, 3));
+                    item.Quality = (int)_order.Data.QualityRange.randomValue;
                     item.Init(characteristics.Distinct(new ObjectCompare<CharacteristicsData>()));
                     items.Add(item);
                 }
                 SetContents(new Pick(items));
             }
-            if (NowFloor < _stageData.Floor)
+            if (NowFloor < _order.Data.Floor)
             {
                 SetContents(new Stair());
             }
@@ -86,7 +85,7 @@ namespace Sweeper
                 SetContents(new Exit());
             }
             _info.ShowContents(stageOption);
-            _info.SetFloor(_stageData.Name + NowFloor + "F");
+            _info.SetFloor(_order.Data.Name + NowFloor + "F");
             _info.SetTimer(stageOption.Openable);
         }
 
@@ -141,14 +140,14 @@ namespace Sweeper
         public void Next()
         {
             var size = UnityEngine.Random.Range(4, 7);
-            var enemy = (int)(Mathf.Pow(size, 2) * _stageData.SpawnRate);
+            var enemy = (int)(Mathf.Pow(size, 2) * _order.Data.SpawnRate);
             var pickPoint = UnityEngine.Random.Range(1, 3);
             var option = new StageOption()
             {
                 Enemy = enemy,
                 PickPoint = pickPoint,
-                Openable = (int)(Mathf.Pow(size, 2) * _stageData.OpenableRate),
-                SpawnTable = RandomWithWeight.Lottos<EnemyData>(_stageData.SpawnTable, enemy),
+                Openable = (int)(Mathf.Pow(size, 2) * _order.Data.OpenableRate),
+                SpawnTable = RandomWithWeight.Lottos<EnemyData>(_order.Data.SpawnTable, enemy),
             };
             NowFloor++;
             Create(size, size, option);

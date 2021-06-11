@@ -50,7 +50,7 @@ MonoBehaviour:
     _category: MainMenu
     _parentName: Menu
   - _name: ItemSelect
-    _category: Sub
+    _category: Select
     _parentName: 
   - _name: ItemInfo
     _category: Info
@@ -58,3 +58,6 @@ MonoBehaviour:
   - _name: CharacteristicSelect
     _category: Sub
     _parentName: AlchemyMain
+  - _name: BringItemSelect
+    _category: Sub
+    _parentName: StageSelect

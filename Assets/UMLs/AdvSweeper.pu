@@ -348,6 +348,18 @@ package UI
             -_text:TextMeshProUGUI
             +Init(data:BaseData):void
         }
+        class ContentsIconsViewer
+        {
+            -_template:Image
+            -_parent:Transform
+            +SetContentsIcons(contents:IEnumerable<BaseData>):void
+        }
+        class LoadStageViewer
+        {
+            -_stageName:TextMeshProUGUI
+            -_spawnEnemys:ContentsIconsViewer
+            -_pickItems:ContentsIconsViewer
+        }
     }
     package Selectors
     {
@@ -380,6 +392,10 @@ package UI
         class ItemViewerOrder
         {
             +ItemOnly:bool
+        }
+        class LoadStageOrder
+        {
+            +Data:StageData
         }
     }
     class StageInfo
@@ -497,6 +513,7 @@ CharacteristicsNode ..|> IPointerClickHandler
 ViewerOrder ..|> IOrder
 SelectorOrder ..|> IOrder
 ItemInfoViewerOrder ..|> IOrder
+LoadStageOrder ..|> IOrder
 
 各種効果 ..|> IEffect
 
@@ -523,9 +540,9 @@ EnemyData --|> BaseData
 StageData --|> BaseData
 BaseData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
-ItemViewOrder --|> ScriptableObject
 ItemInfoViewerOrder --|> ScriptableObject
 ItemViewerOrder --|> ViewerOrder
+LoadStageOrder --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
@@ -535,11 +552,13 @@ Alchemist --|> Player
 
 Selector --|> OrderReceiveMonoBehaviour
 Viewer --|> OrderReceiveMonoBehaviour
+Stage --|> OrderReceiveMonoBehaviour
 ItemSelector --|> Selector
 ItemViewer --|> Viewer
 CharacteristicsViewer --|> Viewer
 CharacteristicsSelector --|> Selector
 ItemInfoViewer --|> Viewer
+LoadStageViewer --|> Viewer
 
 ItemNode --|> LongPressMonoBehaviour
 

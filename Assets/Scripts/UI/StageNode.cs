@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using MultiSceneManagement;
 using Adv;
+using UI.Orders;
 
 namespace UI
 {    
@@ -14,8 +15,6 @@ namespace UI
         private TextMeshProUGUI _text;
         [SerializeField]
         private StageData _base;
-        [SerializeField]
-        private StageData _loadStageData;
 
         private void Awake() 
         {
@@ -24,8 +23,9 @@ namespace UI
 
         public void OnPointerClick(PointerEventData e)
         {
-            _loadStageData.Copy(_base);
-            MultiSceneManager.LoadScene("Game");
+            var order = Resources.Load("Datas/Order/LoadStageOrder") as LoadStageOrder;
+            order.Data = _base;
+            MultiSceneManager.LoadScene("BringItemSelect");
         }
     }
 }

@@ -298,7 +298,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _container: {fileID: 11400000, guid: f74f9a239d898be469386d48700a3831, type: 2}
-    ContainerData: 
+    ContainerData: Water 20 HighPrice_Lv1|Water 20 QualityUp_Lv1|Water 20 HighPrice_Lv1|Water
+      20 |Water 22 LowPrice_Lv1|Water 10 |Water 24 HighPrice_Lv1|Water 11 QualityUp_Lv1|Water
+      21 HighPrice_Lv1|Neutralizer-blue 17 HighPrice_Lv1,QualityUp_Lv1
 --- !u!4 &1631525076
 Transform:
   m_ObjectHideFlags: 0
