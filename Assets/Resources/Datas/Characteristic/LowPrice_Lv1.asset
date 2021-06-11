@@ -18,6 +18,7 @@ MonoBehaviour:
   _image: {fileID: 21300000, guid: 49997a949e2077140b3c7bc317dd9c29, type: 3}
   _effect:
     id: 0
+  _timing: 1
   references:
     version: 1
     00000000:

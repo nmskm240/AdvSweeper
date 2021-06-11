@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using MultiSceneManagement;
 using Adv;
+using Adv.Effects;
 using UI;
 using UI.Orders;
 
@@ -77,6 +78,13 @@ namespace Alchemy
             MultiSceneManager.LoadScene("CharacteristicSelect");
             yield return new WaitWhile(() => MultiSceneManager.IsLoaded("CharacteristicSelect"));
             item.Init(sOrder.Results.Cast<CharacteristicsData>());
+            foreach(var characteristic in item.Characteristics)
+            {
+                if(characteristic.Timing == EffectTiming.Init)
+                {
+                    characteristic.Effect.Activate(item);
+                }
+            }
             GetItem(item);
             vOrder.Reset();
             sOrder.Reset();

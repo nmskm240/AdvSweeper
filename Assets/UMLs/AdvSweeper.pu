@@ -12,7 +12,15 @@ package Adv
         class EffectData
         {
             -_effect:IEffect
-            +<<property>>Effect:IEffect
+            -_timing:EffectTiming
+            +<<property>>Effect:IEffect{get only}
+            +<<property>>Timing:EffectTiming{get only}
+        }
+        enum EffectTiming
+        {
+            Init,
+            Trade,
+            Use,
         }
     }
     class ItemData
@@ -78,7 +86,9 @@ package Alchemy
     class CharacteristicsData
     {
         -_effect:IEffect
+        -_timing:EffectTiming
         +<<property>>Effect:IEnumerable<IEffect>{get only}
+        +<<property>>Timing:EffectTiming{get only}
     }
     class RecipeData
     {
