@@ -193,7 +193,6 @@ package Sweeper
         +<<property>>ContentsMap:IDictionary<Type,int>{ get only }
         +<<property>>AroundTiles:IEnumerable<TIle>{ get only }
         +<<property>>Pos:Vector2
-        +<<property>>CanOpen:bool
         +AddAroundTile(tile:Tile)
         +CountUpAround(target:ITileContents):void
         +Open():void
@@ -214,6 +213,7 @@ package Sweeper
     {
         -_tile:Tile
         -_tileView:TileView
+        +<<property>>Openable:bool
     }
     class TileFactory
     class Stage
@@ -571,6 +571,7 @@ ItemInfoViewer --|> Viewer
 LoadStageViewer --|> Viewer
 
 ItemNode --|> LongPressMonoBehaviour
+TileController --|> LongPressMonoBehaviour
 
 Stage -- StageInfo
 Dialog -- DialogType

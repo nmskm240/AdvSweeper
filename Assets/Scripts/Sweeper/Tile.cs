@@ -17,7 +17,6 @@ namespace Sweeper
         public IEnumerable<Tile> AroundTiles { get { return _aroundTiles; }}
         public Vector2 Pos { get; set; }
         public IDictionary<Type, int> ContentsMap { get { return _contentsMap; } }
-        public bool CanOpen { get; set; } = true;
 
         public void AddAroundTile(Tile tile)
         {
@@ -46,7 +45,6 @@ namespace Sweeper
                 var player = GameObject.FindWithTag("Player").GetComponent<Treasure>();
                 player.Damage(1);
             }
-            CanOpen = (Contents.GetType() == typeof(Stair) || Contents.GetType() == typeof(Exit));
             Contents.Open();
         }
     }

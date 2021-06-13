@@ -4,16 +4,20 @@ using Sweeper.TileContents;
 
 namespace Sweeper
 {
-    public class TileController : MonoBehaviour, IPointerClickHandler
+    public class TileController : LongPressMonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
         private Tile _tile;
         [SerializeField]
         private TileView _tileView;
 
+        public Tile Tile { get { return _tile; } }
+        public TileView View { get { return _tileView; } }
+        public bool Openable { get; set; } = true;
+
         public void OnPointerClick(PointerEventData data)
         {
-            if (_tile.CanOpen)
+            if (Openable)
             {
                 if (_tile.ContentsMap != null)
                 {
@@ -31,7 +35,14 @@ namespace Sweeper
                 }
                 _tile.Open();
                 _tileView.Open();
+                Openable = _tile.Contents.GetType() == typeof(Stair) || _tile.Contents.GetType() == typeof(Stair);
             }
+        }
+
+        protected override void OnLongPressed()
+        {
+            _tileView.ChangeBad();
+            Openable = !Openable;
         }
     }
 }
