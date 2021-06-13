@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c245e88d6d91f498c844b2c7bfd21d, type: 3}
   m_Name: LoadStageOrder
   m_EditorClassIdentifier: 
-  Data: {fileID: 0}
+  Data: {fileID: 11400000, guid: f87bce91f29c18e49bc1a45054ee8d33, type: 2}
