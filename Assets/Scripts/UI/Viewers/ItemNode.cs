@@ -11,7 +11,7 @@ using UI.Orders;
 
 namespace UI.Viewers
 {
-    public class ItemNode : LongPressMonoBehaviour, IPointerClickHandler
+    public class ItemNode : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
         private Image _image;
@@ -33,9 +33,8 @@ namespace UI.Viewers
             }
         }
 
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
             if (gameObject.scene.name == "ItemSelect")
             {
                 var selectorOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
@@ -78,7 +77,7 @@ namespace UI.Viewers
             }
         }
 
-        protected override void OnLongPressed()
+        public void OnLongPressed()
         {
             var item = Resources.Load("Datas/Order/ItemInfoViewerOrder") as ItemInfoViewerOrder;
             item.Data = _item;

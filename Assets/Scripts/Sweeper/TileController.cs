@@ -4,7 +4,7 @@ using Sweeper.TileContents;
 
 namespace Sweeper
 {
-    public class TileController : LongPressMonoBehaviour, IPointerClickHandler
+    public class TileController : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
         private Tile _tile;
@@ -39,10 +39,10 @@ namespace Sweeper
             }
         }
 
-        protected override void OnLongPressed()
+        public void OnLongPressed()
         {
-            _tileView.ChangeBad();
             Openable = !Openable;
+            _tileView.ChangeBad();
         }
     }
 }

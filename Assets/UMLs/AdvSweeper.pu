@@ -214,6 +214,7 @@ package Sweeper
         -_tile:Tile
         -_tileView:TileView
         +<<property>>Openable:bool
+        +OnLongPressed():void
     }
     class TileFactory
     class Stage
@@ -336,6 +337,7 @@ package UI
             +<<property>>Item:ItemData{get only}
             +<<property>>Holding:int
             +Init(item:ItemData):void
+            +OnLongPressed():void
         }
         class ItemNodeFactroy
         class ItemViewer
@@ -459,9 +461,14 @@ package UI
     }
 }
 
-abstract LongPressMonoBehaviour
+class LongPressTrigger
 {
-    #OnLongPressed():void
+    -_pressed:bool
+    -_pressedTime:float
+    -_disposable:IDisposable
+    +Duration:float
+    +OnLongPressDown:UnityEvent
+    +OnLongPressUp:UnityEvent
 }
 abstract BaseData
 {
@@ -519,6 +526,8 @@ ItemNode ..|> IPointerClickHandler
 RecipeNode ..|> IPointerClickHandler
 MaterialNode ..|> IPointerClickHandler
 CharacteristicsNode ..|> IPointerClickHandler
+LongPressTrigger ..|> IPointerDownHandler
+LongPressTrigger ..|> IPointerUpHandler
 
 ViewerOrder ..|> IOrder
 SelectorOrder ..|> IOrder
@@ -569,9 +578,6 @@ CharacteristicsViewer --|> Viewer
 CharacteristicsSelector --|> Selector
 ItemInfoViewer --|> Viewer
 LoadStageViewer --|> Viewer
-
-ItemNode --|> LongPressMonoBehaviour
-TileController --|> LongPressMonoBehaviour
 
 Stage -- StageInfo
 Dialog -- DialogType
