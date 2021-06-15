@@ -49,17 +49,20 @@ package Adv
     {
         -_floor:int
         -_spawnRate:float
+        -_pickRate:float
+        -_openableRate:float
         -_spawnTable:List<WeightNode<EnemyData>>
         -_itemTable:List<WeightNode<ItemData>>
         -_characteristicsTable:List<WeightNode<CharacteristicsData>>
         -_qualityRange:MinMax
         +<<property>>Floor:int{get only}
         +<<property>>SpawnRate:float{get only}
+        +<<property>>PickRate:float{get only}
+        +<<property>>OpenalbeRate:float{get only}
         +<<property>>SpawnTable:IEnumerable<WeightNode<EnemyData>>{get only}
         +<<property>>ItemTable:IEnumerable<WeightNode<ItemData>>{get only}
         +<<property>>CharacteristicsTable:IEnumerable<WeightNode<CharacteristicsData>>{get only}
         +<<property>>QualityRange:MinMax{get only}
-        +Copy(data:StageData):void
     }
     class Treasure
     {

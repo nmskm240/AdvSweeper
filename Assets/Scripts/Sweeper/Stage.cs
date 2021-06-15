@@ -141,7 +141,7 @@ namespace Sweeper
         {
             var size = UnityEngine.Random.Range(4, 7);
             var enemy = (int)(Mathf.Pow(size, 2) * _order.Data.SpawnRate);
-            var pickPoint = UnityEngine.Random.Range(1, 3);
+            var pickPoint = (int)(Mathf.Pow(size, 2) * _order.Data.PickRate);
             var option = new StageOption()
             {
                 Enemy = enemy,
