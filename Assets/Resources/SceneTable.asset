@@ -61,3 +61,6 @@ MonoBehaviour:
   - _name: BringItemSelect
     _category: Sub
     _parentName: StageSelect
+  - _name: Tutorial
+    _category: Tutorial
+    _parentName: 

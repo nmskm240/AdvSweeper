@@ -247,6 +247,27 @@ package Sweeper
     }
 }
 
+package Tutorial
+{
+    class 各種チュートリアル
+    class TutorialManager
+    {
+        -_title:TextMeshProUGUI
+        -_detail:TextMeshProUGUI
+        -_currentTask:ITask
+        -_curosr:int
+    }
+    class TutorialOrder
+    {
+        +TutorialTask:TutorialTask
+    }
+    class TutorialTask
+    {
+        -_tasks:List<ITask>
+        +Tasks:IEnumerable<ITask>
+    }
+}
+
 package UI
 {
     package Counters
@@ -510,6 +531,14 @@ interface IOrder
 {
     +Reset():void
 }
+interface ITask
+{
+    +<<property>>Title:string{get only}
+    +<<property>>Detail:string{get only}
+    +CheckTaskComplete():bool
+    +OnTaskStart():void
+    +OnTaskComplete():void
+}
 abstract Factory<T>
 {
     #_original:T
@@ -536,8 +565,11 @@ ViewerOrder ..|> IOrder
 SelectorOrder ..|> IOrder
 ItemInfoViewerOrder ..|> IOrder
 LoadStageOrder ..|> IOrder
+TutorialOrder ..|> IOrder
 
 各種効果 ..|> IEffect
+
+各種チュートリアル ..|> ITask
 
 ObjectCompare ..|> IEqualityComparer
 
@@ -565,6 +597,7 @@ ItemCollection --|> ScriptableObject
 ItemInfoViewerOrder --|> ScriptableObject
 ItemViewerOrder --|> ViewerOrder
 LoadStageOrder --|> ScriptableObject
+TutorialOrder --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
@@ -575,6 +608,7 @@ Alchemist --|> Player
 Selector --|> OrderReceiveMonoBehaviour
 Viewer --|> OrderReceiveMonoBehaviour
 Stage --|> OrderReceiveMonoBehaviour
+TutorialManager --|> OrderReceiveMonoBehaviour
 ItemSelector --|> Selector
 ItemViewer --|> Viewer
 CharacteristicsViewer --|> Viewer
@@ -598,6 +632,8 @@ CharacteristicsNode --o CharacteristicsViewer
 Synthesizer --* RecipeData
 SaveData --* SaveLoadManager
 IOrder --* OrderReceiveMonoBehaviour
+TutorialTask --* TutorialManager
+ITask --* TutorialTask
 
 TileFactory ..> Tile : Create
 DialogFactory ..> Dialog : Create

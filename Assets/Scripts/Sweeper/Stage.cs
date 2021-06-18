@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MultiSceneManagement;
 using RandomWithWeights;
+using Tutorial;
 using Sweeper.TileContents;
 using Alchemy;
 using Adv;
@@ -28,7 +30,11 @@ namespace Sweeper
 
         private void Awake()
         {
+            var gameTutorial = Resources.Load("Datas/Tutorial/GameTutorial") as TutorialTask;
+            var order = Resources.Load("Datas/Order/TutorialOrder") as TutorialOrder;
             Next();
+            order.TutorialTask = gameTutorial;
+            MultiSceneManager.LoadScene("Tutorial");
         }
 
         public void Create(int width, int height, StageOption stageOption)
