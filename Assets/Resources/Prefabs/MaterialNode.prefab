@@ -318,8 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 8655337980142735945}
   _requiredAndSelectedNum: {fileID: 6841844818576306642}
-  _selectMaterials: {fileID: 11400000, guid: 2f93f44baef6ded4e949c7e50852cdcf, type: 2}
-  _viewerOrder: {fileID: 11400000, guid: 91c160ab1fb1cdc4d93a7cfdf4c02a70, type: 2}
+  _viewerOrder: {fileID: 11400000, guid: f3a23b330b1ee2a46b9a27120ae6bb59, type: 2}
   _selectorOrder: {fileID: 11400000, guid: 9332ecaa035f21a48a7cef386198994b, type: 2}
 --- !u!1 &9014168634967632250
 GameObject:
