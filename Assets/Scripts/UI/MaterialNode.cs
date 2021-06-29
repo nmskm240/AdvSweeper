@@ -55,7 +55,11 @@ namespace UI
                 _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
                 Resources.UnloadAsset(sOrder);
             });
-            MultiSceneManager.LoadScene("ItemSelect", null, () =>
+            sOrder.OnOrderUnComplete.AddListener(() => 
+            {
+                Resources.UnloadAsset(sOrder);
+            });
+            MultiSceneManager.LoadScene("ItemSelect", () =>
             {
                 Resources.UnloadAsset(vOrder);
             });

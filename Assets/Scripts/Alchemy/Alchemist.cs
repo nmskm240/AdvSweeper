@@ -84,9 +84,11 @@ namespace Alchemy
                 }
                 GetItem(item);
                 iOrder.Data = item;
-                MultiSceneManager.LoadScene("ItemInfo");
-                Resources.UnloadAsset(sOrder);
-                Resources.UnloadAsset(iOrder);
+                MultiSceneManager.LoadScene("ItemInfo", () =>
+                {
+                    Resources.UnloadAsset(sOrder);
+                    Resources.UnloadAsset(iOrder);
+                });
             });
             MultiSceneManager.LoadScene("CharacteristicSelect");
 

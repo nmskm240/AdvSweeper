@@ -370,7 +370,6 @@ package UI
         }
         abstract Viewer<T>
         {
-            -_order:T
             -_contents:Transform
             #ContentsReset():void
             +Show():void
@@ -400,9 +399,10 @@ package UI
     {
         abstract Selector<T>
         {
-            -_order:T
-            -_completBtn:Button
+            #_completBtn:Button
+            #_closeBtn:Button
             #OnSelectComplet():void
+            #OnClose():void
         }
         class ItemSelector
         class CharacteristicsSelector
@@ -526,6 +526,7 @@ abstract OrderReceiveMonoBehaviour<T>
 abstract Order
 {
     +<<property>>OnOrderComplete{get only}
+    +<<property>>OnOrderUnComplete{ get only }
     +Reset():void
 }
 interface ITask

@@ -714,6 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _order: {fileID: 11400000, guid: 9332ecaa035f21a48a7cef386198994b, type: 2}
   _completBtn: {fileID: 829296133}
+  _closeBtn: {fileID: 1408719375}
 --- !u!1 &829296131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,19 +1246,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1408719376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1408719374}
-        m_TargetAssemblyTypeName: MultiSceneManagement.MultiSceneLoader, Assembly-CSharp
-        m_MethodName: Unload
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ItemSelect
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1408719376
 MonoBehaviour:
   m_ObjectHideFlags: 0

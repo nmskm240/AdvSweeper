@@ -8,13 +8,22 @@ namespace UI.Selectors
     {
         [SerializeField]
         protected Button _completBtn;
+        [SerializeField]
+        protected Button _closeBtn;
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
-            _completBtn.onClick.AddListener(() => OnSelectComplet());
+            _closeBtn?.onClick.AddListener(() => OnClose());
+            _completBtn?.onClick.AddListener(() => OnSelectComplete());
         }
 
-        protected virtual void OnSelectComplet()
+        protected virtual void OnClose()
+        {
+            _order.OnOrderUnComplete?.Invoke();
+            MultiSceneManager.UnloadScene(gameObject.scene.name);
+        }
+
+        protected virtual void OnSelectComplete()
         {
             _order.OnOrderComplete?.Invoke();
             MultiSceneManager.UnloadScene(gameObject.scene.name);
