@@ -122,7 +122,6 @@ package Alchemy
         -_materialNodes:List<MaterialNode>
         -_canAlchemy:bool
         +Alchemy():void
-        -AlchemyProcess:IEnumerator
     }
     class CharacteristicsTree
     {
@@ -473,13 +472,10 @@ package UI
     {
         -_image:Image
         -_requiredAndSelectedNum:TextMeshProUGUI
-        -_viewerOrder:ViewerOrder
-        -_selectorOrder:SelectorOrder
         -_materialAndQuantity:MaterialAndQuantity
         -_selectedMaterials:List<ItemData>
         +<<property>>NeedQuantity:int{get only}
         +<<property>>SelectedMaterials:IEnumerable<ItemData>{get only}
-        -WaitSelect():IEnumerator
         +Init(materialAndQuantity:MaterialAndQuantity):void
         +SelectClear():void
     }
@@ -527,8 +523,9 @@ abstract OrderReceiveMonoBehaviour<T>
 {
     #_order:T
 }
-interface IOrder
+abstract Order
 {
+    +<<property>>OnOrderComplete{get only}
     +Reset():void
 }
 interface ITask
@@ -561,12 +558,6 @@ CharacteristicsNode ..|> IPointerClickHandler
 LongPressTrigger ..|> IPointerDownHandler
 LongPressTrigger ..|> IPointerUpHandler
 
-ViewerOrder ..|> IOrder
-SelectorOrder ..|> IOrder
-ItemInfoViewerOrder ..|> IOrder
-LoadStageOrder ..|> IOrder
-TutorialOrder ..|> IOrder
-
 各種効果 ..|> IEffect
 
 各種チュートリアル ..|> ITask
@@ -577,6 +568,12 @@ SaveData ..|> ISerializationCallbackReceiver
 
 ItemData ..|> ISavable
 ItemCollection ..|> ISavable
+
+ViewerOrder --|> Order
+SelectorOrder --|> Order
+ItemInfoViewerOrder --|> Order
+LoadStageOrder --|> Order
+TutorialOrder --|> Order
 
 TileFactory --|> Factory
 DialogFactory --|> Factory
@@ -594,10 +591,7 @@ EnemyData --|> BaseData
 StageData --|> BaseData
 BaseData --|> ScriptableObject
 ItemCollection --|> ScriptableObject
-ItemInfoViewerOrder --|> ScriptableObject
-ItemViewerOrder --|> ViewerOrder
-LoadStageOrder --|> ScriptableObject
-TutorialOrder --|> ScriptableObject
+Order --|> ScriptableObject
 
 ItemData --|> AlchemyMaterial
 CategoryData --|> AlchemyMaterial
@@ -631,7 +625,7 @@ CharacteristicsNode --o CharacteristicsViewer
 
 Synthesizer --* RecipeData
 SaveData --* SaveLoadManager
-IOrder --* OrderReceiveMonoBehaviour
+Order --* OrderReceiveMonoBehaviour
 TutorialTask --* TutorialManager
 ITask --* TutorialTask
 
