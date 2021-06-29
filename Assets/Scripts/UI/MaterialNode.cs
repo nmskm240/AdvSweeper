@@ -12,23 +12,19 @@ using Alchemy;
 using UI.Orders;
 
 namespace UI
-{    
-    public class MaterialNode : MonoBehaviour, IPointerClickHandler 
+{
+    public class MaterialNode : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
         private Image _image;
         [SerializeField]
         private TextMeshProUGUI _requiredAndSelectedNum;
-        [SerializeField]
-        private ViewerOrder _viewerOrder;        
-        [SerializeField]
-        private SelectorOrder _selectorOrder;
 
         private MaterialAndQuantity _materialAndQuantity;
         private List<ItemData> _selectedMaterials = new List<ItemData>();
 
-        public int NeedQuantity{ get { return _materialAndQuantity.Quantity;} }
-        public IEnumerable<ItemData> SelectedMaterials{ get { return _selectedMaterials; } }
+        public int NeedQuantity { get { return _materialAndQuantity.Quantity; } }
+        public IEnumerable<ItemData> SelectedMaterials { get { return _selectedMaterials; } }
 
         public void Init(MaterialAndQuantity materialAndQuantity)
         {
@@ -45,23 +41,24 @@ namespace UI
 
         public void OnPointerClick(PointerEventData e)
         {
-            _viewerOrder.WhiteList.Add(_materialAndQuantity.Material.ID);
-            _selectorOrder.MinNumberOfSelectable = _materialAndQuantity.Quantity;
-            _selectorOrder.MaxNumberOfSelectable = _materialAndQuantity.Quantity;
-            _selectorOrder.Results.Clear();
-            _selectorOrder.Results.AddRange(_selectedMaterials);
-            MultiSceneManager.LoadScene("ItemSelect");
-            StartCoroutine(WaitSelect());
-        }
-
-        private IEnumerator WaitSelect()
-        {
-            yield return new WaitWhile(() => MultiSceneManager.IsLoaded("ItemSelect"));
-            _selectedMaterials.Clear();
-            _selectedMaterials.AddRange(_selectorOrder.Results.Cast<ItemData>());
-            _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
-            _viewerOrder.Reset();
-            _selectorOrder.Reset();
+            var vOrder = Resources.Load("Datas/Order/ItemViewerOrder") as ItemViewerOrder;
+            var sOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
+            vOrder.WhiteList.Add(_materialAndQuantity.Material.ID);
+            sOrder.Selectable.min = _materialAndQuantity.Quantity;
+            sOrder.Selectable.max = _materialAndQuantity.Quantity;
+            sOrder.Results.Clear();
+            sOrder.Results.AddRange(_selectedMaterials);
+            sOrder.OnOrderComplete.AddListener(() =>
+            {
+                _selectedMaterials.Clear();
+                _selectedMaterials.AddRange(sOrder.Results.Cast<ItemData>());
+                _requiredAndSelectedNum.text = _selectedMaterials.Count + "/" + _materialAndQuantity.Quantity;
+                Resources.UnloadAsset(sOrder);
+            });
+            MultiSceneManager.LoadScene("ItemSelect", null, () =>
+            {
+                Resources.UnloadAsset(vOrder);
+            });
         }
     }
 }
