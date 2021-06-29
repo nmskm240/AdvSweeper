@@ -40,9 +40,6 @@ MonoBehaviour:
   - _name: Setting
     _category: MainMenu
     _parentName: Menu
-  - _name: Shop
-    _category: MainMenu
-    _parentName: Menu
   - _name: StageSelect
     _category: MainMenu
     _parentName: Menu
