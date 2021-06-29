@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,7 +64,7 @@ namespace MultiSceneManagement
             yield return SceneManager.LoadSceneAsync(sceneData.Name, LoadSceneMode.Additive);
         }
 
-        private static IEnumerator LoadSceneProcess(string sceneName)
+        private static IEnumerator LoadSceneProcess(string sceneName, Action onLoadSceneBefore = null, Action onLoadedSceneAfter = null)
         {
             var sceneData = _sceneTable.GetSceneData(sceneName);
             if(sceneData == null)
@@ -82,7 +83,9 @@ namespace MultiSceneManagement
                 yield return UnloadScene(sceneOfSomeCategory);
             }
             _loadedSceneDatas.Add(sceneData);
+            onLoadSceneBefore?.Invoke();
             yield return LoadScene(sceneData);
+            onLoadedSceneAfter?.Invoke();
         }
 
         private static IEnumerator UnloadScene(Scene scene)
@@ -106,7 +109,7 @@ namespace MultiSceneManagement
             yield return SceneManager.UnloadSceneAsync(scene);
         }
 
-        private static IEnumerator UnloadSceneProcess(string sceneName)
+        private static IEnumerator UnloadSceneProcess(string sceneName, Action onUnloadBefore = null, Action onUnloadedAfter = null)
         {
             if(!SceneManager.GetSceneByName(sceneName).IsValid())
             {
@@ -126,7 +129,9 @@ namespace MultiSceneManagement
             }
             _loadedSceneDatas.Remove(_sceneTable.GetSceneData(sceneName));
             var scene = SceneManager.GetSceneByName(sceneName);
+            onUnloadBefore?.Invoke();
             yield return UnloadScene(scene);
+            onUnloadedAfter?.Invoke();
         }
 
         public static void Init()
@@ -134,14 +139,14 @@ namespace MultiSceneManagement
             _sceneTable = SceneTable.Load();
         }
 
-        public static void LoadScene(string sceneName)
+        public static void LoadScene(string sceneName, Action onLoadSceneBefore = null, Action onLoadedSceneAfter = null)
         {
-            Observable.FromCoroutine(() => LoadSceneProcess(sceneName)).Subscribe();
+            Observable.FromCoroutine(() => LoadSceneProcess(sceneName, onLoadSceneBefore, onLoadedSceneAfter)).Subscribe();
         }
 
-        public static void UnloadScene(string sceneName)
+        public static void UnloadScene(string sceneName, Action onUnloadBefore = null, Action onUnloadedAfter = null)
         {
-            Observable.FromCoroutine(() => UnloadSceneProcess(sceneName)).Subscribe();
+            Observable.FromCoroutine(() => UnloadSceneProcess(sceneName, onUnloadBefore, onUnloadedAfter)).Subscribe();
         }
 
         public static bool IsLoaded(string sceneName)
