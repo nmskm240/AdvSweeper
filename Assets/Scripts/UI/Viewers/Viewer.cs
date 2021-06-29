@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using MultiSceneManagement;
 
 namespace UI.Viewers
-{    
-    public abstract class Viewer<T> : OrderReceiveMonoBehaviour<T> where T : ScriptableObject, IOrder
+{
+    public abstract class Viewer<T> : OrderReceiveMonoBehaviour<T> where T : Order
     {
         [SerializeField]
         protected Transform _contents;
@@ -12,11 +12,12 @@ namespace UI.Viewers
         protected virtual void Start()
         {
             Show();
+            _order.OnOrderComplete?.Invoke();
         }
 
         protected void ContentsReset()
         {
-            foreach(Transform tf in _contents)
+            foreach (Transform tf in _contents)
             {
                 Destroy(tf.gameObject);
             }

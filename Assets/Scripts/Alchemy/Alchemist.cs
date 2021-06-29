@@ -41,7 +41,7 @@ namespace Alchemy
         private void Update()
         {
             _canAlchemy = true;
-            foreach(var materialNode in _materialNodes)
+            foreach (var materialNode in _materialNodes)
             {
                 _canAlchemy &= materialNode.NeedQuantity == materialNode.SelectedMaterials.Count();
             }
@@ -49,11 +49,6 @@ namespace Alchemy
         }
 
         public void Alchemy()
-        {
-            StartCoroutine(AlchemyProcess());
-        }
-
-        private IEnumerator AlchemyProcess()
         {
             var sOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
             var vOrder = Resources.Load("Datas/Order/ViewerOrder") as ViewerOrder;
@@ -64,7 +59,7 @@ namespace Alchemy
             {
                 var selectedMaterials = materialNode.SelectedMaterials;
                 useMaterials.AddRange(selectedMaterials);
-                foreach(var characteristics in selectedMaterials.Select(m => m.Characteristics))
+                foreach (var characteristics in selectedMaterials.Select(m => m.Characteristics))
                 {
                     candidateCharacteristics.AddRange(characteristics);
                 }
@@ -72,24 +67,29 @@ namespace Alchemy
             }
             var fixCharacteristics = candidateCharacteristics.Select(c => c.ID);
             vOrder.WhiteList.AddRange(fixCharacteristics.Distinct());
-            sOrder.MinNumberOfSelectable = 0;
-            sOrder.MaxNumberOfSelectable = 3;
+            sOrder.Selectable.min = 0;
+            sOrder.Selectable.max = 3;
             var item = _jar.Alchemy(useMaterials);
-            MultiSceneManager.LoadScene("CharacteristicSelect");
-            yield return new WaitWhile(() => MultiSceneManager.IsLoaded("CharacteristicSelect"));
-            item.Init(sOrder.Results.Cast<CharacteristicsData>());
-            foreach(var characteristic in item.Characteristics)
-            {
-                if(characteristic.Timing == EffectTiming.Init)
-                {
-                    characteristic.Effect.Activate(item);
-                }
-            }
-            GetItem(item);
-            vOrder.Reset();
+            Resources.UnloadAsset(vOrder);
             sOrder.Reset();
-            iOrder.Data = item;
-            MultiSceneManager.LoadScene("ItemInfo");
+            sOrder.OnOrderComplete.AddListener(() =>
+            {
+                item.Init(sOrder.Results.Cast<CharacteristicsData>());
+                foreach (var characteristic in item.Characteristics)
+                {
+                    if (characteristic.Timing == EffectTiming.Init)
+                    {
+                        characteristic.Effect.Activate(item);
+                    }
+                }
+                GetItem(item);
+                iOrder.Data = item;
+                MultiSceneManager.LoadScene("ItemInfo");
+                Resources.UnloadAsset(sOrder);
+                Resources.UnloadAsset(iOrder);
+            });
+            MultiSceneManager.LoadScene("CharacteristicSelect");
+
         }
     }
 }

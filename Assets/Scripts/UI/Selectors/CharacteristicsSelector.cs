@@ -6,7 +6,7 @@ namespace UI.Selectors
     {
         private void Update()
         {
-            _completBtn.interactable = (_order.MinNumberOfSelectable <= _order.Results.Count && _order.Results.Count <= _order.MaxNumberOfSelectable);
+            _completBtn.interactable = (_order.Selectable.min <= _order.Results.Count && _order.Results.Count <= _order.Selectable.max);
         }
     }
 }
