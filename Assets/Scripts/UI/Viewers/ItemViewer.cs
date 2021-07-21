@@ -29,20 +29,25 @@ namespace UI.Viewers
             ContentsReset();
             foreach (var item in _collections.Contents)
             {
-                if(_order.ItemOnly != item.IsItem)
+                if (_order?.ItemOnly != item.IsItem)
                 {
+                    if (_order == null)
+                    {
+                        CreateItemNode(item);
+                    }
                     continue;
                 }
-                if (_order.WhiteList.Count > 0)
+                if (_order.WhiteList.Count > 0 || _order.BlackList.Count > 0)
                 {
-                    foreach (var id in _order.WhiteList)
-                    {
-                        if (item.ID == id
+                    if (_order.WhiteList.Where(id => (item.ID == id
                          || item.Categories.Any(c => c.ID == id)
-                         || item.Characteristics.Any(c => c.ID == id))
+                         || item.Characteristics.Any(c => c.ID == id))).Count() != 0)
+                    {
+                        if (_order.BlackList.Where(id => (item.ID == id
+                         || item.Categories.Any(c => c.ID == id)
+                         || item.Characteristics.Any(c => c.ID == id))).Count() == 0)
                         {
                             CreateItemNode(item);
-                            break;
                         }
                     }
                 }

@@ -12,7 +12,7 @@ namespace UI.Viewers
         protected virtual void Start()
         {
             Show();
-            _order.OnOrderComplete?.Invoke();
+            _order?.OnOrderComplete?.Invoke();
         }
 
         protected void ContentsReset()

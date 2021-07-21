@@ -8,11 +8,13 @@ namespace UI.Orders
     public class ViewerOrder : Order
     {
         public List<string> WhiteList = new List<string>();
+        public List<string> BlackList = new List<string>();
 
         public override void Reset()
         {
             base.Reset();
             WhiteList.Clear();
+            BlackList.Clear();
         }
     }
 }
