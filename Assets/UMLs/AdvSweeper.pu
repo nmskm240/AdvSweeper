@@ -411,10 +411,9 @@ package UI
     }
     package Orders
     {
-        class ViewerOrder
+        class CharacteristicsViewerOrder
         {
-            +<<property>>WhiteList:List<string>
-            +<<property>>BlackList:List<string>
+            +Contents:List<string>
         }
         class SelectorOrder
         {
@@ -427,6 +426,8 @@ package UI
         }
         class ItemViewerOrder
         {
+            +WhiteList:List<string>
+            +BlackList:List<string>
             +ItemOnly:bool
         }
         class LoadStageOrder

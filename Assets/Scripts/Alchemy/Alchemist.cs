@@ -51,7 +51,7 @@ namespace Alchemy
         public void Alchemy()
         {
             var sOrder = Resources.Load("Datas/Order/SelectorOrder") as SelectorOrder;
-            var vOrder = Resources.Load("Datas/Order/ViewerOrder") as ViewerOrder;
+            var vOrder = Resources.Load("Datas/Order/CharacteristicsViewerOrder") as CharacteristicsViewerOrder;
             var iOrder = Resources.Load("Datas/Order/ItemInfoViewerOrder") as ItemInfoViewerOrder;
             var useMaterials = new List<ItemData>();
             var candidateCharacteristics = new List<CharacteristicsData>();
@@ -66,7 +66,7 @@ namespace Alchemy
                 materialNode.SelectClear();
             }
             var fixCharacteristics = candidateCharacteristics.Select(c => c.ID);
-            vOrder.WhiteList.AddRange(fixCharacteristics.Distinct());
+            vOrder.Contents.AddRange(fixCharacteristics.Distinct());
             sOrder.Selectable.min = 0;
             sOrder.Selectable.max = 3;
             var item = _jar.Alchemy(useMaterials);

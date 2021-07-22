@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7247849dabe43ca4f95a5f72a5e90a62, type: 3}
-  m_Name: ViewerOrder
+  m_Script: {fileID: 11500000, guid: cce5c33ee21a13e49adcdf881d627cff, type: 3}
+  m_Name: CharacteristicsViewerOrder
   m_EditorClassIdentifier: 
-  WhiteList: []
+  Contents: []

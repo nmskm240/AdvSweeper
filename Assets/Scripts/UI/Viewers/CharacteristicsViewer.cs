@@ -4,12 +4,12 @@ using UI.Orders;
 
 namespace UI.Viewers
 {
-    public class CharacteristicsViewer : Viewer<ViewerOrder>
+    public class CharacteristicsViewer : Viewer<CharacteristicsViewerOrder>
     {
         public override void Show()
         {
             var factory = new CharacteristicsNodeFactory();
-            foreach(var characteristics in _order.WhiteList)
+            foreach(var characteristics in _order.Contents)
             {
                 var data = Resources.Load("Datas/Characteristic/" + characteristics) as CharacteristicsData;
                 if(data == null)
