@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ItemViewerOrder
   m_EditorClassIdentifier: 
   WhiteList: []
+  BlackList: []
   ItemOnly: 0

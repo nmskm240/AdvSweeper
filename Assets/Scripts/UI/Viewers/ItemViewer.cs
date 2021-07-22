@@ -24,6 +24,13 @@ namespace UI.Viewers
             node.Init(item);
         }
 
+        private bool ContainsOrder(List<string> orderList, ItemData item)
+        {
+            return orderList.Where(id => (item.ID == id ||
+            item.Categories.Any(c => c.ID == id) ||
+            item.Characteristics.Any(c => c.ID == id))).Count() != 0;
+        }
+
         public override void Show()
         {
             ContentsReset();
@@ -39,16 +46,9 @@ namespace UI.Viewers
                 }
                 if (_order.WhiteList.Count > 0 || _order.BlackList.Count > 0)
                 {
-                    if (_order.WhiteList.Where(id => (item.ID == id
-                         || item.Categories.Any(c => c.ID == id)
-                         || item.Characteristics.Any(c => c.ID == id))).Count() != 0)
+                    if (ContainsOrder(_order.WhiteList, item) && !ContainsOrder(_order.BlackList, item))
                     {
-                        if (_order.BlackList.Where(id => (item.ID == id
-                         || item.Categories.Any(c => c.ID == id)
-                         || item.Characteristics.Any(c => c.ID == id))).Count() == 0)
-                        {
-                            CreateItemNode(item);
-                        }
+                        CreateItemNode(item);
                     }
                 }
                 else
