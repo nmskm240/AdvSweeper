@@ -433,6 +433,7 @@ package UI
         class LoadStageOrder
         {
             +Data:StageData
+            +DataSet(node:StageNode):void
         }
     }
     class StageInfo
@@ -449,8 +450,7 @@ package UI
     class StageNode
     {
         -_text:TextMeshProUGUI
-        -_base:StageData
-        -_loadStageData:StageData
+        +Data:StageData
     }
 
     class PickItemFactory
@@ -559,7 +559,6 @@ Pick ..|> ITileContents
 Exit ..|> ITileContents
 
 TileController ..|> IPointerClickHandler
-StageNode ..|> IPointerClickHandler
 ItemNode ..|> IPointerClickHandler
 RecipeNode ..|> IPointerClickHandler
 MaterialNode ..|> IPointerClickHandler

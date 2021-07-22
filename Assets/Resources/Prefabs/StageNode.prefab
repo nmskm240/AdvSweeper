@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7625822919400117644}
   - component: {fileID: 7554978586099026141}
   - component: {fileID: 7600131579037292101}
+  - component: {fileID: 9190068828387012927}
+  - component: {fileID: 8045501394546275858}
   m_Layer: 5
   m_Name: StageNode
   m_TagString: Untagged
@@ -90,8 +92,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 6317933413913879333}
-  _base: {fileID: 0}
-  _loadStageData: {fileID: 11400000, guid: 309fc77ec1abebf4c819ce77da480c74, type: 2}
+  Data: {fileID: 0}
+--- !u!114 &9190068828387012927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274418231963905602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: e572ad505b495d6469cd78a516478988, type: 2}
+          m_TargetAssemblyTypeName: UI.Orders.LoadStageOrder, Assembly-CSharp
+          m_MethodName: Reset
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: e572ad505b495d6469cd78a516478988, type: 2}
+          m_TargetAssemblyTypeName: UI.Orders.LoadStageOrder, Assembly-CSharp
+          m_MethodName: DataSet
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7600131579037292101}
+            m_ObjectArgumentAssemblyTypeName: UI.StageNode, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: BringItemSelect
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8045501394546275858}
+          m_TargetAssemblyTypeName: MultiSceneManagement.MultiSceneLoader, Assembly-CSharp
+          m_MethodName: Load
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: BringItemSelect
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &8045501394546275858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274418231963905602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0da3411985d9f948ae6bec960aa2935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3850193509488709005
 GameObject:
   m_ObjectHideFlags: 0
