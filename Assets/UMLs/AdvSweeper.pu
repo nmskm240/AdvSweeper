@@ -366,6 +366,7 @@ package UI
         class ItemViewer
         {
             -_collectons:ItemCollection
+            -ContainsOrder(orderList:List<string>,item:ItemData):bool
             -CreateItemNode(item:ItemData):void
         }
         abstract Viewer<T>
@@ -413,11 +414,11 @@ package UI
         class ViewerOrder
         {
             +<<property>>WhiteList:List<string>
+            +<<property>>BlackList:List<string>
         }
         class SelectorOrder
         {
-            +MaxNumberOfSelectable:int
-            +MinNumberOfSelectable:int
+            +Selectable:MinMax
             +Results:List<string>
         }
         class ItemInfoViewerOrder
@@ -478,6 +479,12 @@ package UI
         +<<property>>SelectedMaterials:IEnumerable<ItemData>{get only}
         +Init(materialAndQuantity:MaterialAndQuantity):void
         +SelectClear():void
+    }
+    class BringItemNode
+    {
+        -_image:Image
+        -_nonItem:Sprite
+        -_item:ItemData
     }
 }
 
@@ -556,6 +563,7 @@ ItemNode ..|> IPointerClickHandler
 RecipeNode ..|> IPointerClickHandler
 MaterialNode ..|> IPointerClickHandler
 CharacteristicsNode ..|> IPointerClickHandler
+BringItemNode ..|> IPointerClickHandler
 LongPressTrigger ..|> IPointerDownHandler
 LongPressTrigger ..|> IPointerUpHandler
 
