@@ -1,14 +1,16 @@
+using UnityEngine;
+using UnityEngine.Events;
+
 namespace Tutorial
-{
-    using UnityEngine;
-    
+{    
     [CreateAssetMenu(fileName = "TutorialOrder", menuName = "AdvSweeper/Order/TutorialOrder", order = 0)]
-    public class TutorialOrder : ScriptableObject , IOrder
+    public class TutorialOrder : Order
     {
         public TutorialTask TutorialTask;
 
-        public void Reset()
+        public override void Reset()
         {
+            base.Reset();
             TutorialTask = null;
         }
     }
