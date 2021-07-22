@@ -76,12 +76,5 @@ namespace UI.Viewers
                 }
             }
         }
-
-        public void OnLongPressed()
-        {
-            var item = Resources.Load("Datas/Order/ItemInfoViewerOrder") as ItemInfoViewerOrder;
-            item.Data = _item;
-            MultiSceneManager.LoadScene("ItemInfo");
-        }
     }
 }

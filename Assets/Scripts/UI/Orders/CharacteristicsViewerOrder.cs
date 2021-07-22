@@ -10,6 +10,7 @@ namespace UI.Orders
 
         public override void Reset() 
         {
+            base.Reset();
             Contents.Clear();
         }
     }

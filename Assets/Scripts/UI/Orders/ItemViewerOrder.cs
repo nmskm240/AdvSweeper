@@ -12,6 +12,7 @@ namespace UI.Orders
 
         public override void Reset()
         {
+            base.Reset();
             WhiteList.Clear();
             BlackList.Clear();
             ItemOnly = false;

@@ -1,5 +1,5 @@
-using UnityEngine.Events;
 using Adv;
+using UI.Viewers;
 
 namespace UI.Orders
 {
@@ -14,6 +14,11 @@ namespace UI.Orders
         {
             base.Reset();
             Data = null;
+        }
+
+        public void DataSet(ItemNode node)
+        {
+            Data = node.Item;
         }
     }
 }
