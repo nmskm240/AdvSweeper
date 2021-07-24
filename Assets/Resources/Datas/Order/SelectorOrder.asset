@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d6be1d1aa0b67449f9ff7563e9e00d, type: 3}
   m_Name: SelectorOrder
   m_EditorClassIdentifier: 
-  MaxNumberOfSelectable: 0
-  MinNumberOfSelectable: 0
+  Selectable:
+    min: 0
+    max: 0
   Results: []

@@ -16,7 +16,7 @@ namespace UI.Orders
             Data = null;
         }
 
-        public void DataSet(ItemNode node)
+        public void SetData(ItemNode node)
         {
             Data = node.Item;
         }

@@ -124,7 +124,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 11400000, guid: e572ad505b495d6469cd78a516478988, type: 2}
           m_TargetAssemblyTypeName: UI.Orders.LoadStageOrder, Assembly-CSharp
-          m_MethodName: DataSet
+          m_MethodName: SetData
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 7600131579037292101}

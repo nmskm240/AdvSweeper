@@ -139,7 +139,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: eb740d3d691ea304ba8824ec0cf0efaf, type: 2}
         m_TargetAssemblyTypeName: UI.Orders.ItemInfoViewerOrder, Assembly-CSharp
-        m_MethodName: DataSet
+        m_MethodName: SetData
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 5949519905714498708}

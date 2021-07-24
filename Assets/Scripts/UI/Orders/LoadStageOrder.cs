@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using Adv;
 using UI;
 
@@ -10,7 +9,7 @@ namespace UI.Orders
     {
         public StageData Data;
 
-        public void DataSet(StageNode node)
+        public void SetData(StageNode node)
         {
             Data = node.Data;
         }
