@@ -13,39 +13,25 @@ namespace Alchemy
     public class Alchemist : Player
     {
         [SerializeField]
-        private Transform _materials;
+        private GameObject _materials;
         [SerializeField]
         private Jar _jar;
-        [SerializeField]
-        private RecipeData _selectRecipeData;
 
         private List<MaterialNode> _materialNodes = new List<MaterialNode>();
-        private bool _canAlchemy = true;
 
-        private void Awake()
+        private void Start() 
         {
-            var factory = new MaterialNodeFactory();
-            var recipe = Resources.Load("Datas/Recipe/" + _selectRecipeData.ID) as RecipeData;
-            foreach (var materialAndQuantity in recipe.NeedMaterials)
-            {
-                var obj = factory.Create();
-                var node = obj.GetComponent<MaterialNode>();
-                obj.transform.SetParent(_materials);
-                obj.transform.localScale = Vector3.one;
-                node.Init(materialAndQuantity);
-                _materialNodes.Add(node);
-            }
-            _jar.SetRecipe(recipe);
+            _materialNodes.AddRange(_materials.GetComponentsInChildren<MaterialNode>());
         }
 
-        private void Update()
+        private void LastUpdate()
         {
-            _canAlchemy = true;
+            var canAlchemy = true;
             foreach (var materialNode in _materialNodes)
             {
-                _canAlchemy &= materialNode.NeedQuantity == materialNode.SelectedMaterials.Count();
+                canAlchemy &= materialNode.NeedQuantity == materialNode.SelectedMaterials.Count();
             }
-            _jar.SetCanAlchemy(_canAlchemy);
+            _jar.CanAlchemy = canAlchemy;
         }
 
         public void Alchemy()
