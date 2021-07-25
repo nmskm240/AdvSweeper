@@ -1,40 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
-using MultiSceneManagement;
 using Alchemy;
 
 namespace UI
 {    
-    public class RecipeNode : MonoBehaviour, IPointerClickHandler
+    public class RecipeNode : MonoBehaviour
     {
         [SerializeField]
         private Image _image;
         [SerializeField]
         private TextMeshProUGUI _name;
         [SerializeField]
-        private RecipeData _out;
-        [SerializeField]
-        private RecipeData _base;
+        private RecipeData _data;
+
+        public RecipeData Data { get { return _data; } }
 
         private void Awake()
         {
-            _image.sprite = _base.Product.Image;
-            _name.text = _base.Product.Name;
-        }
-
-        public void Init(RecipeData recipe)
-        {
-            _base = recipe;
-            _image.sprite = recipe.Product.Image;
-            _name.text = recipe.Product.Name;
-        }
-
-        public void OnPointerClick(PointerEventData e)
-        {
-            _out.Copy(_base);
-            MultiSceneManager.LoadScene("AlchemyMain");
+            _image.sprite = _data.Product.Image;
+            _name.text = _data.Product.Name;
         }
     }
 }

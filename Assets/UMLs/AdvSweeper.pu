@@ -433,7 +433,12 @@ package UI
         class LoadStageOrder
         {
             +Data:StageData
-            +DataSet(node:StageNode):void
+            +SetData(node:StageNode):void
+        }
+        class LoadRecipeOrder
+        {
+            +Data:RecipeData
+            +SetData(nod:RecipeNode):void
         }
     }
     class StageInfo
@@ -450,7 +455,8 @@ package UI
     class StageNode
     {
         -_text:TextMeshProUGUI
-        +Data:StageData
+        -_data:StageData
+        +<<property>>Data:StageData{get only}
     }
 
     class PickItemFactory
@@ -465,9 +471,8 @@ package UI
     {
         -_image:Image
         -_name:TextMeshProUGUI
-        -_out:RecipeData
-        -_base:RecipeData
-        +Init(recipe:RecipeData):void
+        -_data:RecipeData
+        +<<property>>Data:RecipeData{get only}
     }
     class MaterialNodeFactory
     class MaterialNode

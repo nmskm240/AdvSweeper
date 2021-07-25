@@ -622,6 +622,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7600131579037292101, guid: 2872a777286b43c4c86a2bf16085d995,
         type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: f87bce91f29c18e49bc1a45054ee8d33,
+        type: 2}
+    - target: {fileID: 7600131579037292101, guid: 2872a777286b43c4c86a2bf16085d995,
+        type: 3}
       propertyPath: _stageData
       value: 
       objectReference: {fileID: 11400000, guid: 309fc77ec1abebf4c819ce77da480c74,
@@ -1326,6 +1332,12 @@ PrefabInstance:
     - target: {fileID: 7600131579037292101, guid: 2872a777286b43c4c86a2bf16085d995,
         type: 3}
       propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: 467feaefa35716f4c903bbcfe2f99519,
+        type: 2}
+    - target: {fileID: 7600131579037292101, guid: 2872a777286b43c4c86a2bf16085d995,
+        type: 3}
+      propertyPath: _data
       value: 
       objectReference: {fileID: 11400000, guid: 467feaefa35716f4c903bbcfe2f99519,
         type: 2}

@@ -9,12 +9,14 @@ namespace UI
     {
         [SerializeField]
         private TextMeshProUGUI _text;
+        [SerializeField]
+        private StageData _data;
 
-        public StageData Data;
+        public StageData Data { get { return _data; } }
 
         private void Awake() 
         {
-            _text.text = Data.Name;
+            _text.text = _data.Name;
         }
     }
 }
